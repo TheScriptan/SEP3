@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "c:\\Users\\mihai\\Desktop\\SEP3\\SEP3\\Appendix\\Database\\VikarDb\\VikarDb.csproj",
+  "TargetFramework": "netcoreapp2.1",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "MVC-2.1",
+    "LanguageVersion": "2.1",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-2.1"
+      }
+    ]
+  }
+}

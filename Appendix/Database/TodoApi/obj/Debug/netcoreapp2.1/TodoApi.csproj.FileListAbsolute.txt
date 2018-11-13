@@ -1,0 +1,14 @@
+C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\TodoApi\bin\Debug\netcoreapp2.1\TodoApi.deps.json
+C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\TodoApi\bin\Debug\netcoreapp2.1\TodoApi.runtimeconfig.json
+C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\TodoApi\bin\Debug\netcoreapp2.1\TodoApi.runtimeconfig.dev.json
+C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\TodoApi\bin\Debug\netcoreapp2.1\TodoApi.dll
+C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\TodoApi\bin\Debug\netcoreapp2.1\TodoApi.pdb
+C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\TodoApi\obj\Debug\netcoreapp2.1\TodoApi.csprojAssemblyReference.cache
+C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\TodoApi\obj\Debug\netcoreapp2.1\TodoApi.csproj.CoreCompileInputs.cache
+C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\TodoApi\obj\Debug\netcoreapp2.1\TodoApi.RazorAssemblyInfo.cache
+C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\TodoApi\obj\Debug\netcoreapp2.1\TodoApi.RazorAssemblyInfo.cs
+C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\TodoApi\obj\Debug\netcoreapp2.1\TodoApi.AssemblyInfoInputs.cache
+C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\TodoApi\obj\Debug\netcoreapp2.1\TodoApi.AssemblyInfo.cs
+C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\TodoApi\obj\Debug\netcoreapp2.1\TodoApi.RazorTargetAssemblyInfo.cache
+C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\TodoApi\obj\Debug\netcoreapp2.1\TodoApi.dll
+C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\TodoApi\obj\Debug\netcoreapp2.1\TodoApi.pdb
