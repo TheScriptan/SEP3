@@ -64,7 +64,7 @@ public class LoginFrame
       frame.setBounds(150, 50, 800, 600);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.getContentPane().setLayout(null);
-      ServerHandler serverHandler = new ServerHandler();
+      ServerHandler serverHandler = ServerHandler.getInstance();
       
       JLabel lblLogin = new JLabel("Login:");
       lblLogin.setBounds(304, 301, 46, 14);
@@ -103,6 +103,8 @@ public class LoginFrame
                JOptionPane.showMessageDialog(frame, "you are successfully logged in");
                AdminShiftGUI shift = new AdminShiftGUI();
                shift.setVisible(true);
+               ShiftList myList = serverHandler.GetShiftList();
+               myList.toString();
                dispose();
             }
             else

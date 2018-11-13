@@ -1,17 +1,16 @@
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JTable;
 import javax.swing.JButton;
-import javax.swing.JToolBar;
+import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
 
 public class AdminShiftGUI extends JFrame
 {
@@ -91,5 +90,19 @@ public class AdminShiftGUI extends JFrame
       JButton btnRemoveShift = new JButton("Remove shift");
       btnRemoveShift.setBounds(657, 247, 105, 23);
       contentPane.add(btnRemoveShift);
+      
+      //Singleton
+      ServerHandler serverHandler = ServerHandler.getInstance();
+      ShiftList shiftList = new ShiftList();
+      
+      btnAddShift.addActionListener(new ActionListener(){
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			Shift newShift = new Shift(1, "2018-11-13", "18:00", "Shoes" );
+			serverHandler.AddShift(newShift);
+		}
+    	  
+      });
    }
 }

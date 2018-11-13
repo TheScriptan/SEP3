@@ -7,7 +7,7 @@ namespace business_server{
 
     class ClientHandler{
 
-        enum Requests : int {Login = 1, AddShift = 2};
+        enum Requests : int {Login = 1, AddShift = 2, GetShiftList = 3};
 
         public static void handleClient(TcpClient client){
             //Initialize client connection
@@ -20,11 +20,11 @@ namespace business_server{
             while(client.Connected){
                 //Accept a message
                 try{
+                    System.Console.WriteLine("LOOP");
                     byte[] bufferedClientMessage = new byte[4096];
                     int bytesRead = stream.Read(bufferedClientMessage, 0, bufferedClientMessage.Length);
                     
                     String clientMessage = Encoding.ASCII.GetString(bufferedClientMessage, 0, bytesRead);
-                    System.Console.WriteLine(clientMessage);
                     //Determine the client request
                     int request = StringUtils.FindFirstInt(clientMessage);
                     //LOGIN Request
@@ -44,11 +44,21 @@ namespace business_server{
                         stream.WriteByte(message);
                     }
 
-                    //ADD SHIFT
+                    //ADD SHIFT Sends me json so I send it to Persistence Logic
                     else if(request == (int) Requests.AddShift && isLoggedIn){
-                        User user = StringUtils.GetJSONObject<User>(clientMessage) as User;
+                        var splitted = clientMessage.Split(new [] {' '});
+                        String json = splitted[1];
+                        //persistenceHandler.AddShift();
+                        /*User user = StringUtils.GetJSONObject<User>(clientMessage) as User;
                         System.Console.WriteLine(user.username);
-                        System.Console.WriteLine(user.password);
+                        System.Console.WriteLine(user.password);*/
+                    }
+
+                    //GET SHIFT 
+                    else if(request == (int) Requests.GetShiftList){
+                        String listJson = "{\"shiftList\": []}";
+                        byte[] jsonBytes = Encoding.ASCII.GetBytes(listJson);
+                        stream.Write(jsonBytes, 0, jsonBytes.Length);
                     }
 
                     //Kill client connection TEMPORARILY
