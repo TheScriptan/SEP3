@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using System.Net.Sockets;
+using Newtonsoft.Json;
 
 namespace business_server{
 
@@ -11,6 +12,7 @@ namespace business_server{
         public static void handleClient(TcpClient client){
             //Initialize client connection
             bool isConnected = true;
+            bool isLoggedIn = false;
             PersistenceHandler persistenceHandler = new PersistenceHandler();
             NetworkStream stream = client.GetStream();
             System.Console.WriteLine("Client Accepted" );
@@ -30,11 +32,19 @@ namespace business_server{
                     String password = "";
                     StringUtils.ConvertLoginCredentials(clientMessage, ref username, ref password);
                     bool validation = persistenceHandler.CheckIfValidCredentials(username, password);
+                    if(validation) 
+                        isLoggedIn = true;
                     byte message = Convert.ToByte(validation);
-                    System.Console.WriteLine(message);
                     stream.WriteByte(message);
                 }
-                else isConnected = false;
+
+                //ADD SHIFT
+                else if(request == (int) Requests.AddShift && isLoggedIn){
+                    System.Console.WriteLine(clientMessage);
+                    User user = StringUtils.GetJSONObject<User>(clientMessage) as User;
+                    System.Console.WriteLine(user.username);
+                    System.Console.WriteLine(user.password);
+                }
 
                 //Kill client connection TEMPORARILY
                 isConnected = false;

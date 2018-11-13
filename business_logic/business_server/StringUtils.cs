@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 
 namespace business_server{
 
@@ -15,6 +16,13 @@ namespace business_server{
             var splitted = str.Split(new[] {' '});
             username = splitted[1];
             password = splitted[2];
+        }
+
+        public static Object GetJSONObject<T>(String str){
+            var splitted = str.Split(new [] {' '});
+            String json = splitted[1];
+            Object obj = JsonConvert.DeserializeObject<T>(json);
+            return obj;
         }
     }
 }
