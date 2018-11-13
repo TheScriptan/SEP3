@@ -1,0 +1,11 @@
+C:\src\csharp\DNP1\sep3\business_server\bin\Debug\netcoreapp2.1\business_server.deps.json
+C:\src\csharp\DNP1\sep3\business_server\bin\Debug\netcoreapp2.1\business_server.runtimeconfig.json
+C:\src\csharp\DNP1\sep3\business_server\bin\Debug\netcoreapp2.1\business_server.runtimeconfig.dev.json
+C:\src\csharp\DNP1\sep3\business_server\bin\Debug\netcoreapp2.1\business_server.dll
+C:\src\csharp\DNP1\sep3\business_server\bin\Debug\netcoreapp2.1\business_server.pdb
+C:\src\csharp\DNP1\sep3\business_server\obj\Debug\netcoreapp2.1\business_server.csprojAssemblyReference.cache
+C:\src\csharp\DNP1\sep3\business_server\obj\Debug\netcoreapp2.1\business_server.csproj.CoreCompileInputs.cache
+C:\src\csharp\DNP1\sep3\business_server\obj\Debug\netcoreapp2.1\business_server.AssemblyInfoInputs.cache
+C:\src\csharp\DNP1\sep3\business_server\obj\Debug\netcoreapp2.1\business_server.AssemblyInfo.cs
+C:\src\csharp\DNP1\sep3\business_server\obj\Debug\netcoreapp2.1\business_server.dll
+C:\src\csharp\DNP1\sep3\business_server\obj\Debug\netcoreapp2.1\business_server.pdb
