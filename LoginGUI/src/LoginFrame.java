@@ -64,6 +64,7 @@ public class LoginFrame
       frame.setBounds(150, 50, 800, 600);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.getContentPane().setLayout(null);
+      ServerHandler serverHandler = new ServerHandler();
       
       JLabel lblLogin = new JLabel("Login:");
       lblLogin.setBounds(304, 301, 46, 14);
@@ -86,31 +87,7 @@ public class LoginFrame
       lblViaVikar.setBounds(346, 257, 79, 14);
       frame.getContentPane().add(lblViaVikar);
       
-      ///Client code
-      String serverName = "127.0.0.1";
-      int port = Integer.parseInt("5207");
-      try {
-         System.out.println("Connecting to " + serverName + " on port " + port);
-         Socket client = new Socket(serverName, port);
-         
-         System.out.println("Just connected to " + client.getRemoteSocketAddress());
-         OutputStream outToServer = client.getOutputStream();
-         DataOutputStream out = new DataOutputStream(outToServer);
-         
-         out.writeUTF("Hello from " + client.getLocalSocketAddress());
-         
-         out.writeUTF(textField.getText());
-         out.writeUTF(passwordField.getText());
-         
-         InputStream inFromServer = client.getInputStream();
-         DataInputStream in = new DataInputStream(inFromServer);
-         
-         System.out.println("Server says " + in.readUTF());
-         client.close();
-         } catch (IOException e) 
-      {
-         e.printStackTrace();
-      }
+      
    
          // GUI code continued
       
@@ -120,7 +97,8 @@ public class LoginFrame
          {
             username = textField.getText();
             password = String.valueOf(passwordField.getPassword());
-            if(username.equals("username") && password.equals("password"))
+            
+            if(serverHandler.CheckLogin(username, password))
             {
                JOptionPane.showMessageDialog(frame, "you are successfully logged in");
                AdminShiftGUI shift = new AdminShiftGUI();
