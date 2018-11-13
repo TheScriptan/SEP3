@@ -5775,10 +5775,11 @@
       ]
     },
     "Microsoft.EntityFrameworkCore.Relational.Design/1.1.2": {
-      "sha512": "pu2Jxndzv3slY6Ch9mdqVfL3AFhH5XzM02Rrnf9h5lKoViprYx1O+nNqT3BxmGrPkYadY9OddG2b9+sUO3Xuzw==",
+      "sha512": "2mf02PjAx5rTU19Np6J8MK5PhTOKsAS8BXfyikLrP3ZLrC4MUsWP5iv0qGgwmg6jDmAVReXwP9Jja5LhJq+20A==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.relational.design/1.1.2",
       "files": [
+        ".signature.p7s",
         "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.dll",
         "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.xml",
         "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll",
@@ -11643,30 +11644,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mihai\\.nuget\\packages\\": {},
+    "C:\\Users\\R0b1S\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\mihai\\Desktop\\SEP3\\SEP3\\Appendix\\Database\\VikarDb\\VikarDb.csproj",
+      "projectUniqueName": "C:\\Users\\R0b1S\\OneDrive\\School\\3.semester\\SEP3\\Appendix\\Database\\VikarDb\\VikarDb.csproj",
       "projectName": "VikarDb",
-      "projectPath": "c:\\Users\\mihai\\Desktop\\SEP3\\SEP3\\Appendix\\Database\\VikarDb\\VikarDb.csproj",
-      "packagesPath": "C:\\Users\\mihai\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\mihai\\Desktop\\SEP3\\SEP3\\Appendix\\Database\\VikarDb\\obj\\",
+      "projectPath": "C:\\Users\\R0b1S\\OneDrive\\School\\3.semester\\SEP3\\Appendix\\Database\\VikarDb\\VikarDb.csproj",
+      "packagesPath": "C:\\Users\\R0b1S\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\R0b1S\\OneDrive\\School\\3.semester\\SEP3\\Appendix\\Database\\VikarDb\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\mihai\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\R0b1S\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

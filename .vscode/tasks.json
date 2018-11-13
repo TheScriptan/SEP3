@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Appendix/Database/VikarDb/VikarDb.csproj"
+                "${workspaceFolder}/Appendix/Database/TodoApi/TodoApi.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

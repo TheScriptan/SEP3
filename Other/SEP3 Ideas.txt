@@ -18,3 +18,6 @@ Next meeting:
 	- Analysis Class Diagram
 	- Discuss the new UI
 	- Project & Process Report Templates
+
+
+Distributed db -> Admin can see how many students have class when he posts new shift

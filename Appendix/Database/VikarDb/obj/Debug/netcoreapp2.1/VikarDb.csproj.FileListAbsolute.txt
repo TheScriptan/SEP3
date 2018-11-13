@@ -26,3 +26,17 @@ C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\VikarDb\bin\Debug\netcoreapp2
 C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\VikarDb\bin\Debug\netcoreapp2.1\VikarDB.pdb
 C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\VikarDb\obj\Debug\netcoreapp2.1\VikarDB.RazorTargetAssemblyInfo.cache
 C:\Users\mihai\Desktop\SEP3\SEP3\Appendix\Database\VikarDb\obj\Debug\netcoreapp2.1\VikarDB.dll
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\Appendix\Database\VikarDb\bin\Debug\netcoreapp2.1\VikarDb.deps.json
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\Appendix\Database\VikarDb\bin\Debug\netcoreapp2.1\VikarDb.runtimeconfig.json
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\Appendix\Database\VikarDb\bin\Debug\netcoreapp2.1\VikarDb.runtimeconfig.dev.json
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\Appendix\Database\VikarDb\bin\Debug\netcoreapp2.1\VikarDb.dll
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\Appendix\Database\VikarDb\bin\Debug\netcoreapp2.1\VikarDb.pdb
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\Appendix\Database\VikarDb\obj\Debug\netcoreapp2.1\VikarDb.csprojAssemblyReference.cache
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\Appendix\Database\VikarDb\obj\Debug\netcoreapp2.1\VikarDb.csproj.CoreCompileInputs.cache
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\Appendix\Database\VikarDb\obj\Debug\netcoreapp2.1\VikarDb.RazorAssemblyInfo.cache
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\Appendix\Database\VikarDb\obj\Debug\netcoreapp2.1\VikarDb.RazorAssemblyInfo.cs
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\Appendix\Database\VikarDb\obj\Debug\netcoreapp2.1\VikarDb.AssemblyInfoInputs.cache
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\Appendix\Database\VikarDb\obj\Debug\netcoreapp2.1\VikarDb.AssemblyInfo.cs
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\Appendix\Database\VikarDb\obj\Debug\netcoreapp2.1\VikarDb.RazorTargetAssemblyInfo.cache
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\Appendix\Database\VikarDb\obj\Debug\netcoreapp2.1\VikarDb.dll
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\Appendix\Database\VikarDb\obj\Debug\netcoreapp2.1\VikarDb.pdb
