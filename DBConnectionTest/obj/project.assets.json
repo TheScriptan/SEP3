@@ -11592,11 +11592,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Programming\\CSharp\\DBConnectionTest\\DBConnectionTest.csproj",
+      "projectUniqueName": "C:\\Users\\R0b1S\\OneDrive\\School\\3.semester\\SEP3\\DBConnectionTest\\DBConnectionTest.csproj",
       "projectName": "DBConnectionTest",
-      "projectPath": "c:\\Programming\\CSharp\\DBConnectionTest\\DBConnectionTest.csproj",
+      "projectPath": "C:\\Users\\R0b1S\\OneDrive\\School\\3.semester\\SEP3\\DBConnectionTest\\DBConnectionTest.csproj",
       "packagesPath": "C:\\Users\\R0b1S\\.nuget\\packages\\",
-      "outputPath": "c:\\Programming\\CSharp\\DBConnectionTest\\obj\\",
+      "outputPath": "C:\\Users\\R0b1S\\OneDrive\\School\\3.semester\\SEP3\\DBConnectionTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
