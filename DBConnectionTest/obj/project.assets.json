@@ -11586,28 +11586,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\R0b1S\\.nuget\\packages\\": {},
+    "C:\\Users\\mihai\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Programming\\CSharp\\DBConnectionTest\\DBConnectionTest.csproj",
+      "projectUniqueName": "C:\\Users\\mihai\\Desktop\\SEP3\\DBConnectionTest\\DBConnectionTest.csproj",
       "projectName": "DBConnectionTest",
-      "projectPath": "c:\\Programming\\CSharp\\DBConnectionTest\\DBConnectionTest.csproj",
-      "packagesPath": "C:\\Users\\R0b1S\\.nuget\\packages\\",
-      "outputPath": "c:\\Programming\\CSharp\\DBConnectionTest\\obj\\",
+      "projectPath": "C:\\Users\\mihai\\Desktop\\SEP3\\DBConnectionTest\\DBConnectionTest.csproj",
+      "packagesPath": "C:\\Users\\mihai\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mihai\\Desktop\\SEP3\\DBConnectionTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\R0b1S\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\mihai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
