@@ -10,18 +10,18 @@ Employee
    - employeePermission (admin/something else)
 
 Shift
-   - shiftID (pk)
-   - companyID (fk)
-   - shiftDate
-   - shiftTime
-   - shiftRequirements
+   - shiftID (pk)	(LONG)
+   - companyID (fk)	(LONG)
+   - shiftDate		(DATE.TIME)
+   - shiftTime		(INT)
+   - shiftRequirements	(STRING)
 
 Company
-   - companyID (pk)
-   - companyName
-   - companyAddress
-   - companyPhone
-   - companyEmail
+   - companyID (pk) 	(LONG)
+   - companyName	(STRING)
+   - companyAddress	(STRING)
+   - companyPhone	(INT)
+   - companyEmail	(STRING)
 
 Student
    - studentID (pk)

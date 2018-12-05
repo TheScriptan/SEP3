@@ -22,7 +22,7 @@ public class ServerHandler {
 	private ServerHandler() {
 		builder = new GsonBuilder();
 		gson = builder.create();
-		String serverName = "127.0.0.1";
+		String serverName = "10.152.234.10";
 		int port = Integer.parseInt("5000");
 		try {
 			System.out.println("Connecting to " + serverName + " on port " + port);
