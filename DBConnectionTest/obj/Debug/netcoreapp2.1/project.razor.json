@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "ProjectFilePath": "c:\\Users\\R0b1S\\OneDrive\\School\\3.semester\\SEP3\\DBConnectionTest\\DBConnectionTest.csproj",
-=======
-  "ProjectFilePath": "c:\\Users\\mihai\\Desktop\\SEP3\\DBConnectionTest\\DBConnectionTest.csproj",
->>>>>>> 7b95f3c2a08de15b2962dec535c236973e0f95b1
   "TargetFramework": "netcoreapp2.1",
   "TagHelpers": [],
   "Configuration": {

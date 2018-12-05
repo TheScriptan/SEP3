@@ -12,3 +12,17 @@ C:\Programming\CSharp\DBConnectionTest\obj\Debug\netcoreapp2.1\DBConnectionTest.
 C:\Programming\CSharp\DBConnectionTest\obj\Debug\netcoreapp2.1\DBConnectionTest.RazorTargetAssemblyInfo.cache
 C:\Programming\CSharp\DBConnectionTest\obj\Debug\netcoreapp2.1\DBConnectionTest.dll
 C:\Programming\CSharp\DBConnectionTest\obj\Debug\netcoreapp2.1\DBConnectionTest.pdb
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBConnectionTest\bin\Debug\netcoreapp2.1\DBConnectionTest.deps.json
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBConnectionTest\bin\Debug\netcoreapp2.1\DBConnectionTest.runtimeconfig.json
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBConnectionTest\bin\Debug\netcoreapp2.1\DBConnectionTest.runtimeconfig.dev.json
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBConnectionTest\bin\Debug\netcoreapp2.1\DBConnectionTest.dll
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBConnectionTest\bin\Debug\netcoreapp2.1\DBConnectionTest.pdb
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBConnectionTest\obj\Debug\netcoreapp2.1\DBConnectionTest.csprojAssemblyReference.cache
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBConnectionTest\obj\Debug\netcoreapp2.1\DBConnectionTest.csproj.CoreCompileInputs.cache
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBConnectionTest\obj\Debug\netcoreapp2.1\DBConnectionTest.RazorAssemblyInfo.cache
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBConnectionTest\obj\Debug\netcoreapp2.1\DBConnectionTest.RazorAssemblyInfo.cs
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBConnectionTest\obj\Debug\netcoreapp2.1\DBConnectionTest.AssemblyInfoInputs.cache
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBConnectionTest\obj\Debug\netcoreapp2.1\DBConnectionTest.AssemblyInfo.cs
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBConnectionTest\obj\Debug\netcoreapp2.1\DBConnectionTest.RazorTargetAssemblyInfo.cache
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBConnectionTest\obj\Debug\netcoreapp2.1\DBConnectionTest.dll
+C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBConnectionTest\obj\Debug\netcoreapp2.1\DBConnectionTest.pdb

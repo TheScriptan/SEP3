@@ -2,12 +2,14 @@ using System;
 using System.Text;
 using System.Net.Sockets;
 using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace business_server{
 
     class ClientHandler{
 
         enum Requests : int {Login = 1, AddShift = 2, GetShiftList = 3};
+        HttpClient client = new HttpClient();
 
         public static void handleClient(TcpClient client){
             //Initialize client connection

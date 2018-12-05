@@ -12,7 +12,7 @@
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/business_server/bin/Debug/netcoreapp2.1/business_server.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/business_server",
+            "cwd": "${workspaceFolder}/bussiness_logic/business_server",
             // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
             "console": "internalConsole",
             "stopAtEntry": false,

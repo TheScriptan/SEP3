@@ -33,5 +33,14 @@ namespace DBConnectionTest.Controllers {
          
          return _context.Shifts.Find(id);
       }
+
+      // GET api/DBConnectionTest/1
+      [HttpGet]
+      public  ActionResult<List<Shift>> GetAll() {
+         
+         return _context.Shifts.ToList();
+      }
+
+
    }
 }
