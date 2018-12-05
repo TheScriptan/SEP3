@@ -1,13 +1,13 @@
 Employee
-   - employeeID (pk)
-   - password
-   - employeeName
-   - employeeAddress
-   - employeePhoneNo
-   - employeeEmail
-   - employeeBackAcc
-   - employeeMonthWorkedHours
-   - employeePermission (admin/something else)
+   - employeeID (pk) - CPR ? (if cpr then INT)
+   - Password 	( NOT NULL, String, max 50)
+   - Name	( NOT NULL, String, max 50)
+   - Address	( NOT NULL, String, max 80)
+   - PhoneNo	( NOT NULL, String, max 12)
+   - Email	( NOT NULL, String, max 50)
+   - BankAcc	( probably String, max 20)
+   - MonthWorkedHours ( Int => calculated later on, default 0)
+   - Role (Permission - admin/something else) ( String, max 10)
 
 Shift
    - shiftID (pk)	(LONG)
@@ -24,21 +24,22 @@ Company
    - companyEmail	(STRING)
 
 Student
-   - studentID (pk)
-   - password
-   - studentName
-   - studentAddress
-   - studentPhoneNo
-   - studentEmail
-   - studentBackAcc
-   - studentMonthWorkedHours
+   - studentID (pk) - I would say CPR would be the best ( NOT NULL, int)
+   - password		( NOT NULL, String, max 50)
+   - Name		( NOT NULL, String, max 50)
+   - Address		( NOT NULL, String, max 80)
+   - PhoneNo		( NOT NULL, String, max 12)
+   - Email		( NOT NULL, String, max 50)
+   - BankAcc		( NOT NULL, String, max 20)
+   - MonthWorkedHours	( int, default 0)
+   - Role ? (just for authentification ? ) ? not necessary
 
 CompleteShift
-   - shiftDoneID (pk)
-   - shiftID(fk)
-   - companyID (fk)
-   - studentID (fk)
-   - status
+   - shiftDoneID (pk) 	( NOT NULL, int)
+   - shiftID(fk)	( NOT NULL, int)
+   - companyID (fk)	( NOT NULL, int)
+   - studentID (fk)	( NOT NULL, int)
+   - status		( boolean, default false)
 
 
 - How to diffenentiate available and done shifts ?
