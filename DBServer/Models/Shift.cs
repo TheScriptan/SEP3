@@ -1,5 +1,5 @@
 using System;
-namespace DBConnectionTest.Models {
+namespace DBServer.Models {
     public class Shift {
         public Shift () { }
         public Shift (long v1, long v2, DateTime dateTime, int v3, string v4) {

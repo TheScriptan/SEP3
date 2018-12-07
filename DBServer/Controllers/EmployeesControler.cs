@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using DBServer.Models;
 
 namespace DBServer.Controllers
 {
@@ -10,9 +11,9 @@ namespace DBServer.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-       private readonly PostgreSQLDBContext _context;
+       private readonly CompanyContext _context;
 
-      public EmployeesController (PostgreSQLDBContext context) => _context = context;
+      public EmployeesController (CompanyContext context) => _context = context;
          
         // GET api/employees
         [HttpGet]

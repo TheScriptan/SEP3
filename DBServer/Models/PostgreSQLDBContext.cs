@@ -1,4 +1,0 @@
-
-namespace DBServer.Models {
-   
-}

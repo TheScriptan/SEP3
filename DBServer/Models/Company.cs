@@ -1,5 +1,5 @@
 using System;
-namespace DBConnectionTest.Models {
+namespace DBServer.Models {
     public class Company {
         public Company () { }
         public Company (long c1, string c2, string c3, int c4, string c5) {

@@ -10,10 +10,10 @@ namespace DBServer.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class CalendarsController : ControllerBase
-    {
-       private readonly MongoDBContext _context;
+    {//change it to mongoDBcontext later
+       private readonly StudentContext _context;
 
-      public CalendarsController (MongoDBContext context) => _context = context;
+      public CalendarsController (StudentContext context) => _context = context;
          
         // GET api/values
         [HttpGet]

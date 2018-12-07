@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+using DBServer.Models;
 
 namespace DBServer
 {
@@ -27,9 +29,13 @@ namespace DBServer
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         
-            services.AddEntityFrameworkNpgsql().AddDbContext<PostgreSQLDBContext>(options =>
-                 options.UseNpgsql(Configuration.GetConnectionString("PostgreSQLConnection"))
+            services.AddEntityFrameworkNpgsql().AddDbContext<CompanyContext>(options =>
+                 options.UseNpgsql(Configuration.GetConnectionString("DBCompanyConnection"))
             );
+            services.AddEntityFrameworkNpgsql().AddDbContext<StudentContext>(options =>
+                 options.UseNpgsql(Configuration.GetConnectionString("DBStudentConnection"))
+            );
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
