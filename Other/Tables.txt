@@ -1,5 +1,5 @@
 Employee
-   - employeeID (pk) - CPR ? (if cpr then INT)
+   - employeeID (pk) - CPR ? (if cpr then INT/LONG)
    - Password 	( NOT NULL, String, max 50)
    - Name	( NOT NULL, String, max 50)
    - Address	( NOT NULL, String, max 80)
