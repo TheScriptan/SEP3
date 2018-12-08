@@ -1,22 +1,19 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace DBServer.Models
-{
-    public class CompleteShift
-    {
-       public CompleteShift(){}
-       public CompleteShift(long cs1, long cs2, long cs3, long cs4, DateTime cs5,DateTime cs6)
-      {
-         this.ShiftDoneId = cs1;
-         this.ShiftId = cs2;
-         this.CompanyId = cs3;
-         this.StudentId = cs4;
-         this.checkIn = cs5;
-         this.checkIn = cs6;
-         
-      }
-      
+namespace DBServer.Models {
+    public class CompleteShift {
+        public CompleteShift () { }
+        public CompleteShift (long arg1, long arg2, long arg3, long arg4, DateTime arg5, DateTime arg6) {
+            this.ShiftDoneId = arg1;
+            this.ShiftId = arg2;
+            this.CompanyId = arg3;
+            this.StudentId = arg4;
+            this.checkIn = arg5;
+            this.checkIn = arg6;
+
+        }
+
         [Key]
         public long ShiftDoneId { get; set; }
         public long ShiftId { get; set; }

@@ -26,13 +26,16 @@ namespace DBServer.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return "value";
+            if(ModelState.IsValid)
+                return "value";
+            return "nop";
         }
 
         // POST api/values
         [HttpPost]
         public void Post([FromBody] string value)
         {
+            
         }
 
         // PUT api/values/5
@@ -45,6 +48,7 @@ namespace DBServer.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            
         }
     }
 }
