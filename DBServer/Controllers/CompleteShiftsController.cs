@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using DBServer.Models;
 
 namespace DBServer.Controllers
 {
@@ -10,9 +11,9 @@ namespace DBServer.Controllers
     [ApiController]
     public class ShiftsDoneController : ControllerBase
     {
-       private readonly PostgreSQLDBContext _context;
+       private readonly CompanyContext _context;
 
-      public ShiftsDoneController (PostgreSQLDBContext context) => _context = context;
+      public ShiftsDoneController (CompanyContext context) => _context = context;
          
         // GET api/shiftsdone
         [HttpGet]
@@ -25,13 +26,16 @@ namespace DBServer.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return "value";
+            if(ModelState.IsValid)
+                return "value";
+            return "nop";
         }
 
         // POST api/values
         [HttpPost]
         public void Post([FromBody] string value)
         {
+            
         }
 
         // PUT api/values/5
@@ -44,6 +48,7 @@ namespace DBServer.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            
         }
     }
 }

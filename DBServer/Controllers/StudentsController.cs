@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using DBServer.Models;
 
 namespace DBServer.Controllers
 {
@@ -10,15 +11,16 @@ namespace DBServer.Controllers
     [ApiController]
     public class StudentsController : ControllerBase
     {
-      private readonly PostgreSQLDBContext _context;
+      private readonly StudentContext _context;
 
-      public StudentsController (PostgreSQLDBContext context) => _context = context;
+      public StudentsController (StudentContext context) => _context = context;
          
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<Student> GetByName(string name)
         {
-            return new string[] { "value1", "value2" };
+            
+            return _context.Students.Find(name);
         }
 
         // GET api/values/5

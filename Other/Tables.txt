@@ -39,7 +39,9 @@ CompleteShift
    - shiftID(fk)	( NOT NULL, int)
    - companyID (fk)	( NOT NULL, int)
    - studentID (fk)	( NOT NULL, int)
-   - status		( boolean, default false)
+   - checkIn 		( NOT NULL, timestamp/datetime)
+   - checkOut 		( NOT NULL, timestamp/datetime)
+
 
 
 - How to diffenentiate available and done shifts ?
