@@ -2,7 +2,28 @@
 
 ---
 
-Here is the pattern of requests send from client to server and server`s responses. Project uses two external libraries JSON-SIMPLE and GSON. JSON message starts with code in order to identify request (add/edit/remove/...) or response (0 == ok, 0< error). Second part of JSON message are arguments required for specific request.
+[1. Overview](#overview)
+[2. Goal](#goal)
+[3. Example](#example)
+[4. List of actions](#list-of-actions)
+   - [Admin](#admin)
+   - [User](#user)
+  
+[5. Error messages](#error-messages)
+
+---
+
+## Overview
+
+This is a simple overview of actions/messages between client and logic server, requiremets for specific actions and possible responses. 
+
+## Goal
+
+Main goal is to achieve stable communication while using sockets during programming phase.
+
+## Example
+
+Here is an example pattern of request sent from client to server and server responses. System uses two external libraries JSON-SIMPLE and GSON. JSON message starts with code in order to identify action (add/edit/remove/...) or response (0 == ok, 0< error). Second part of JSON message are arguments required for specific request.
 
 ```json
 // Client -> Server (request)
@@ -17,58 +38,56 @@ Here is the pattern of requests send from client to server and server`s response
    "arguments" : ["ARGUMENT0" ,"ARGUMENT1" , ...]
 }
 ``` 
-**Request codes**
-   - [admin]()
-   - [user]()
-  
-**Response codes**
-   - admin
-   - user
-
-**Arguments types**
-   - simple data types (int, long, string)
-   - object (serialized in JSON format -> GSON)
 
 ---
 
-List of all request/commands from client to logic server.
+## List of actions
 
-**Admin**
-   - login
-   - register new admin
+### Admin
+   - [Log in](#log-in)
 
-   (to shifts)
-   - add shift
-   - delete shift
-   - edit shift
-   - assign shift
+   **Shift related**
+
+   - Add new shift
+   - Edit shift
+   - Remove shift
+   - Assign shift
+   - Release shift
   
-  (to students)
-  - add user
-  - edit user
-  - remove user
+   **User related**
+  
+   - Add new user
+   - Edit user
+   - Remove user
 
-**User**
-   - register
-   - login
-   - change info ?
-   - take shift
-   - report sickness
-   - check worked hours
-   - create schedule
+   **Company related**
+
+   - Add company
+   - Edit company
+   - Remove company
+
+### User
+
+   - Register
+   - Log in
+   - Edit info
+   - Take shift
+   - Report sickness
+   - Check worked hours
+   - Create schedule
 
 ---
 
-## Requirements for requests
+
 
 List of required things to get valid response.
 
-### Admin
+### Admin 
 
-**1. Log in** (as admin)
+#### Log in
 
 **Requirements**
-In order to log in (as admin), user types both his <u>**cpr**</u> and <u>**password**</u> and press button login.
+Login action requires from user to type both his <u>cpr</u> and <u>password</u>.
 ```json
 {
    "request-code" : "LOGIN_CODE_ENUM",
@@ -77,7 +96,7 @@ In order to log in (as admin), user types both his <u>**cpr**</u> and <u>**passw
 ```
 
 **Response**
-Response contains 2 parts, validation (valid/invalid) and error message (0 == OK).
+Response contains validation part (<u>valid/invalid</u>) and possible error message (only invalid response).
 ```json
 Authorized user:
 {
@@ -93,7 +112,7 @@ Not Authorized user:
 ```
 
 **Possible Errors**
-[1](#error-messager), 2, 3
+- [Login errors list 1-10](#error-messages)
 
 ---
 
