@@ -2,14 +2,14 @@
 
 ---
 
-[1. Overview](#overview)
-[2. Goal](#goal)
-[3. Example](#example)
-[4. List of actions](#list-of-actions)
+1. [Overview](#overview)
+2. [Goal](#goal)
+3. [Example](#example)
+4. [List of actions](#list-of-actions)
    - [Admin](#admin)
    - [User](#user)
   
-[5. Error messages](#error-messages)
+5. [Error messages](#error-messages)
 
 ---
 
