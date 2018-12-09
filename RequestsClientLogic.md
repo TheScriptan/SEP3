@@ -78,9 +78,7 @@ Here is an example pattern of request sent from client to server and server resp
 
 ---
 
-
-
-List of required things to get valid response.
+## Detailed list of actions
 
 ### Admin 
 
