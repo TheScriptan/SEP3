@@ -64,23 +64,36 @@ List of all request/commands from client to logic server.
 List of required things to get valid response.
 
 ### Admin
+
 **1. Log in** (as admin)
+
 **Requirements**
+In order to log in (as admin), user types both his <u>**cpr**</u> and <u>**password**</u> and press button login.
+```json
+{
+   "request-code" : "LOGIN_CODE_ENUM",
+   "arguments" : ["CPR" ,"PASSWORD"]
+}
 ```
-{LOGIN, CPR, PASSWORD}
-```
-In order to log in (as admin), user types both his <u>**cpr**</u> and <u>**password**</u> and press button login. 
+
 **Response**
 Response contains 2 parts, validation (valid/invalid) and error message (0 == OK).
-```
+```json
 Authorized user:
- (valid, 0)
+{
+   "response-code" : "VALID",
+   "arguments" : []
+}
 
-Not Authorized user;
- (invalid, 2)
+Not Authorized user:
+{
+   "response-code" : "INVALID",
+   "arguments" : ["ERR_MSG"]
+}
 ```
 
 **Possible Errors**
+[1](#error-messager), 2, 3
 
 ---
 

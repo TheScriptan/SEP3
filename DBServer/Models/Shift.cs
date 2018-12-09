@@ -1,4 +1,5 @@
 using System;
+
 namespace DBServer.Models {
     public class Shift {
         public Shift () { }
@@ -14,6 +15,8 @@ namespace DBServer.Models {
         public DateTime ShiftDate { get; set; }
         public int ShiftTime { get; set; }
         public string ShiftRequirements { get; set; }
+
+
 
     }
 }

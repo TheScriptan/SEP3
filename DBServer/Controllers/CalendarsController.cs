@@ -11,10 +11,7 @@ namespace DBServer.Controllers
     [ApiController]
     public class CalendarsController : ControllerBase
     {//change it to mongoDBcontext later
-       private readonly StudentContext _context;
-
-      public CalendarsController (StudentContext context) => _context = context;
-         
+          
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()

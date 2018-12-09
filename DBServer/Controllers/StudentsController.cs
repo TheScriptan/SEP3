@@ -15,30 +15,36 @@ namespace DBServer.Controllers
 
       public StudentsController (StudentContext context) => _context = context;
          
-        // GET api/values
+        // GET api/students
         [HttpGet]
-        public ActionResult<Student> GetByName(string name)
+        public ActionResult<List<Student>> Get()
         {
-            
-            return _context.Students.Find(name);
+            return _context.Students.ToList();
         }
 
-        // GET api/values/5
+        // GET api/students/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Student> GetById(int id)
         {
-            return "value";
+            return _context.Students.Single(s => s.StudentId == id);
+        }
+        
+        // GET api/students/Name
+        [HttpGet("{name}")]
+        public ActionResult<Student> GetByName(string name)
+        {
+            return _context.Students.Single(s => s.StudentName.Equals(name));
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Student student)
         {
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Student student)
         {
         }
 
