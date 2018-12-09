@@ -1,8 +1,8 @@
-# Requests Client -> Logic Server
+# Communication Client - LogicServer
 
 ---
 
-Here is the pattern of requests send from client to server and server`s responses. Project uses two external libraries JSON-SIMPLE and GSON. Every json message starts with code in order to identify request (add/edit/remove/...) or response (0 == ok, 0< error). Second part of json message are arguments required for specific request.
+Here is the pattern of requests send from client to server and server`s responses. Project uses two external libraries JSON-SIMPLE and GSON. JSON message starts with code in order to identify request (add/edit/remove/...) or response (0 == ok, 0< error). Second part of JSON message are arguments required for specific request.
 
 ```json
 // Client -> Server (request)
@@ -17,8 +17,16 @@ Here is the pattern of requests send from client to server and server`s response
    "arguments" : ["ARGUMENT0" ,"ARGUMENT1" , ...]
 }
 ``` 
+**Request codes**
+   - [admin]()
+   - [user]()
+  
+**Response codes**
+   - admin
+   - user
+
 **Arguments types**
-   - simple data type (int, long, string)
+   - simple data types (int, long, string)
    - object (serialized in JSON format -> GSON)
 
 ---
