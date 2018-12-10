@@ -13,7 +13,7 @@ public class PersistenceHandler {
 	
 	StudentList studentList = new StudentList();
 	private Client client;
-	private final String baseAddress = "http://localhost:5001/PersistenceServer/api/";
+	private final String baseAddress = "http://localhost:8080/PersistenceServer/api/";
 	
 	public PersistenceHandler() {
 		//TEMPORARY VARIABLES
@@ -25,6 +25,7 @@ public class PersistenceHandler {
 		studentList.addStudent(s2);
 		studentList.addStudent(s3);
 		
+		//Web services - SHOULD CONVERT IT TO HttpRequest
 		client = ClientBuilder.newClient();
 	}
 	

@@ -9,6 +9,7 @@ public class Employee {
 	private String email;
 	private String bankAcc;
 	private int MonthWorkedHours;
+	private String role;
 	
 	public Employee(int employeeID, String password, String name, String address, String phoneNo, String email,
 			String bankAcc, int monthWorkedHours, String role) {
@@ -20,6 +21,7 @@ public class Employee {
 		this.email = email;
 		this.bankAcc = bankAcc;
 		MonthWorkedHours = monthWorkedHours;
+		this.role = role;
 	}
 
 	public int getEmployeeID() {
@@ -86,10 +88,18 @@ public class Employee {
 		MonthWorkedHours = monthWorkedHours;
 	}
 
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [employeeID=" + employeeID + ", password=" + password + ", name=" + name + ", address="
 				+ address + ", phoneNo=" + phoneNo + ", email=" + email + ", bankAcc=" + bankAcc + ", MonthWorkedHours="
-				+ MonthWorkedHours;
+				+ MonthWorkedHours + ", role=" + role + "]";
 	}
 }

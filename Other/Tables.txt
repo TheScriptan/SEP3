@@ -7,6 +7,7 @@ Employee
    - email	( NOT NULL, String, max 50)
    - bankAcc	( probably String, max 20)
    - monthWorkedHours ( Int => calculated later on, default 0)
+   - role (Permission - admin/something else) ( String, max 10)
 
 Shift
    - shiftID (pk)	(LONG)
@@ -14,7 +15,6 @@ Shift
    - shiftDate		(DATE.TIME)
    - shiftTime		(INT)
    - shiftRequirements	(STRING)
-   - releaseToken       (BOOLEAN)
 
 Company
    - companyID (pk) 	(LONG)
@@ -32,6 +32,7 @@ Student
    - email		( NOT NULL, String, max 50)
    - bankAcc		( NOT NULL, String, max 20)
    - monthWorkedHours	( int, default 0)
+   - role ? (just for authentification ? ) ? not necessary
 
 CompleteShift
    - shiftDoneID (pk) 	( NOT NULL, int)

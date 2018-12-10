@@ -8,15 +8,12 @@ public class Shift {
 	private Date shiftDate;
 	private int shiftTime;
 	private String shiftRequirements;
-	private boolean releaseToken;
-	
 	public Shift(long shiftID, long companyID, Date shiftDate, int shiftTime, String shiftRequirements) {
 		this.shiftID = shiftID;
 		this.companyID = companyID;
 		this.shiftDate = shiftDate;
 		this.shiftTime = shiftTime;
 		this.shiftRequirements = shiftRequirements;
-		this.releaseToken = false;
 	}
 	public long getShiftID() {
 		return shiftID;
@@ -49,12 +46,6 @@ public class Shift {
 		this.shiftRequirements = shiftRequirements;
 	}
 	
-	public boolean isReleaseToken() {
-		return releaseToken;
-	}
-	public void setReleaseToken(boolean releaseToken) {
-		this.releaseToken = releaseToken;
-	}
 	@Override
 	public String toString() {
 		return "Shift [shiftID=" + shiftID + ", companyID=" + companyID + ", shiftDate=" + shiftDate + ", shiftTime="

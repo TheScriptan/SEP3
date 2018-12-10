@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+
 import com.bl.client.ClientHandler;
 import com.bl.persistence.PersistenceHandler;
 
@@ -13,7 +14,6 @@ public class Startup {
 		
 		//Server initialization on port 1234
 		try{
-			System.out.println("Starting the server on port 1234");
 			ServerSocket ss = new ServerSocket(1234);
 			
 			Socket s;
