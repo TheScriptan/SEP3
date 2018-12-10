@@ -7,13 +7,12 @@ import javax.ws.rs.core.MediaType;
 
 import com.bl.model.Student;
 import com.bl.model.StudentList;
-import com.bl.utils.Utils;
 
 public class PersistenceHandler {
 	
 	StudentList studentList = new StudentList();
 	private Client client;
-	private final String baseAddress = "http://localhost:8080/PersistenceServer/api/";
+	private final String baseAddress = "http://localhost:5001/api/";
 	
 	public PersistenceHandler() {
 		//TEMPORARY VARIABLES
@@ -25,20 +24,23 @@ public class PersistenceHandler {
 		studentList.addStudent(s2);
 		studentList.addStudent(s3);
 		
-		//Web services - SHOULD CONVERT IT TO HttpRequest
 		client = ClientBuilder.newClient();
 	}
 	
 	//WHEN PERSISTENCE WILL BE FINISHED UPDATE HERE TO RECOGNIZE ROLE
 	public boolean verifyLogin(String username, String password, String role) {
-		for(int i = 0; i < studentList.size(); i++){
-			Student s = studentList.findStudentById(i);
-			if(s.getName().equals(username) && s.getPassword().equals(password)) {
-				role = "student";
-				return true;
+		if(role.equals("student")) {
+			for(int i = 0; i < studentList.size(); i++){
+				Student s = studentList.findStudentById(i);
+				if(s.getName().equals(username) && s.getPassword().equals(password)) {
+					return true;
+				}
 			}
-			//Employee login
 		}
+		else if(role.equals("employee")) {
+			
+		}
+		
 		return false;
 	}
 	
@@ -46,7 +48,14 @@ public class PersistenceHandler {
 		WebTarget target = client.target(baseAddress + "getstudentlist");
 		
 		String json = target.request(MediaType.APPLICATION_JSON).get(String.class);
-		//Utils.deserializeObject(json, StudentList.class);
+		return json;
+	}
+	
+	public String getAllEmployees() {
+		WebTarget target = client.target(baseAddress + "employees");
+		
+		String json = target.request(MediaType.APPLICATION_JSON).get(String.class);
+		System.out.println(json);
 		return json;
 	}
 }

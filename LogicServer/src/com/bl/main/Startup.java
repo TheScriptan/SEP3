@@ -10,13 +10,17 @@ import com.bl.persistence.PersistenceHandler;
 
 public class Startup {
 	
+	final static int PORT = 1234;
+	
 	public static void main(String[] args) {
 		
+		System.setProperty("javax.net.ssl.trustStore", "C:/Program Files/Java/jdk1.8.0_191/jre/lib/security/cacerts");
 		//Server initialization on port 1234
 		try{
-			ServerSocket ss = new ServerSocket(1234);
-			
+			ServerSocket ss = new ServerSocket(PORT);
 			Socket s;
+			
+			System.out.println("Server started on port " + PORT);
 			
 			//Running infinite loop
 			while(true) {

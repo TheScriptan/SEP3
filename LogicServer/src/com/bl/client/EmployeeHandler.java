@@ -12,8 +12,10 @@ public class EmployeeHandler extends IHandler {
 		super(s, dis, dos, pers);
 	}
 	
-	public void acceptMessage(String message) {
-		//if statements to check what message was sent
+	public void Start() {
+		while(!s.isClosed()) {
+			
+		}
 	}
 	
 	//Many methods that do actions for message sent by Client and further actions are sent to PersistenceHandler

@@ -20,5 +20,4 @@ public abstract class IHandler {
 		this.pers = pers;
 	}
 	
-	public void acceptMessage(String message) {};
 }

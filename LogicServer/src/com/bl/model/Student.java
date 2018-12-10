@@ -10,9 +10,10 @@ public class Student {
 	private String bankAcc;
 	private double monthWorkedHours;
 	
-	public Student(long studentID, String password, String studentname, String studentAddress, int studentPhoneNo, String studentEmail, String studentBankAcc, double studentMonthWorkedHours) {
+	public Student(long studentID, String password, String studentName, String studentAddress, int studentPhoneNo, String studentEmail, String studentBankAcc, double studentMonthWorkedHours) {
 		this.studentID = studentID;
 		this.password = password;
+		this.name = studentName;
 		this.address = studentAddress;
 		this.phoneNo = studentPhoneNo;
 		this.email = studentEmail;

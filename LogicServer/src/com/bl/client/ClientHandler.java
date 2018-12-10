@@ -31,39 +31,29 @@ public class ClientHandler implements Runnable {
 		String password;
 		//Login stage
 		try{
-			username = dis.readUTF();
+			dos.writeUTF("Hello from server");
+			username = dis.readUTF();													//Reading 3 inputs username, password and role to verify which DB to check for credentials
 			password = dis.readUTF();
-			isLoggedIn = pers.verifyLogin(username, password, role);					//Check if login credentials are correct
+			role = dis.readUTF();
+			isLoggedIn = pers.verifyLogin(username, password, role);					//Contacting PersistenceHandler to verify login					
 			dos.writeBoolean(isLoggedIn); 												//Send login status to client
-			dos.writeUTF(role); 														//Send role for client
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-		while(isLoggedIn) {
-			StudentHandler studentHandler = new StudentHandler(s, dis, dos, pers); 		//Initializing Student Handler
-			EmployeeHandler employeeHandler = new EmployeeHandler(s, dis, dos, pers);	//Initializing Employee Handler
-			try{
-				String message = dis.readUTF();											//Reading client message JSON
+			
+			if(isLoggedIn) {
+				StudentHandler studentHandler = new StudentHandler(s, dis, dos, pers); 		//Initializing Student Handler
+				EmployeeHandler employeeHandler = new EmployeeHandler(s, dis, dos, pers);	//Initializing Employee Handler
+				
 				if(role.equals("student")) {
-					studentHandler.acceptMessage(message);										//Accepting client message and making further actions in business logic
+					studentHandler.Start();
 				}
-				else if(role.equals("employee")){
-					employeeHandler.acceptMessage(message);
+				else if(role.equals("employee")) {
+					employeeHandler.Start();
 				}
 				else {
-					isLoggedIn = false;													//If role is not equal student or employee then exit the loop
-				}				
-			}catch(Exception e) {
-				e.printStackTrace();
+					this.dis.close();
+					this.dos.close();
+					this.s.close(); 	//MAY NEED TO REMOVE THIS
+				}
 			}
-		}
-		
-		try {
-			this.dis.close();
-			this.dos.close();
-			this.s.close(); 	//MAY NEED TO REMOVE THIS
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

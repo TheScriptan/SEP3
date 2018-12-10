@@ -2,6 +2,7 @@ package com.bl.client;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 
 import com.bl.persistence.PersistenceHandler;
@@ -13,8 +14,17 @@ public class StudentHandler extends IHandler {
 		
 	}
 	
-	public void acceptMessage(String message) {
-		//if statements to check what message was sent
+	public void Start() {
+		while(!s.isClosed()) {
+			try {
+				String message = dis.readUTF();
+				if(message.equals("employees"))
+					dos.writeUTF(pers.getAllEmployees());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	//Many methods that do actions for message sent by Client and further actions are sent to PersistenceHandler

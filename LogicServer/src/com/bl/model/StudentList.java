@@ -18,7 +18,7 @@ public class StudentList {
 	}
 	
 	public Student findStudentById(int index) {
-		if(index > 0 && index < studentList.size()) {
+		if(index >= 0 && index < studentList.size()) {
 			Student s = studentList.get(index);
 			return s;
 		}
