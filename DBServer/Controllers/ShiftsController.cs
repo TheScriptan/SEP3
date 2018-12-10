@@ -34,6 +34,8 @@ namespace DBServer.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+            var shift =_context.Shifts.Single();
+            //TODO
         }
 
         // DELETE api/values/5

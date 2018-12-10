@@ -40,6 +40,8 @@ namespace DBServer.Controllers
         [HttpPost]
         public void Post([FromBody] Student student)
         {
+            _context.Students.Add(student);
+            _context.SaveChanges();
         }
 
         // PUT api/values/5
@@ -52,6 +54,9 @@ namespace DBServer.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var delStudent = _context.Students.Single(s => s.StudentId == id);
+            _context.Students.Remove(delStudent);
+            _context.SaveChanges();
         }
     }
 }
