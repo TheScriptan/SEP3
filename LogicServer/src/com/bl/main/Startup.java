@@ -9,9 +9,6 @@ import com.bl.persistence.PersistenceHandler;
 
 public class Startup {
 	
-	//Counter of clients
-	static int i = 0;
-	
 	public static void main(String[] args) {
 		
 		//Server initialization on port 1234
@@ -44,9 +41,6 @@ public class Startup {
 				
 				//Start the thread
 				t.start();
-				
-				//increment for client id
-				i++;
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
