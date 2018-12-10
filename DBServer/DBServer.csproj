@@ -15,6 +15,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="MongoDB" Version="1.7.1.4791" />
+    <PackageReference Include="MongoDB.BSON" Version="2.7.2" />
+    <PackageReference Include="MongoDB.Driver" Version="2.7.2" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.1.2" />
   </ItemGroup>
 

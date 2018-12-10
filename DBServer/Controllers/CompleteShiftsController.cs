@@ -2,53 +2,48 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using DBServer.Models;
+using Microsoft.AspNetCore.Mvc;
 
-namespace DBServer.Controllers
-{
-    [Route("api/[controller]")]
+namespace DBServer.Controllers {
+    [Route ("api/[controller]")]
     [ApiController]
-    public class ShiftsDoneController : ControllerBase
-    {
-       private readonly CompanyContext _context;
+    public class ShiftsDoneController : ControllerBase {
+        private readonly CompanyContext _context;
 
-      public ShiftsDoneController (CompanyContext context) => _context = context;
-         
+        public ShiftsDoneController (CompanyContext context) => _context = context;
+
         // GET api/shiftsdone
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            return new string[] { "value1", "value2" };
+        public ActionResult<List<CompleteShift>> Get () {
+            return _context.CompleteShifts.ToList ();
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            if(ModelState.IsValid)
-                return "value";
-            return "nop";
+        [HttpGet ("{id}")]
+        public ActionResult<CompleteShift> Get (int id) {
+            return _context.CompleteShifts.Single (cs => cs.ShiftDoneId == id);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
-        {
-            
+        public void Post ([FromBody] CompleteShift cs) {
+
+            _context.CompleteShifts.Add (cs);
+            _context.SaveChanges ();
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        [HttpPut]
+        public void Put (CompleteShift cs) { }
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-            
+        [HttpDelete ("{id}")]
+        public void Delete (int id) {
+            var cs = _context.CompleteShifts.Single (c => c.ShiftDoneId == id);
+            _context.CompleteShifts.Remove (cs);
+            _context.SaveChanges ();
+
         }
     }
 }

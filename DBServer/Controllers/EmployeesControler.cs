@@ -17,16 +17,16 @@ namespace DBServer.Controllers
          
         // GET api/employees
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<List<Employee>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _context.Employees.ToList();
         }
 
         // GET api/employees/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Employee> Get(int id)
         {
-            return "";
+            return _context.Employees.Single(e => e.EmployeeId == id);
         }
 
         // POST api/employees
@@ -36,15 +36,20 @@ namespace DBServer.Controllers
         }
 
         // PUT api/employees/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public void Put([FromBody]Employee employee)
         {
+            _context.Employees.Add(employee);
+            _context.SaveChanges();
         }
 
         // DELETE api/employees/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var delEmployee = _context.Employees.Single(e => e.EmployeeId == id);
+            _context.Employees.Remove(delEmployee);
+            _context.SaveChanges();
         }
     }
 }

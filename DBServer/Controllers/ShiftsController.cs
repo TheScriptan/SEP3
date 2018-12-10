@@ -17,34 +17,35 @@ namespace DBServer.Controllers
          
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<List<Shift>> Get()
         {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
+            return _context.Shifts.ToList();
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Shift shift)
         {
+            _context.Shifts.Add(shift);
+            _context.SaveChanges();
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+            var shift =_context.Shifts.Single();
+            //TODO
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var deleteShift = _context.Shifts.Single(s => s.ShiftId == id);
+            _context.Shifts.Remove(deleteShift);
+            _context.SaveChanges();
+            
         }
     }
 }
