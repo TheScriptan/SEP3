@@ -1,18 +1,21 @@
 package com.bl.model;
 
+import java.util.Date;
+
 public class CompleteShift {
 	private int ShiftDoneID;
 	private int shiftID;
 	private int companyID;
 	private int studentID;
-	private boolean status;
+	private Date checkIn;
+	private Date checkOut;
 	
 	public CompleteShift(int shiftDoneID, int shiftID, int companyID, int studentID, boolean status) {
 		ShiftDoneID = shiftDoneID;
 		this.shiftID = shiftID;
 		this.companyID = companyID;
 		this.studentID = studentID;
-		this.status = status;
+		
 	}
 	
 	public int getShiftDoneID() {
@@ -39,16 +42,27 @@ public class CompleteShift {
 	public void setStudentID(int studentID) {
 		this.studentID = studentID;
 	}
-	public boolean isStatus() {
-		return status;
-	}
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
 	
+	
+	public Date getCheckIn() {
+		return checkIn;
+	}
+
+	public void setCheckIn(Date checkIn) {
+		this.checkIn = checkIn;
+	}
+
+	public Date getCheckOut() {
+		return checkOut;
+	}
+
+	public void setCheckOut(Date checkOut) {
+		this.checkOut = checkOut;
+	}
+
 	@Override
 	public String toString() {
 		return "CompleteShift [ShiftDoneID=" + ShiftDoneID + ", shiftID=" + shiftID + ", companyID=" + companyID
-				+ ", studentID=" + studentID + ", status=" + status + "]";
+				+ ", studentID=" + studentID;
 	}
 }
