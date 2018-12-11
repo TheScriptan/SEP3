@@ -6,7 +6,7 @@ public class Company {
 	private String companyAddress;
 	private String companyPhone;
 	private String companyEmail;
-	public Company(long companyID, String companyName, String companyAddress, String companyPhone,
+	public Company(long companyID, String companyName, String companyAddress, int companyPhone,
 			String companyEmail) {
 		this.companyID = companyID;
 		this.companyName = companyName;
@@ -69,13 +69,13 @@ public class Company {
 	}
 	
 	
-	public String getCompanyPhone() {
+	public int getCompanyPhone() {
 		return companyPhone;
 	}
-	public void setCompanyPhone(String companyPhone) {
+	public void setCompanyPhone(int companyPhone) {
 		this.companyPhone = companyPhone;
 	}
-	private boolean verifyCompanyPhone(long companyPhone)
+	private boolean verifyCompanyPhone(int companyPhone)
 	{
    	 companyPhone = companyPhone.trim();
 
