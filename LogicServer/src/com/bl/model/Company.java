@@ -15,6 +15,7 @@ public class Company {
 		this.companyEmail = companyEmail;
 	}
 	
+<<<<<<< HEAD
 	public long getcompanyId() {
 		return companyId;
 	}
@@ -23,6 +24,16 @@ public class Company {
 	}
 	
 	/*public boolean verifycompanyId(long companyId)
+=======
+	public long getCompanyId() {
+		return companyId;
+	}
+	public void setCompanyId(long companyId) {
+		this.companyId = companyId;
+	}
+	
+	public boolean verifyCompanyID(long companyID)
+>>>>>>> 8d265e0993baaf145c3b3935bd7d794efe36aee0
 	{
    	companyId = companyId.trim();
    	if(companyId == null || companyId.equals(""))
@@ -30,7 +41,7 @@ public class Company {
     	if(!companyId.matches("^[0-9]*"))
     		return false;
    	return true;
-	}*/
+	}
 	
 	public String getCompanyName() {
 		return companyName;
@@ -108,14 +119,18 @@ public class Company {
 	}
 	public boolean verify()
 	{
-		if(!(verifyCompanyName(companyName) && verifyCompanyAdress(companyAddress) && verifyCompanyPhone(companyPhone) && verifyCompanyEmail(companyEmail)))
+		if(!(verifyCompanyId(companyId) && verifyCompanyName(companyName) && verifyCompanyAdress(companyAddress) && verifyCompanyPhone(companyPhone) && verifyCompanyEmail(companyEmail)))
 			return false;
 		return true;
 		
 	}	
 	@Override
 	public String toString() {
+<<<<<<< HEAD
 		return "Company [companyId=" + companyId + ", companyName=" + companyName + ", companyAddress=" + companyAddress
+=======
+		return "Company [companyID=" + companyId + ", companyName=" + companyName + ", companyAddress=" + companyAddress
+>>>>>>> 8d265e0993baaf145c3b3935bd7d794efe36aee0
 				+ ", companyPhone=" + companyPhone + ", companyEmail=" + companyEmail + "]";
 	}
 }
