@@ -26,7 +26,7 @@ public class Company {
    	companyID = companyID.trim();
    	if(companyID == null || companyID.equals(""))
         return false;
-    	if(!companyID.matches("[0-9]*"))
+    	if(!companyID.matches("^[0-9]*"))
         return false;
    	return true;
 	}
@@ -43,7 +43,7 @@ public class Company {
 
     	if(companyName == null || companyName.equals(""))
         return false;
-    	if(!companyName.matches("[a-zA-Z0-9]*"))
+    	if(!companyName.matches("^[a-zA-Z0-9]*"))
         return false;
 
    	 return true;
@@ -62,7 +62,7 @@ public class Company {
     	if(companyAdress == null || companyAdress.equals(""))
         return false;
 
-    	if(!companyAdress.matches("[a-zA-Z]*"))
+    	if(!companyAdress.matches("^[a-zA-Z]*"))
         return false;
 
    	 return true;
@@ -82,7 +82,7 @@ public class Company {
    	 if(companyPhone == null || companyPhone.equals(""))
         return false;
 
-    	if(!companyPhone.matches("[0-9]*"))
+    	if(!companyPhone.matches("^[0-9]*"))
         return false;
 
    	 return true;
