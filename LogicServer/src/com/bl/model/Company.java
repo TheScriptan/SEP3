@@ -1,7 +1,7 @@
 package com.bl.model;
 
 public class Company {
-	private long companyID;
+	private long companyId;
 	private String companyName;
 	private String companyAddress;
 	private String companyPhone;
@@ -108,14 +108,14 @@ public class Company {
 	}
 	public boolean verify()
 	{
-		if(!(verifyCompanyName(companyName) && verifyCompanyAdress(companyAddress) && verifyCompanyPhone(companyPhone) && verifyCompanyEmail(companyEmail)))
+		if(!(verifyCompanyId(companyId) && verifyCompanyName(companyName) && verifyCompanyAdress(companyAddress) && verifyCompanyPhone(companyPhone) && verifyCompanyEmail(companyEmail)))
 			return false;
 		return true;
 		
 	}	
 	@Override
 	public String toString() {
-		return "Company [companyID=" + companyID + ", companyName=" + companyName + ", companyAddress=" + companyAddress
+		return "Company [companyID=" + companyId + ", companyName=" + companyName + ", companyAddress=" + companyAddress
 				+ ", companyPhone=" + companyPhone + ", companyEmail=" + companyEmail + "]";
 	}
 }
