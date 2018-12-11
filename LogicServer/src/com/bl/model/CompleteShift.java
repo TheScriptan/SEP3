@@ -1,54 +1,75 @@
 package com.bl.model;
 
+import java.util.Date;
+
 public class CompleteShift {
-	private int ShiftDoneID;
-	private int shiftID;
-	private int companyID;
-	private int studentID;
-	private boolean status;
+	private long completeShiftID;
+	private long shiftID;
+	private long companyID;
+	private String studentID;
+	private Date checkIn;
+	private Date checkOut;
 	
-	public CompleteShift(int shiftDoneID, int shiftID, int companyID, int studentID, boolean status) {
-		ShiftDoneID = shiftDoneID;
+	public CompleteShift(long completeShiftID, long shiftID, long companyID, String studentID, Date checkIn, Date checkOut) {
+		this.completeShiftID = completeShiftID;
 		this.shiftID = shiftID;
 		this.companyID = companyID;
 		this.studentID = studentID;
-		this.status = status;
+		this.checkIn = checkIn;
+		this.checkOut = checkOut;
 	}
-	
-	public int getShiftDoneID() {
-		return ShiftDoneID;
+
+	public long getCompleteShiftID() {
+		return completeShiftID;
 	}
-	public void setShiftDoneID(int shiftDoneID) {
-		ShiftDoneID = shiftDoneID;
+
+	public void setCompleteShiftID(long completeShiftID) {
+		this.completeShiftID = completeShiftID;
 	}
-	public int getShiftID() {
+
+	public long getShiftID() {
 		return shiftID;
 	}
-	public void setShiftID(int shiftID) {
+
+	public void setShiftID(long shiftID) {
 		this.shiftID = shiftID;
 	}
-	public int getCompanyID() {
+
+	public long getCompanyID() {
 		return companyID;
 	}
-	public void setCompanyID(int companyID) {
+
+	public void setCompanyID(long companyID) {
 		this.companyID = companyID;
 	}
-	public int getStudentID() {
+
+	public String getStudentID() {
 		return studentID;
 	}
-	public void setStudentID(int studentID) {
+
+	public void setStudentID(String studentID) {
 		this.studentID = studentID;
 	}
-	public boolean isStatus() {
-		return status;
+
+	public Date getCheckIn() {
+		return checkIn;
 	}
-	public void setStatus(boolean status) {
-		this.status = status;
+
+	public void setCheckIn(Date checkIn) {
+		this.checkIn = checkIn;
 	}
-	
+
+	public Date getCheckOut() {
+		return checkOut;
+	}
+
+	public void setCheckOut(Date checkOut) {
+		this.checkOut = checkOut;
+	}
+
 	@Override
 	public String toString() {
-		return "CompleteShift [ShiftDoneID=" + ShiftDoneID + ", shiftID=" + shiftID + ", companyID=" + companyID
-				+ ", studentID=" + studentID + ", status=" + status + "]";
+		return "CompleteShift [completeShiftID=" + completeShiftID + ", shiftID=" + shiftID + ", companyID=" + companyID
+				+ ", studentID=" + studentID + ", checkIn=" + checkIn + ", checkOut=" + checkOut + "]";
 	}
 }

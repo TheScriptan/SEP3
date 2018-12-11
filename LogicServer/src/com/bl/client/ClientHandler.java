@@ -31,7 +31,6 @@ public class ClientHandler implements Runnable {
 		String password;
 		//Login stage
 		try{
-			dos.writeUTF("Hello from server");
 			username = dis.readUTF();													//Reading 3 inputs username, password and role to verify which DB to check for credentials
 			password = dis.readUTF();
 			role = dis.readUTF();

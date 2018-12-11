@@ -2,8 +2,10 @@ package com.bl.persistence;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import com.bl.model.Student;
 import com.bl.model.StudentList;
@@ -12,17 +14,11 @@ public class PersistenceHandler {
 	
 	StudentList studentList = new StudentList();
 	private Client client;
-	private final String baseAddress = "http://localhost:5001/api/";
+	private final String baseAddress = "https://localhost:5001/api/";
 	
 	public PersistenceHandler() {
 		//TEMPORARY VARIABLES
-		Student s1 = new Student((long) 1, "pass", "Ainis", "Amaliegade", 5017, "@gmail.com", "5573", 43.0);
-		Student s2 = new Student((long) 2, "pass", "Jonas", "Frederiskgade", 5018, "@gmail.com", "5574", 44.0);
-		Student s3 = new Student((long) 3, "pass", "Petras", "Fredericiagade", 5019, "@gmail.com", "5575", 45.0);
-		
-		studentList.addStudent(s1);
-		studentList.addStudent(s2);
-		studentList.addStudent(s3);
+		System.setProperty("javax.net.ssl.trustStore", "C:/Program Files/Java/jdk1.8.0_191/jre/lib/security/cacerts");
 		
 		client = ClientBuilder.newClient();
 	}
@@ -44,8 +40,8 @@ public class PersistenceHandler {
 		return false;
 	}
 	
-	public String getStudentList() {
-		WebTarget target = client.target(baseAddress + "getstudentlist");
+	public String getAllStudents() {
+		WebTarget target = client.target(baseAddress + "students");
 		
 		String json = target.request(MediaType.APPLICATION_JSON).get(String.class);
 		return json;
@@ -55,7 +51,25 @@ public class PersistenceHandler {
 		WebTarget target = client.target(baseAddress + "employees");
 		
 		String json = target.request(MediaType.APPLICATION_JSON).get(String.class);
-		System.out.println(json);
 		return json;
+	}
+	
+	public int addEmployee(String json) {
+		WebTarget target = client.target(baseAddress + "employees");
+		
+		Response response = target.request(MediaType.APPLICATION_JSON)
+							.accept(MediaType.TEXT_PLAIN_TYPE)
+							.put(Entity.json(json));
+		int status = response.getStatus();
+		return status;
+	}
+	
+	public int deleteEmployee(int id) {
+		WebTarget target = client.target(baseAddress + "employees" + "/" + id);
+		
+		Response response = target.request(MediaType.APPLICATION_JSON)
+							.delete();
+		int status = response.getStatus();
+		return status;
 	}
 }

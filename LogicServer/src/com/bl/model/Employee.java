@@ -1,34 +1,32 @@
 package com.bl.model;
 
 public class Employee {
-	private int employeeID;
+	private String employeeID;
 	private String password;
-	private String name;
-	private String address;
-	private String phoneNo;
-	private String email;
-	private String bankAcc;
-	private int MonthWorkedHours;
-	private String role;
+	private String employeeName;
+	private String employeeAdress;
+	private String employeePhoneNo;
+	private String employeeEmail;
+	private String employeeBankAcc;
+	private double employeeMonthWorkedHours;
 	
-	public Employee(int employeeID, String password, String name, String address, String phoneNo, String email,
-			String bankAcc, int monthWorkedHours, String role) {
+	public Employee(String employeeID, String password, String employeeName, String employeeAdress, String employeePhoneNo, String employeeEmail,
+			String employeeBankAcc, double employeeMonthWorkedHours) {
 		this.employeeID = employeeID;
 		this.password = password;
-		this.name = name;
-		this.address = address;
-		this.phoneNo = phoneNo;
-		this.email = email;
-		this.bankAcc = bankAcc;
-		MonthWorkedHours = monthWorkedHours;
-		this.role = role;
+		this.employeeName = employeeName;
+		this.employeeAdress = employeeAdress;
+		this.employeePhoneNo = employeePhoneNo;
+		this.employeeEmail = employeeEmail;
+		this.employeeBankAcc = employeeBankAcc;
+		this.employeeMonthWorkedHours = employeeMonthWorkedHours;
 	}
 
-	public int getEmployeeID() {
+	public String getemployeeID() {
 		return employeeID;
 	}
 
-	public void setEmployeeID(int employeeID) {
+	public void setemployeeID(String employeeID) {
 		this.employeeID = employeeID;
 	}
 
@@ -40,66 +38,58 @@ public class Employee {
 		this.password = password;
 	}
 
-	public String getName() {
-		return name;
+	public String getemployeeName() {
+		return employeeName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setemployeeName(String employeeName) {
+		this.employeeName = employeeName;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getemployeeAdress() {
+		return employeeAdress;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setemployeeAdress(String employeeAdress) {
+		this.employeeAdress = employeeAdress;
 	}
 
-	public String getPhoneNo() {
-		return phoneNo;
+	public String getemployeePhoneNo() {
+		return employeePhoneNo;
 	}
 
-	public void setPhoneNo(String phoneNo) {
-		this.phoneNo = phoneNo;
+	public void setemployeePhoneNo(String employeePhoneNo) {
+		this.employeePhoneNo = employeePhoneNo;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getemployeeEmail() {
+		return employeeEmail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setemployeeEmail(String employeeEmail) {
+		this.employeeEmail = employeeEmail;
 	}
 
-	public String getBankAcc() {
-		return bankAcc;
+	public String getemployeeBankAcc() {
+		return employeeBankAcc;
 	}
 
-	public void setBankAcc(String bankAcc) {
-		this.bankAcc = bankAcc;
+	public void setemployeeBankAcc(String employeeBankAcc) {
+		this.employeeBankAcc = employeeBankAcc;
 	}
 
-	public int getMonthWorkedHours() {
-		return MonthWorkedHours;
+	public double getemployeeMonthWorkedHours() {
+		return employeeMonthWorkedHours;
 	}
 
-	public void setMonthWorkedHours(int monthWorkedHours) {
-		MonthWorkedHours = monthWorkedHours;
+	public void setemployeeMonthWorkedHours(int employeeMonthWorkedHours) {
+		this.employeeMonthWorkedHours = employeeMonthWorkedHours;
 	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
+	
 	@Override
 	public String toString() {
-		return "Employee [employeeID=" + employeeID + ", password=" + password + ", name=" + name + ", address="
-				+ address + ", phoneNo=" + phoneNo + ", email=" + email + ", bankAcc=" + bankAcc + ", MonthWorkedHours="
-				+ MonthWorkedHours + ", role=" + role + "]";
+		return "Employee [employeeID=" + employeeID + ", password=" + password + ", employeeName=" + employeeName + ", employeeAdress="
+				+ employeeAdress + ", employeePhoneNo=" + employeePhoneNo + ", employeeEmail=" + employeeEmail + ", employeeBankAcc=" + employeeBankAcc + ", employeeMonthWorkedHours="
+				+ employeeMonthWorkedHours;
 	}
 }

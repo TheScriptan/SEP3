@@ -1,16 +1,16 @@
 package com.bl.model;
 
 public class Student {
-	private long studentID;
+	private String studentID;
 	private String password;
 	private String name;
 	private String address;
-	private int phoneNo;
+	private String phoneNo;
 	private String email;
 	private String bankAcc;
 	private double monthWorkedHours;
 	
-	public Student(long studentID, String password, String studentName, String studentAddress, int studentPhoneNo, String studentEmail, String studentBankAcc, double studentMonthWorkedHours) {
+	public Student(String studentID, String password, String studentName, String studentAddress, String studentPhoneNo, String studentEmail, String studentBankAcc, double studentMonthWorkedHours) {
 		this.studentID = studentID;
 		this.password = password;
 		this.name = studentName;
@@ -22,11 +22,11 @@ public class Student {
 		
 	}
 
-	public long getId() {
+	public String getId() {
 		return studentID;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.studentID = id;
 	}
 
@@ -54,11 +54,11 @@ public class Student {
 		this.address = address;
 	}
 
-	public int getPhoneNo() {
+	public String getPhoneNo() {
 		return phoneNo;
 	}
 
-	public void setPhoneNo(int phoneNo) {
+	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 
