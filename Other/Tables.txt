@@ -5,7 +5,7 @@ Employee
    - employeeAddress	( NOT NULL, String, max 80)
    - employeePhoneNo	( NOT NULL, String, max 12)
    - employeeEmail	( NOT NULL, String, max 50)
-   - employeeBankAcc	( probably String, max 20)
+   - employeeBankAcc	( String, max 20)
    - employeeMonthWorkedHours ( double => calculated later on, default 0)
 
 Shift
