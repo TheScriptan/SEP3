@@ -1,7 +1,7 @@
 package com.bl.model;
 
 public class Student {
-	private String studentID;
+	private String studentId;
 	private String password;
 	private String name;
 	private String address;
@@ -10,8 +10,8 @@ public class Student {
 	private String bankAcc;
 	private double monthWorkedHours;
 	
-	public Student(String studentID, String password, String studentName, String studentAddress, String studentPhoneNo, String studentEmail, String studentBankAcc, double studentMonthWorkedHours) {
-		this.studentID = studentID;
+	public Student(String studentId, String password, String studentName, String studentAddress, String studentPhoneNo, String studentEmail, String studentBankAcc, double studentMonthWorkedHours) {
+		this.studentId = studentId;
 		this.password = password;
 		this.name = studentName;
 		this.address = studentAddress;
@@ -23,11 +23,11 @@ public class Student {
 	}
 
 	public String getId() {
-		return studentID;
+		return studentId;
 	}
 
 	public void setId(String id) {
-		this.studentID = id;
+		this.studentId = id;
 	}
 
 	public String getPassword() {
@@ -88,6 +88,6 @@ public class Student {
 	
 	@Override
 	public String toString() {
-		return this.studentID + " " + this.name;
+		return this.studentId + " " + this.name;
 	}
 }

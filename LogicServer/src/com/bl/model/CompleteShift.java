@@ -3,52 +3,52 @@ package com.bl.model;
 import java.util.Date;
 
 public class CompleteShift {
-	private long completeShiftID;
-	private long shiftID;
-	private long companyID;
-	private String studentID;
+	private long completeshiftId;
+	private long shiftId;
+	private long companyId;
+	private String studentId;
 	private Date checkIn;
 	private Date checkOut;
 	
-	public CompleteShift(long completeShiftID, long shiftID, long companyID, String studentID, Date checkIn, Date checkOut) {
-		this.completeShiftID = completeShiftID;
-		this.shiftID = shiftID;
-		this.companyID = companyID;
-		this.studentID = studentID;
+	public CompleteShift(long completeshiftId, long shiftId, long companyId, String studentId, Date checkIn, Date checkOut) {
+		this.completeshiftId = completeshiftId;
+		this.shiftId = shiftId;
+		this.companyId = companyId;
+		this.studentId = studentId;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
 	}
 
-	public long getCompleteShiftID() {
-		return completeShiftID;
+	public long getcompleteshiftId() {
+		return completeshiftId;
 	}
 
-	public void setCompleteShiftID(long completeShiftID) {
-		this.completeShiftID = completeShiftID;
+	public void setcompleteshiftId(long completeshiftId) {
+		this.completeshiftId = completeshiftId;
 	}
 
-	public long getShiftID() {
-		return shiftID;
+	public long getshiftId() {
+		return shiftId;
 	}
 
-	public void setShiftID(long shiftID) {
-		this.shiftID = shiftID;
+	public void setshiftId(long shiftId) {
+		this.shiftId = shiftId;
 	}
 
-	public long getCompanyID() {
-		return companyID;
+	public long getcompanyId() {
+		return companyId;
 	}
 
-	public void setCompanyID(long companyID) {
-		this.companyID = companyID;
+	public void setcompanyId(long companyId) {
+		this.companyId = companyId;
 	}
 
-	public String getStudentID() {
-		return studentID;
+	public String getstudentId() {
+		return studentId;
 	}
 
-	public void setStudentID(String studentID) {
-		this.studentID = studentID;
+	public void setstudentId(String studentId) {
+		this.studentId = studentId;
 	}
 
 	public Date getCheckIn() {
@@ -69,7 +69,7 @@ public class CompleteShift {
 
 	@Override
 	public String toString() {
-		return "CompleteShift [completeShiftID=" + completeShiftID + ", shiftID=" + shiftID + ", companyID=" + companyID
-				+ ", studentID=" + studentID + ", checkIn=" + checkIn + ", checkOut=" + checkOut + "]";
+		return "CompleteShift [completeshiftId=" + completeshiftId + ", shiftId=" + shiftId + ", companyId=" + companyId
+				+ ", studentId=" + studentId + ", checkIn=" + checkIn + ", checkOut=" + checkOut + "]";
 	}
 }

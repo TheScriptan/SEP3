@@ -3,29 +3,29 @@ package com.bl.model;
 import java.util.Date;
 
 public class Shift {
-	private long shiftID;
-	private long companyID;
+	private long shiftId;
+	private long companyId;
 	private Date shiftDate;
 	private int shiftTime;
 	private String shiftRequirements;
-	public Shift(long shiftID, long companyID, Date shiftDate, int shiftTime, String shiftRequirements) {
-		this.shiftID = shiftID;
-		this.companyID = companyID;
+	public Shift(long shiftId, long companyId, Date shiftDate, int shiftTime, String shiftRequirements) {
+		this.shiftId = shiftId;
+		this.companyId = companyId;
 		this.shiftDate = shiftDate;
 		this.shiftTime = shiftTime;
 		this.shiftRequirements = shiftRequirements;
 	}
-	public long getShiftID() {
-		return shiftID;
+	public long getshiftId() {
+		return shiftId;
 	}
-	public void setShiftID(long shiftID) {
-		this.shiftID = shiftID;
+	public void setshiftId(long shiftId) {
+		this.shiftId = shiftId;
 	}
-	public long getCompanyID() {
-		return companyID;
+	public long getcompanyId() {
+		return companyId;
 	}
-	public void setCompanyID(long companyID) {
-		this.companyID = companyID;
+	public void setcompanyId(long companyId) {
+		this.companyId = companyId;
 	}
 	public Date getShiftDate() {
 		return shiftDate;
@@ -48,7 +48,7 @@ public class Shift {
 	
 	@Override
 	public String toString() {
-		return "Shift [shiftID=" + shiftID + ", companyID=" + companyID + ", shiftDate=" + shiftDate + ", shiftTime="
+		return "Shift [shiftId=" + shiftId + ", companyId=" + companyId + ", shiftDate=" + shiftDate + ", shiftTime="
 				+ shiftTime + ", shiftRequirements=" + shiftRequirements + "]";
 	}
 }

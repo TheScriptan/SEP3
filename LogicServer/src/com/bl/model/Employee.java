@@ -1,7 +1,7 @@
 package com.bl.model;
 
 public class Employee {
-	private String employeeID;
+	private String employeeId;
 	private String password;
 	private String employeeName;
 	private String employeeAdress;
@@ -10,9 +10,9 @@ public class Employee {
 	private String employeeBankAcc;
 	private double employeeMonthWorkedHours;
 	
-	public Employee(String employeeID, String password, String employeeName, String employeeAdress, String employeePhoneNo, String employeeEmail,
+	public Employee(String employeeId, String password, String employeeName, String employeeAdress, String employeePhoneNo, String employeeEmail,
 			String employeeBankAcc, double employeeMonthWorkedHours) {
-		this.employeeID = employeeID;
+		this.employeeId = employeeId;
 		this.password = password;
 		this.employeeName = employeeName;
 		this.employeeAdress = employeeAdress;
@@ -22,12 +22,12 @@ public class Employee {
 		this.employeeMonthWorkedHours = employeeMonthWorkedHours;
 	}
 
-	public String getemployeeID() {
-		return employeeID;
+	public String getemployeeId() {
+		return employeeId;
 	}
 
-	public void setemployeeID(String employeeID) {
-		this.employeeID = employeeID;
+	public void setemployeeId(String employeeId) {
+		this.employeeId = employeeId;
 	}
 
 	public String getPassword() {
@@ -88,7 +88,7 @@ public class Employee {
 	
 	@Override
 	public String toString() {
-		return "Employee [employeeID=" + employeeID + ", password=" + password + ", employeeName=" + employeeName + ", employeeAdress="
+		return "Employee [employeeId=" + employeeId + ", password=" + password + ", employeeName=" + employeeName + ", employeeAdress="
 				+ employeeAdress + ", employeePhoneNo=" + employeePhoneNo + ", employeeEmail=" + employeeEmail + ", employeeBankAcc=" + employeeBankAcc + ", employeeMonthWorkedHours="
 				+ employeeMonthWorkedHours;
 	}

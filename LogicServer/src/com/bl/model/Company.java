@@ -1,33 +1,33 @@
 package com.bl.model;
 
 public class Company {
-	private long companyID;
+	private long companyId;
 	private String companyName;
 	private String companyAddress;
 	private String companyPhone;
 	private String companyEmail;
-	public Company(long companyID, String companyName, String companyAddress, String companyPhone,
+	public Company(long companyId, String companyName, String companyAddress, String companyPhone,
 			String companyEmail) {
-		this.companyID = companyID;
+		this.companyId = companyId;
 		this.companyName = companyName;
 		this.companyAddress = companyAddress;
 		this.companyPhone = companyPhone;
 		this.companyEmail = companyEmail;
 	}
 	
-	public long getCompanyID() {
-		return companyID;
+	public long getcompanyId() {
+		return companyId;
 	}
-	public void setCompanyID(long companyID) {
-		this.companyID = companyID;
+	public void setcompanyId(long companyId) {
+		this.companyId = companyId;
 	}
 	
-	/*public boolean verifyCompanyID(long companyID)
+	/*public boolean verifycompanyId(long companyId)
 	{
-   	companyID = companyID.trim();
-   	if(companyID == null || companyID.equals(""))
+   	companyId = companyId.trim();
+   	if(companyId == null || companyId.equals(""))
    			return false;
-    	if(!companyID.matches("^[0-9]*"))
+    	if(!companyId.matches("^[0-9]*"))
     		return false;
    	return true;
 	}*/
@@ -115,7 +115,7 @@ public class Company {
 	}	
 	@Override
 	public String toString() {
-		return "Company [companyID=" + companyID + ", companyName=" + companyName + ", companyAddress=" + companyAddress
+		return "Company [companyId=" + companyId + ", companyName=" + companyName + ", companyAddress=" + companyAddress
 				+ ", companyPhone=" + companyPhone + ", companyEmail=" + companyEmail + "]";
 	}
 }
