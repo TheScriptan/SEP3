@@ -1,8 +1,10 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace DBServer.Models {
     public class Student {
         public Student () { }
-        public Student (long s1, string s2, string s3, string s4, int s5, string s6, int s7, int s8) {
+        public Student (string s1, string s2, string s3, string s4, string s5, string s6, string s7, double s8) {
             this.StudentId = s1;
             this.Password = s2;
             this.StudentName = s3;
@@ -13,14 +15,16 @@ namespace DBServer.Models {
             this.StudentMonthWorkedHours = s8;
 
         }
-        public long StudentId { get; set; }
+
+        [Key]
+        public string StudentId { get; set; }
         public string Password { get; set; }
         public string StudentName { get; set; }
         public string StudentAdress { get; set; }
-        public int StudentPhoneNo { get; set; }
+        public string StudentPhoneNo { get; set; }
         public string StudentEmail { get; set; }
-        public int StudentBankAcc { get; set; }
-        public int StudentMonthWorkedHours { get; set; }
+        public string StudentBankAcc { get; set; }
+        public double StudentMonthWorkedHours { get; set; }
 
     }
 }

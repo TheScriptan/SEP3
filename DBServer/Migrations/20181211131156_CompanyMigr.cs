@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DBServer.Migrations
 {
-    public partial class InitialCompanyCreate : Migration
+    public partial class CompanyMigr : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,7 @@ namespace DBServer.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     CompanyName = table.Column<string>(nullable: true),
                     CompanyAdress = table.Column<string>(nullable: true),
-                    CompanyPhone = table.Column<int>(nullable: false),
+                    CompanyPhone = table.Column<string>(nullable: true),
                     CompanyEmail = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -32,8 +32,9 @@ namespace DBServer.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     ShiftId = table.Column<long>(nullable: false),
                     CompanyId = table.Column<long>(nullable: false),
-                    StudentId = table.Column<long>(nullable: false),
-                    Status = table.Column<bool>(nullable: false)
+                    StudentId = table.Column<string>(nullable: true),
+                    checkIn = table.Column<DateTime>(nullable: false),
+                    checkOut = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,15 +45,14 @@ namespace DBServer.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    EmployeeId = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    EmployeeId = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: true),
                     EmployeeName = table.Column<string>(nullable: true),
                     EmployeeAdress = table.Column<string>(nullable: true),
-                    EmployeePhoneNo = table.Column<int>(nullable: false),
+                    EmployeePhoneNo = table.Column<string>(nullable: true),
                     EmployeeEmail = table.Column<string>(nullable: true),
-                    EmployeeBankAcc = table.Column<int>(nullable: false),
-                    EmployeeMonthWorkedHours = table.Column<int>(nullable: false)
+                    EmployeeBankAcc = table.Column<string>(nullable: true),
+                    EmployeeMonthWorkedHours = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,7 +67,7 @@ namespace DBServer.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     CompanyId = table.Column<long>(nullable: false),
                     ShiftDate = table.Column<DateTime>(nullable: false),
-                    ShiftTime = table.Column<int>(nullable: false),
+                    ShiftTime = table.Column<double>(nullable: false),
                     ShiftRequirements = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

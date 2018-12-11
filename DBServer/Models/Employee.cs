@@ -2,7 +2,7 @@ using System;
 namespace DBServer.Models {
     public class Employee {
         public Employee () { }
-        public Employee (long e1, string e2, string e3, string e4, int e5, string e6, int e7, int e8) {
+        public Employee (string e1, string e2, string e3, string e4, string e5, string e6, string e7, double e8) {
             this.EmployeeId = e1;
             this.Password = e2;
             this.EmployeeName = e3;
@@ -13,14 +13,14 @@ namespace DBServer.Models {
             this.EmployeeMonthWorkedHours = e8;
 
         }
-        public long EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
         public string Password { get; set; }
         public string EmployeeName { get; set; }
         public string EmployeeAdress { get; set; }
-        public int EmployeePhoneNo { get; set; }
+        public string EmployeePhoneNo { get; set; }
         public string EmployeeEmail { get; set; }
-        public int EmployeeBankAcc { get; set; }
-        public int EmployeeMonthWorkedHours { get; set; }
+        public string EmployeeBankAcc { get; set; }
+        public double EmployeeMonthWorkedHours { get; set; }
 
     }
 }

@@ -21,7 +21,7 @@ namespace DBServer.Controllers {
 
         // GET api/values/5
         [HttpGet ("{id}")]
-        public ActionResult<CompleteShift> Get (int id) {
+        public ActionResult<CompleteShift> Get (long id) {
             return _context.CompleteShifts.Single (cs => cs.ShiftDoneId == id);
         }
 
@@ -39,7 +39,7 @@ namespace DBServer.Controllers {
 
         // DELETE api/values/5
         [HttpDelete ("{id}")]
-        public void Delete (int id) {
+        public void Delete (long id) {
             var cs = _context.CompleteShifts.Single (c => c.ShiftDoneId == id);
             _context.CompleteShifts.Remove (cs);
             _context.SaveChanges ();

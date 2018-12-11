@@ -32,7 +32,7 @@ namespace DBServer.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(long id, [FromBody] string value)
         {
             var shift =_context.Shifts.Single();
             //TODO
@@ -40,7 +40,7 @@ namespace DBServer.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(long id)
         {
             var deleteShift = _context.Shifts.Single(s => s.ShiftId == id);
             _context.Shifts.Remove(deleteShift);

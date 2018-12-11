@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DBServer.Migrations.Student
 {
-    public partial class InitialStudentCreate : Migration
+    public partial class StudentMigr : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,15 +10,14 @@ namespace DBServer.Migrations.Student
                 name: "Students",
                 columns: table => new
                 {
-                    StudentId = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    StudentId = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: true),
                     StudentName = table.Column<string>(nullable: true),
                     StudentAdress = table.Column<string>(nullable: true),
-                    StudentPhoneNo = table.Column<int>(nullable: false),
+                    StudentPhoneNo = table.Column<string>(nullable: true),
                     StudentEmail = table.Column<string>(nullable: true),
-                    StudentBankAcc = table.Column<int>(nullable: false),
-                    StudentMonthWorkedHours = table.Column<int>(nullable: false)
+                    StudentBankAcc = table.Column<string>(nullable: true),
+                    StudentMonthWorkedHours = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
