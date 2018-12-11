@@ -20,22 +20,22 @@ namespace DBServer.Migrations.Student
 
             modelBuilder.Entity("DBServer.Models.Student", b =>
                 {
-                    b.Property<long>("StudentId")
+                    b.Property<string>("StudentId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Password");
 
                     b.Property<string>("StudentAdress");
 
-                    b.Property<int>("StudentBankAcc");
+                    b.Property<string>("StudentBankAcc");
 
                     b.Property<string>("StudentEmail");
 
-                    b.Property<int>("StudentMonthWorkedHours");
+                    b.Property<double>("StudentMonthWorkedHours");
 
                     b.Property<string>("StudentName");
 
-                    b.Property<int>("StudentPhoneNo");
+                    b.Property<string>("StudentPhoneNo");
 
                     b.HasKey("StudentId");
 

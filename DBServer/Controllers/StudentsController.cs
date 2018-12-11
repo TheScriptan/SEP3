@@ -24,9 +24,9 @@ namespace DBServer.Controllers
 
         // GET api/students/5
         [HttpGet("{id}")]
-        public ActionResult<Student> GetById(int id)
+        public ActionResult<Student> GetById(long id)
         {
-            return _context.Students.Single(s => s.StudentId == id);
+            return _context.Students.Single(s => s.StudentId.Equals(id));
         }
         
         // GET api/students/Name
@@ -46,15 +46,15 @@ namespace DBServer.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Student student)
+        public void Put(string id, [FromBody] Student student)
         {
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
-            var delStudent = _context.Students.Single(s => s.StudentId == id);
+            var delStudent = _context.Students.Single(s => s.StudentId.Equals(id));
             _context.Students.Remove(delStudent);
             _context.SaveChanges();
         }

@@ -30,7 +30,7 @@ namespace DBServer.Migrations
 
                     b.Property<string>("CompanyName");
 
-                    b.Property<int>("CompanyPhone");
+                    b.Property<string>("CompanyPhone");
 
                     b.HasKey("CompanyId");
 
@@ -46,7 +46,7 @@ namespace DBServer.Migrations
 
                     b.Property<long>("ShiftId");
 
-                    b.Property<long>("StudentId");
+                    b.Property<string>("StudentId");
 
                     b.Property<DateTime>("checkIn");
 
@@ -59,20 +59,20 @@ namespace DBServer.Migrations
 
             modelBuilder.Entity("DBServer.Models.Employee", b =>
                 {
-                    b.Property<long>("EmployeeId")
+                    b.Property<string>("EmployeeId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("EmployeeAdress");
 
-                    b.Property<int>("EmployeeBankAcc");
+                    b.Property<string>("EmployeeBankAcc");
 
                     b.Property<string>("EmployeeEmail");
 
-                    b.Property<int>("EmployeeMonthWorkedHours");
+                    b.Property<double>("EmployeeMonthWorkedHours");
 
                     b.Property<string>("EmployeeName");
 
-                    b.Property<int>("EmployeePhoneNo");
+                    b.Property<string>("EmployeePhoneNo");
 
                     b.Property<string>("Password");
 
@@ -92,7 +92,7 @@ namespace DBServer.Migrations
 
                     b.Property<string>("ShiftRequirements");
 
-                    b.Property<int>("ShiftTime");
+                    b.Property<double>("ShiftTime");
 
                     b.HasKey("ShiftId");
 

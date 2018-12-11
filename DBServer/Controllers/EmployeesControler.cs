@@ -24,9 +24,9 @@ namespace DBServer.Controllers
 
         // GET api/employees/5
         [HttpGet("{id}")]
-        public ActionResult<Employee> Get(int id)
+        public ActionResult<Employee> Get(string id)
         {
-            return _context.Employees.Single(e => e.EmployeeId == id);
+            return _context.Employees.Single(e => e.EmployeeId.Equals(id));
         }
 
         // POST api/employees
@@ -45,9 +45,9 @@ namespace DBServer.Controllers
 
         // DELETE api/employees/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
-            var delEmployee = _context.Employees.Single(e => e.EmployeeId == id);
+            var delEmployee = _context.Employees.Single(e => e.EmployeeId.Equals(id));
             _context.Employees.Remove(delEmployee);
             _context.SaveChanges();
         }

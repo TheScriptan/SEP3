@@ -3,7 +3,7 @@ namespace DBServer.Models {
     public class Employee {
         public Employee () { }
         public Employee (string e1, string e2, string e3, string e4, string e5, string e6, string e7, double e8) {
-            this.EmployeeID = e1;
+            this.EmployeeId = e1;
             this.Password = e2;
             this.EmployeeName = e3;
             this.EmployeeAdress = e4;
@@ -13,7 +13,7 @@ namespace DBServer.Models {
             this.EmployeeMonthWorkedHours = e8;
 
         }
-        public string EmployeeID { get; set; }
+        public string EmployeeId { get; set; }
         public string Password { get; set; }
         public string EmployeeName { get; set; }
         public string EmployeeAdress { get; set; }
