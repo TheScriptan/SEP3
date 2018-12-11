@@ -6,7 +6,7 @@ public class Company {
 	private String companyAddress;
 	private String companyPhone;
 	private String companyEmail;
-	public Company(long companyID, String companyName, String companyAddress, int companyPhone,
+	public Company(long companyID, String companyName, String companyAddress, String companyPhone,
 			String companyEmail) {
 		this.companyID = companyID;
 		this.companyName = companyName;
@@ -21,15 +21,16 @@ public class Company {
 	public void setCompanyID(long companyID) {
 		this.companyID = companyID;
 	}
-	public boolean verifyCompanyID(long companyID)
+	
+	/*public boolean verifyCompanyID(long companyID)
 	{
    	companyID = companyID.trim();
    	if(companyID == null || companyID.equals(""))
-        return false;
+   			return false;
     	if(!companyID.matches("^[0-9]*"))
-        return false;
+    		return false;
    	return true;
-	}
+	}*/
 	
 	public String getCompanyName() {
 		return companyName;
@@ -69,13 +70,13 @@ public class Company {
 	}
 	
 	
-	public int getCompanyPhone() {
+	public String getCompanyPhone() {
 		return companyPhone;
 	}
-	public void setCompanyPhone(int companyPhone) {
+	public void setCompanyPhone(String companyPhone) {
 		this.companyPhone = companyPhone;
 	}
-	private boolean verifyCompanyPhone(int companyPhone)
+	private boolean verifyCompanyPhone(String companyPhone)
 	{
    	 companyPhone = companyPhone.trim();
 
@@ -107,7 +108,7 @@ public class Company {
 	}
 	public boolean verify()
 	{
-		if(!(verifyCompanyName() && verifyCompanyName() && verifyCompanyAdress() && verifyCompanyPhone() && verifyCompanyEmail()))
+		if(!(verifyCompanyName(companyName) && verifyCompanyAdress(companyAddress) && verifyCompanyPhone(companyPhone) && verifyCompanyEmail(companyEmail)))
 			return false;
 		return true;
 		
