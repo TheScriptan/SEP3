@@ -10,7 +10,7 @@ Employee
 
 Shift
    - shiftID (pk) 	( NOT NULL, long)
-   - companyID (fk)	( NOT NULL, int)
+   - companyID (fk)	( NOT NULL, long)
    - shiftDate		( NOT NULL, date => YYYY-MM-DDTHH-MM-SS)
    - shiftTime		( NOT NULL, double)
    - requirements	( string , max 80)
@@ -33,9 +33,9 @@ Student
    - studentMonthWorkedHours	( double, default 0)
 
 CompleteShift
-   - completeShiftID (pk) 	( NOT NULL, int)
-   - shiftID(fk)	( NOT NULL, int)
-   - companyID (fk)	( NOT NULL, int)
+   - completeShiftID (pk) 	( NOT NULL, long)
+   - shiftID(fk)	( NOT NULL, long)
+   - companyID (fk)	( NOT NULL, long)
    - studentID (fk)	( NOT NULL, string)
    - checkIn 		( NOT NULL, timestamp/datetime)
    - checkOut 		( NOT NULL, timestamp/datetime)
