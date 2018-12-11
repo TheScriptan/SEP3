@@ -21,7 +21,7 @@ Company
    - companyAddress		( NOT NULL, String, max 80)
    - companyPhone		( NOT NULL, String, max 12)
    - companyEmail		( NOT NULL, String, max 50)
-
+   
 Student
    - studentID (pk) - CPR ( String 10 max )
    - password		( NOT NULL, String, max 50)
