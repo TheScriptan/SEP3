@@ -3,14 +3,14 @@ package com.bl.model;
 public class Company {
 	private long companyId;
 	private String companyName;
-	private String companyAddress;
+	private String companyAdress;
 	private String companyPhone;
 	private String companyEmail;
-	public Company(long companyId, String companyName, String companyAddress, String companyPhone,
+	public Company(long companyId, String companyName, String companyAdress, String companyPhone,
 			String companyEmail) {
 		this.companyId = companyId;
 		this.companyName = companyName;
-		this.companyAddress = companyAddress;
+		this.companyAdress = companyAdress;
 		this.companyPhone = companyPhone;
 		this.companyEmail = companyEmail;
 	}
@@ -41,11 +41,11 @@ public class Company {
    	 return true;
 	}
 	
-	public String getCompanyAddress() {
-		return companyAddress;
+	public String getCompanyAdress() {
+		return companyAdress;
 	}
-	public void setCompanyAddress(String companyAddress) {
-		this.companyAddress = companyAddress;
+	public void setCompanyAdress(String companyAdress) {
+		this.companyAdress = companyAdress;
 	}
 	public boolean verifyCompanyAdress(String companyAdress)
 	{
@@ -99,14 +99,14 @@ public class Company {
 	}
 	public boolean verifyCompany()
 	{
-		if(!verifyCompanyName(companyName) && verifyCompanyAdress(companyAddress) && verifyCompanyPhone(companyPhone) && verifyCompanyEmail(companyEmail))
+		if(!verifyCompanyName(companyName) && verifyCompanyAdress(companyAdress) && verifyCompanyPhone(companyPhone) && verifyCompanyEmail(companyEmail))
 			return false;
 		return true;
 		
 	}	
 	@Override
 	public String toString() {
-		return "Company [companyId=" + companyId + ", companyName=" + companyName + ", companyAddress=" + companyAddress + ", companyPhone=" + companyPhone + ", companyEmail=" + companyEmail + "]";
+		return "Company [companyId=" + companyId + ", companyName=" + companyName + ", companyAdress=" + companyAdress + ", companyPhone=" + companyPhone + ", companyEmail=" + companyEmail + "]";
 				
 	}
 }
