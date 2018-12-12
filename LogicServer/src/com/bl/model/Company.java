@@ -103,7 +103,7 @@ public class Company {
 
     	return true;
 	}
-	public boolean verify()
+	public boolean verifyCompany()
 	{
 		if(!verifyCompanyName(companyName) && verifyCompanyAdress(companyAddress) && verifyCompanyPhone(companyPhone) && verifyCompanyEmail(companyEmail))
 			return false;
