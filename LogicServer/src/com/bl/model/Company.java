@@ -15,13 +15,7 @@ public class Company {
 		this.companyEmail = companyEmail;
 	}
 	
-	public long getcompanyId() {
-		return companyId;
-	}
-	public void setcompanyId(long companyId) {
-		this.companyId = companyId;
-	}
-
+	
 	public long getCompanyId() {
 		return companyId;
 	}
