@@ -12,3 +12,17 @@ C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBServer\obj\Debug\netcoreapp2.1\
 C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBServer\obj\Debug\netcoreapp2.1\DBServer.RazorTargetAssemblyInfo.cache
 C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBServer\obj\Debug\netcoreapp2.1\DBServer.dll
 C:\Users\R0b1S\OneDrive\School\3.semester\SEP3\DBServer\obj\Debug\netcoreapp2.1\DBServer.pdb
+C:\Users\skomi\Desktop\SEP3\DBServer\bin\Debug\netcoreapp2.1\DBServer.deps.json
+C:\Users\skomi\Desktop\SEP3\DBServer\bin\Debug\netcoreapp2.1\DBServer.runtimeconfig.json
+C:\Users\skomi\Desktop\SEP3\DBServer\bin\Debug\netcoreapp2.1\DBServer.runtimeconfig.dev.json
+C:\Users\skomi\Desktop\SEP3\DBServer\bin\Debug\netcoreapp2.1\DBServer.dll
+C:\Users\skomi\Desktop\SEP3\DBServer\bin\Debug\netcoreapp2.1\DBServer.pdb
+C:\Users\skomi\Desktop\SEP3\DBServer\obj\Debug\netcoreapp2.1\DBServer.csprojAssemblyReference.cache
+C:\Users\skomi\Desktop\SEP3\DBServer\obj\Debug\netcoreapp2.1\DBServer.csproj.CoreCompileInputs.cache
+C:\Users\skomi\Desktop\SEP3\DBServer\obj\Debug\netcoreapp2.1\DBServer.RazorAssemblyInfo.cache
+C:\Users\skomi\Desktop\SEP3\DBServer\obj\Debug\netcoreapp2.1\DBServer.RazorAssemblyInfo.cs
+C:\Users\skomi\Desktop\SEP3\DBServer\obj\Debug\netcoreapp2.1\DBServer.AssemblyInfoInputs.cache
+C:\Users\skomi\Desktop\SEP3\DBServer\obj\Debug\netcoreapp2.1\DBServer.AssemblyInfo.cs
+C:\Users\skomi\Desktop\SEP3\DBServer\obj\Debug\netcoreapp2.1\DBServer.RazorTargetAssemblyInfo.cache
+C:\Users\skomi\Desktop\SEP3\DBServer\obj\Debug\netcoreapp2.1\DBServer.dll
+C:\Users\skomi\Desktop\SEP3\DBServer\obj\Debug\netcoreapp2.1\DBServer.pdb
