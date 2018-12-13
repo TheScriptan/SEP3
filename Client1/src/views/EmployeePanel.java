@@ -1,7 +1,5 @@
 package views;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -10,39 +8,38 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
 import controllers.EmployeeController;
-import javax.swing.JTextArea;
 
 public class EmployeePanel extends JPanel
 {
-   private EmployeeController adminController;
    private JTable ShiftTable;
+   private EmployeeController employeeController;
    
    
    JScrollPane ShiftInformationPane = new JScrollPane();
-   JScrollPane StudentInformationPane = new JScrollPane();
+   JScrollPane StudentInformationScrollPanel = new JScrollPane();
    private JTable StudentTable;
    /**
     * Create the panel.
     */
-   public EmployeePanel(EmployeeController adminController)
+   public EmployeePanel(EmployeeController employeeController)
    {
-      this.adminController = adminController;
+	  this.employeeController = employeeController;
       setLayout(null);
       GenerateView();
    }
    
    /**
-    * Generating the view in the Shift Panel.
+    * Creating the view in the Shift Panel.
     */
    public void GenerateView()
    {
 	   
 	   /**
-	    * Creating tabs for the admin to access.
+	    * Creating tabs for the employee to access.
 	    */
       
       JTabbedPane AdminTabs = new JTabbedPane(JTabbedPane.TOP);
@@ -108,7 +105,7 @@ public class EmployeePanel extends JPanel
       ShiftPanel.add(ShiftTableScrollPane);
       
       /**
-       * Generating table in Shifts Tab.
+       * Creating a table in Shifts Tab for the employee to view.
        */
       
       
@@ -152,6 +149,14 @@ public class EmployeePanel extends JPanel
       		"Location", "Company", "Time", "Date", "Status", "Released"
       	}
       ) {
+    	  
+    	  /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		/**
+    	   * Condition for setting the shift table to be editable or not.
+    	   */
       	boolean[] columnEditables = new boolean[] {
       		false, false, false, false, false, false
       	};
@@ -185,12 +190,16 @@ public class EmployeePanel extends JPanel
       ShiftInformationPane.setViewportView(ShiftInformationPanel);
       ShiftInformationPanel.setLayout(null);
       
+      /**
+       * Creating a text area for the shift information. References the shift table.
+       */
+      
       JTextArea ShiftInformationShiftTxt = new JTextArea();
       ShiftInformationShiftTxt.setBounds(0, 0, 178, 246);
       ShiftInformationPanel.add(ShiftInformationShiftTxt);
       
       /**
-       * Creating a panel for the Students tab for the admin to view.
+       * Creating a panel for the Students tab for the employee to view.
        */
       JPanel StudentPanel = new JPanel();
       AdminTabs.addTab("Students", null, StudentPanel, null);
@@ -201,12 +210,14 @@ public class EmployeePanel extends JPanel
       JScrollPane StudentTableScrollPane = new JScrollPane();
       StudentTableScrollPane.setBounds(0, 0, 490, 391);
       StudentPanel.add(StudentTableScrollPane);
-      
+      /**
+       * Creating a table in the students tab for the employee to view.
+       */
       StudentTable = new JTable();
       StudentTable.addMouseListener(new MouseAdapter() {
       	@Override
       	public void mouseClicked(MouseEvent e) {
-      		StudentInformationPane.setVisible(true); //////////////////////////////////////////////////////
+      		StudentInformationScrollPanel.setVisible(true); //////////////////////////////////////////////////////
       	}
       });
       /**
@@ -269,35 +280,54 @@ public class EmployeePanel extends JPanel
       JButton btnAddStudent = new JButton("Add Student");
       btnAddStudent.setBounds(550, 11, 126, 23);
       StudentPanel.add(btnAddStudent);
-      
+      /**
+       * Create a button Edit Student.
+       */
       JButton btnEditStudent = new JButton("Edit Student");
       btnEditStudent.setBounds(550, 45, 126, 23);
       StudentPanel.add(btnEditStudent);
-      
+      /**
+       * Create a button Delete Student.
+       */
       JButton btnDeleteStudent = new JButton("Delete Student");
       btnDeleteStudent.setBounds(550, 79, 126, 23);
       StudentPanel.add(btnDeleteStudent);
-      
+      /**
+       * Create a button Find Student.
+       */
       JButton btnFindStudent = new JButton("Find Student");
       btnFindStudent.setBounds(550, 113, 126, 23);
       StudentPanel.add(btnFindStudent);
       
+      /**
+       * Creating a scroll panel for the student information below the buttons. Panel not visible.
+       */
       
-      StudentInformationPane.setBounds(500, 152, 190, 239);
-      StudentPanel.add(StudentInformationPane);
-      StudentInformationPane.setVisible(false); ///////////////////////////////////////
+      StudentInformationScrollPanel.setBounds(500, 152, 190, 239);
+      StudentPanel.add(StudentInformationScrollPanel);
+      
+      /**
+       * Making the panel not visible until an interaction with the table occurs.
+       */
+      StudentInformationScrollPanel.setVisible(false); ///////////////////////////////////////
+      
+      /**
+       * Creating a panel inside the scroll panel in student information.
+       */
       
       JPanel StudentInformationPanel = new JPanel();
-      StudentInformationPane.setViewportView(StudentInformationPanel);
+      StudentInformationScrollPanel.setViewportView(StudentInformationPanel);
       StudentInformationPanel.setLayout(null);
+      
+      /**
+       * Creating a text area inside the student information panel which will reference the student table content.
+       */
       
       JTextArea StudentInformationTxt = new JTextArea();
       StudentInformationTxt.setBounds(0, 0, 188, 237);
       StudentInformationPanel.add(StudentInformationTxt);
       
-      /**
-       * Getting panel so it would follow the JFrame.
-       */
+     
    }
 
 }
