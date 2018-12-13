@@ -12,15 +12,20 @@ import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JCalendar;
 
+import controllers.StudentController;
+
 public class StudentPanel extends JPanel
 {
    private JTable StudentSchoolTable;
+   private StudentController userController;
 
    /**
     * Create the panel.
     */
-   public StudentPanel()
+   public StudentPanel(StudentController userController)
    {
+	   this.userController = userController;
+	      setLayout(null);
       GenerateView();
 
    }

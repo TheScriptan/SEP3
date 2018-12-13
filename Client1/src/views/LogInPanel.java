@@ -3,8 +3,11 @@ package views;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,6 +16,9 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import controllers.BaseController;
+import controllers.StudentController;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 /**
  * AppPanel object that extends JPanel for use with a MVC GUI.
@@ -29,6 +35,7 @@ public class LogInPanel extends JPanel{
 	private BaseController baseController;
 	private JTextField username;
 	private JPasswordField password;
+	private StudentController userController;
 	
 	/**
 	 * Create a panel object passing a reference the UserController for use by the AppPanel object.
@@ -98,6 +105,16 @@ public class LogInPanel extends JPanel{
 		login.setBounds(308, 201, 89, 23);
 		add(login);
 		
+		JCheckBox chckbxAdmin = new JCheckBox("Admin ");
+		chckbxAdmin.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				
+				
+			}
+		});
+		chckbxAdmin.setBounds(292, 242, 97, 23);
+		add(chckbxAdmin);
+		
 		/**
 		 * Login button Event listener.
 		 */
@@ -108,7 +125,7 @@ public class LogInPanel extends JPanel{
 				
 					getPanel().setVisible(false);
 					baseController.getFrame().setContentPane(new AdminPanel(null));
-				
+					
 			}
 		});
 		
