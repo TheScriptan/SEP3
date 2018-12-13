@@ -263,7 +263,9 @@ public class EmployeePanel extends JPanel
       StudentTable.getColumnModel().getColumn(3).setPreferredWidth(125);
       StudentTable.getColumnModel().getColumn(3).setMinWidth(0);
       StudentTableScrollPane.setViewportView(StudentTable);
-      
+      /**
+       * Create a button Add Student.
+       */
       JButton btnAddStudent = new JButton("Add Student");
       btnAddStudent.setBounds(550, 11, 126, 23);
       StudentPanel.add(btnAddStudent);
