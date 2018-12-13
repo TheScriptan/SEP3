@@ -4,13 +4,9 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.bl.client.ClientHandler;
-import com.bl.model.Employee;
 import com.bl.persistence.PersistenceHandler;
-import com.bl.utils.Utils;
 
 public class Startup {
 	
@@ -26,18 +22,8 @@ public class Startup {
 			
 			System.out.println("Server started on port " + PORT);
 			
-			//TESTING
-			PersistenceHandler pers = new PersistenceHandler();
-			Employee emp = new Employee("220298", "passss", "Ainis", "Frederiksgade", "178905", "gmail@gmail",
-					"5573", 55);
-			List<Employee> list = new ArrayList<Employee>();
-			//pers.addEmployee(Utils.serializeObject(emp));
-			String json = pers.getAllEmployees();
-			System.out.println(json);
-			list = Utils.deserializeList(json, Employee[].class);
-			for(int i = 0; i < list.size(); i++) {
-				System.out.println(list.get(i).toString());
-			}
+			//TESTING PART
+			
 			//Running infinite loop
 			while(true) {
 				s = ss.accept();
@@ -46,7 +32,8 @@ public class Startup {
 				//Obtain input and output streams + PersistenceHandler to reference to ClientHandler and Student/Employee handlers
 				DataInputStream dis = new DataInputStream(s.getInputStream());
 				DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-				//PersistenceHandler pers = new PersistenceHandler();
+				PersistenceHandler pers = new PersistenceHandler();
+				
 				
 				System.out.println("Creating a new handler for this client..." );
 				
@@ -64,7 +51,5 @@ public class Startup {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 }

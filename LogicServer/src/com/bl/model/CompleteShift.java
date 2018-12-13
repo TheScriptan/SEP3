@@ -50,7 +50,18 @@ public class CompleteShift {
 	public void setstudentId(String studentId) {
 		this.studentId = studentId;
 	}
+	
+	public boolean verifyStudentId(String studentId)
+	{
+    	studentId = studentId.trim();
 
+    	if(studentId == null || studentId.equals(""))
+        return false;
+    	if(!studentId.matches("^[a-zA-Z0-9]*"))
+        return false;
+
+   	 return true;
+	}
 	public Date getCheckIn() {
 		return checkIn;
 	}
@@ -66,7 +77,13 @@ public class CompleteShift {
 	public void setCheckOut(Date checkOut) {
 		this.checkOut = checkOut;
 	}
-
+	public boolean verifyCompleteShift()
+	{
+		if(!verifyStudentId(studentId) )
+			return false;
+		return true;
+		
+	}
 	@Override
 	public String toString() {
 		return "CompleteShift [completeshiftId=" + completeshiftId + ", shiftId=" + shiftId + ", companyId=" + companyId
