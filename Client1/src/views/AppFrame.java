@@ -2,6 +2,7 @@ package views;
 
 import javax.swing.JFrame;
 
+import controllers.AdminController;
 import controllers.EmployeeController;
 import controllers.BaseController;
 
@@ -18,6 +19,7 @@ public class AppFrame extends JFrame {
 	 */
 	
 	private LogInPanel basePanel;
+	private AdminPanel shiftPanel;
 	private EmployeePanel shiftPanel;
 	
 	/**
