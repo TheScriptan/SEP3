@@ -8,7 +8,7 @@ public class AppStarter {
 		
 		// Connect to server
 		
-		UserController rootApp = new UserController();
+		BaseController rootApp = new BaseController();
 		rootApp.start();
 	}
 

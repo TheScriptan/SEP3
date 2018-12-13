@@ -2,7 +2,8 @@ package views;
 
 import javax.swing.JFrame;
 
-import controllers.UserController;
+import controllers.AdminController;
+import controllers.BaseController;
 
 
 /**
@@ -16,28 +17,35 @@ public class AppFrame extends JFrame {
 	 * Reference to the AppPanel class.
 	 */
 	
-	private AppPanel basePanel;
+	private LogInPanel basePanel;
+	private AdminPanel shiftPanel;
 	
 	/**
 	 * Create a frame object passing a reference the UserController for use by the AppFrame object.
 	 */
 	
-	public AppFrame(UserController userController)
+	public AppFrame(BaseController LogInController)
 	{
-		basePanel = new AppPanel(userController);
+		basePanel = new LogInPanel(LogInController);
 		setupFrame();
 	}
 	
-	/**
+	public AppFrame(AdminController adminController)
+   {
+      shiftPanel = new AdminPanel(adminController);
+            setupFrame();
+   }
+
+   /**
 	 * Sets up the content pane, size and visibility.
 	 */
 	
 	private void setupFrame()
 	{
 		this.setContentPane(basePanel);
-		this.setSize(1000,500);
+		this.setBounds(150, 50, 720, 480);
 		this.setVisible(true);
-		
+      this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
