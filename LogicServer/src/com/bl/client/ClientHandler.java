@@ -42,7 +42,7 @@ public class ClientHandler implements Runnable {
 				isLoggedIn = pers.verifyLogin(username, password, role);						//Contacting PersistenceHandler to verify login					
 				
 				if(isLoggedIn) {
-					Utils.SendResponse(dos, "0", "login valid"); 				//Send login status to client
+					Utils.SendResponse(dos, "0", "login valid"); 								//Send login status to client
 					StudentHandler studentHandler = new StudentHandler(s, dis, dos, pers); 		//Initializing Student Handler
 					EmployeeHandler employeeHandler = new EmployeeHandler(s, dis, dos, pers);	//Initializing Employee Handler
 					
@@ -66,6 +66,7 @@ public class ClientHandler implements Runnable {
 				e.printStackTrace();
 			}
 		}
+		//ELSE IF loginRequest.getRequestCode().equals(Utils.Requests.REGISTER)
 		
 		
 	}

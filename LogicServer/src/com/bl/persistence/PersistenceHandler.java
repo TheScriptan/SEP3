@@ -49,7 +49,7 @@ public class PersistenceHandler {
 	 * -----------------EMPLOYEES----------------------
 	 */
 	
-	//GET ALL
+	//GET ALL EMPLOYEEs
 	public String getAllEmployees() {
 		WebTarget target = client.target(baseAddress + "employees");
 		Response response = null;
@@ -78,7 +78,7 @@ public class PersistenceHandler {
 		return json;
 	}
 	
-	//PUT
+	//PUT ADD EMPLOYEE
 	public int addEmployee(String json) {
 		WebTarget target = client.target(baseAddress + "employees");
 		
@@ -89,7 +89,7 @@ public class PersistenceHandler {
 		return status;
 	}
 	
-	//POST
+	//POST UPDATE EMPLOYEE
 	public int updateEmployee(String json) {
 		WebTarget target = client.target(baseAddress + "employees");
 		
@@ -100,8 +100,8 @@ public class PersistenceHandler {
 		return status;
 	}
 	
-	//DELETE
-	public int deleteEmployee(int id) {
+	//DELETE EMPLOYEE
+	public int deleteEmployee(String id) {
 		WebTarget target = client.target(baseAddress + "employees" + "/" + id);
 		
 		Response response = target.request(MediaType.APPLICATION_JSON)
@@ -114,24 +114,38 @@ public class PersistenceHandler {
 	 * -----------------------STUDENTS--------------------
 	 */
 	
-	//GET ALL
+	//GET ALL STUDENTS
 	public String getAllStudents() {
 		WebTarget target = client.target(baseAddress + "students");
+		Response response = null;
+		String json = "";
 		
-		String json = target.request(MediaType.APPLICATION_JSON).get(String.class);
+		try{
+			response = target.request(MediaType.APPLICATION_JSON).get();
+			json = response.readEntity(String.class);
+		} catch(javax.ws.rs.InternalServerErrorException e) {
+			json = "-1";
+		}
 		return json;
 	}
 	
-	//GET ONE EMPLOYEE
+	//GET ONE STUDENT
 	
-	public String getStudentById(int id) {
+	public String getStudentById(String id) {
 		WebTarget target = client.target(baseAddress + "students/" + id);
+		Response response = null;
+		String json = "";
+		try {
+			response = target.request(MediaType.APPLICATION_JSON).get();
+			json = response.readEntity(String.class);
+		} catch(javax.ws.rs.InternalServerErrorException e) {
+			json = "-1";
+		}
 		
-		String json = target.request(MediaType.APPLICATION_JSON).get(String.class);
 		return json;
 	}
 	
-	//PUT
+	//PUT ADD STUDENT
 	public int addStudent(String json) {
 		WebTarget target = client.target(baseAddress + "students");
 		
@@ -142,7 +156,7 @@ public class PersistenceHandler {
 		return status;
 	}
 	
-	//POST
+	//POST UPDATE STUDENT
 	public int updateStudent(String json) {
 		WebTarget target = client.target(baseAddress + "students");
 		
@@ -153,8 +167,8 @@ public class PersistenceHandler {
 		return status;
 	}
 	
-	//DELETE
-	public int deleteStudent(int id) {
+	//DELETE STUDENT
+	public int deleteStudent(String id) {
 		WebTarget target = client.target(baseAddress + "students" + "/" + id);
 		
 		Response response = target.request(MediaType.APPLICATION_JSON)
@@ -167,24 +181,38 @@ public class PersistenceHandler {
 	 * ---------------------------COMPANY----------
 	 */
 	
-	//GET ALL
+	//GET ALL COMPANIES
 	public String getAllCompanies() {
 		WebTarget target = client.target(baseAddress + "companies");
+		Response response = null;
+		String json = "";
 		
-		String json = target.request(MediaType.APPLICATION_JSON).get(String.class);
+		try {
+			response = target.request(MediaType.APPLICATION_JSON).get();
+			json = response.readEntity(String.class);
+		} catch(javax.ws.rs.InternalServerErrorException e) {
+			json = "-1";
+		}
 		return json;
 	}
 	
-	//GET ONE EMPLOYEE
+	//GET ONE COMPANY
 	
-	public String getCompanyById(int id) {
+	public String getCompanyById(String id) {
 		WebTarget target = client.target(baseAddress + "companies/" + id);
+		Response response = null;
+		String json = "";
+		try {
+			response = target.request(MediaType.APPLICATION_JSON).get();
+			json = response.readEntity(String.class);
+		} catch(javax.ws.rs.InternalServerErrorException e) {
+			json = "-1";
+		}
 		
-		String json = target.request(MediaType.APPLICATION_JSON).get(String.class);
 		return json;
 	}
 	
-	//PUT
+	//PUT ADD COMPANY
 	public int addCompany(String json) {
 		WebTarget target = client.target(baseAddress + "companies");
 		
@@ -195,7 +223,7 @@ public class PersistenceHandler {
 		return status;
 	}
 	
-	//POST
+	//POST UPDATE COMPANY
 	public int updateCompany(String json) {
 		WebTarget target = client.target(baseAddress + "companies");
 		
@@ -206,8 +234,8 @@ public class PersistenceHandler {
 		return status;
 	}
 	
-	//DELETE
-	public int deleteCompany(int id) {
+	//DELETE COMPANY
+	public int deleteCompany(String id) {
 		WebTarget target = client.target(baseAddress + "companies" + "/" + id);
 		
 		Response response = target.request(MediaType.APPLICATION_JSON)
@@ -220,24 +248,39 @@ public class PersistenceHandler {
 	 * -------------------------SHIFTS---------------
 	 */
 	
-	//GET ALL
+	//GET ALL SHIFTS
 	public String getAllShifts() {
 		WebTarget target = client.target(baseAddress + "shifts");
+		Response response = null;
+		String json = "";
 		
-		String json = target.request(MediaType.APPLICATION_JSON).get(String.class);
+		try {
+			response = target.request(MediaType.APPLICATION_JSON).get();
+			json = response.readEntity(String.class);
+		} catch(javax.ws.rs.InternalServerErrorException e) {
+			json = "-1";
+		}
+		
 		return json;
 	}
 	
-	//GET ONE EMPLOYEE
+	//GET ONE SHIFT
 	
-	public String getShiftById(int id) {
+	public String getShiftById(String id) {
 		WebTarget target = client.target(baseAddress + "shifts/" + id);
+		Response response = null;
+		String json = "";
 		
-		String json = target.request(MediaType.APPLICATION_JSON).get(String.class);
+		try{
+			response = target.request(MediaType.APPLICATION_JSON).get();
+			json = response.readEntity(String.class);
+		} catch(javax.ws.rs.InternalServerErrorException e) {
+			json = "-1";
+		}
 		return json;
 	}
 	
-	//PUT
+	//PUT ADD SHIFT
 	public int addShift(String json) {
 		WebTarget target = client.target(baseAddress + "shifts");
 		
@@ -248,7 +291,7 @@ public class PersistenceHandler {
 		return status;
 	}
 	
-	//POST
+	//POST UPDATE SHIFT
 	public int updateShift(String json) {
 		WebTarget target = client.target(baseAddress + "shifts");
 		
@@ -259,8 +302,8 @@ public class PersistenceHandler {
 		return status;
 	}
 	
-	//DELETE
-	public int deleteShift(int id) {
+	//DELETE SHIFT
+	public int deleteShift(String id) {
 		WebTarget target = client.target(baseAddress + "shifts" + "/" + id);
 		
 		Response response = target.request(MediaType.APPLICATION_JSON)
@@ -273,24 +316,40 @@ public class PersistenceHandler {
 	 * --------------------------COMPLETE SHIFT-----------------------
 	 */
 	
-	//GET ALL
+	//GET ALL COMPLETED SHIFTS
 	public String getAllCompleteShifts() {
 		WebTarget target = client.target(baseAddress + "shiftsdone");
+		Response response = null;
+		String json = "";
 		
-		String json = target.request(MediaType.APPLICATION_JSON).get(String.class);
+		
+		try{
+			response = target.request(MediaType.APPLICATION_JSON).get();
+			json = response.readEntity(String.class);
+		} catch(javax.ws.rs.InternalServerErrorException e) {
+			json = "-1";
+		}
 		return json;
 	}
 	
-	//GET ONE EMPLOYEE
+	//GET ONE COMPLETED SHIFT
 	
-	public String getCompleteShiftById(int id) {
+	public String getCompleteShiftById(String id) {
 		WebTarget target = client.target(baseAddress + "shiftsdone/" + id);
+		Response response = null;
+		String json = "";
 		
-		String json = target.request(MediaType.APPLICATION_JSON).get(String.class);
+		try {
+			response = target.request(MediaType.APPLICATION_JSON).get();
+			json = response.readEntity(String.class);
+		} catch(javax.ws.rs.InternalServerErrorException e) {
+			json = "-1";
+		}
+		
 		return json;
 	}
 	
-	//POST
+	//POST UPDATE COMPLETESHIFT
 		public int updateCompleteShift(String json) {
 			WebTarget target = client.target(baseAddress + "shiftsdone");
 			
