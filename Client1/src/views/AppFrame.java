@@ -3,6 +3,7 @@ package views;
 import javax.swing.JFrame;
 
 import controllers.AdminController;
+import controllers.EmployeeController;
 import controllers.BaseController;
 
 
@@ -19,6 +20,7 @@ public class AppFrame extends JFrame {
 	
 	private LogInPanel basePanel;
 	private AdminPanel shiftPanel;
+	private EmployeePanel shiftPanel;
 	
 	/**
 	 * Create a frame object passing a reference the UserController for use by the AppFrame object.
@@ -30,9 +32,9 @@ public class AppFrame extends JFrame {
 		setupFrame();
 	}
 	
-	public AppFrame(AdminController adminController)
+	public AppFrame(EmployeeController adminController)
    {
-      shiftPanel = new AdminPanel(adminController);
+      shiftPanel = new EmployeePanel(adminController);
             setupFrame();
    }
 
