@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 import views.AppFrame;
 
-public class AdminController {
+public class EmployeeController {
 
    private AppFrame appFrame;
 

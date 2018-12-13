@@ -124,7 +124,7 @@ public class LogInPanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				
 					getPanel().setVisible(false);
-					baseController.getFrame().setContentPane(new AdminPanel(null));
+					baseController.getFrame().setContentPane(new EmployeePanel(null));
 					
 			}
 		});

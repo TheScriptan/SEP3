@@ -13,12 +13,12 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import controllers.AdminController;
+import controllers.EmployeeController;
 import javax.swing.JTextArea;
 
-public class AdminPanel extends JPanel
+public class EmployeePanel extends JPanel
 {
-   private AdminController adminController;
+   private EmployeeController adminController;
    private JTable ShiftTable;
    
    
@@ -28,7 +28,7 @@ public class AdminPanel extends JPanel
    /**
     * Create the panel.
     */
-   public AdminPanel(AdminController adminController)
+   public EmployeePanel(EmployeeController adminController)
    {
       this.adminController = adminController;
       setLayout(null);
