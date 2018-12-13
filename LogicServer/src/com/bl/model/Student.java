@@ -165,13 +165,14 @@ public class Student {
 	}
 	public boolean verifyStudent()
 	{
-		if(!verifyStudentId(studentId) && verifyPassword(password) && verifyStudentName(studentName) && verifyStudentAdress(studentAdress) && verifyStudentPhone(studentPhone) && verifyStudentEmail(studentEmail) && verifyStudentBankAcc(studentBankAcc))
+		if(!verifyStudentId(studentId) && verifyPassword(password) && verifyStudentName(studentName) && verifyStudentAdress(studentAdress) && verifyStudentPhoneNo(studentPhoneNo) && verifyStudentEmail(studentEmail) && verifyStudentBankAcc(studentBankAcc))
 			return false;
 		return true;
+	}
 	// add info 
 	@Override
 	public String toString() {
-		return this.studentId + " " + this.name;
+		return this.studentId + " " + this.studentName;
 	}
 // 	public String toString() {
 // 		return "Employee [employeeId=" + employeeId + ", password=" + password + ", employeeName=" + employeeName + ", employeeAdress="

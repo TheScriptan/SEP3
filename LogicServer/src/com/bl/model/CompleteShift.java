@@ -57,7 +57,7 @@ public class CompleteShift {
 
     	if(studentId == null || studentId.equals(""))
         return false;
-    	if(!companyName.matches("^[a-zA-Z0-9]*"))
+    	if(!studentId.matches("^[a-zA-Z0-9]*"))
         return false;
 
    	 return true;

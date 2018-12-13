@@ -61,7 +61,7 @@ public class ClientHandler implements Runnable {
 						this.s.close(); 	//MAY NEED TO REMOVE THIS
 					}
 				} else {
-					Utils.SendResponse(dos, Utils.Responses.LOGIN_INVALID, "invalid"); 			//Send login status to client
+					Utils.SendResponse(dos, Utils.Responses.LOGIN_INVALID, "login invalid"); 			//Send login status to client
 				}
 			} catch(Exception e) {
 				e.printStackTrace();

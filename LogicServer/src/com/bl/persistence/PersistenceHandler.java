@@ -28,7 +28,6 @@ public class PersistenceHandler {
 			
 			Response response = target.request(MediaType.APPLICATION_JSON).get();
 			String json = getEmployeeById(cpr);
-			//UPDATE ALL PERSISTENCE FUNCTIONS WITH RESPONSE
 		}
 		else if(role.equals("employee")) {
 			

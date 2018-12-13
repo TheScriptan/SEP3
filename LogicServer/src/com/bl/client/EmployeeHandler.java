@@ -42,6 +42,15 @@ public class EmployeeHandler extends IHandler {
 						Utils.SendResponse(dos, Utils.Responses.OBJECT_RETRIEVED, json);
 					}
 				}
+				//ADD EMPLOYEE
+				if(request.getRequestCode().equals(Utils.Requests.ADD_EMPLOYEE.toString())) {
+					int status = pers.addEmployee(request.getArguments()[0]);
+					if(status == 200) {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_ADDED, "" + status);
+					} else {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_ADDED, "" + status);
+					}
+				}
 				
 			}
 				

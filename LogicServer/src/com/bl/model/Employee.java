@@ -160,7 +160,7 @@ public class Employee {
 	}
 	public boolean verifyEmployee()
 	{
-		if(!verifyEmployeeId(employeeId) && verifyPassword(password) && verifyEmployeeName(employeeName) && verifyEmployeeAdress(employeeAdress) && verifyEmployeePhone(employeePhone) && verifyEmployeeEmail(employeeEmail) && verifyEmployeeBankAcc(employeeBankAcc))
+		if(!verifyEmployeeId(employeeId) && verifyPassword(password) && verifyEmployeeName(employeeName) && verifyEmployeeAdress(employeeAdress) && verifyEmployeePhoneNo(employeePhoneNo) && verifyEmployeeEmail(employeeEmail) && verifyEmployeeBankAcc(employeeBankAcc))
 			return false;
 		return true;
 		
