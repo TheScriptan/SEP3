@@ -41,9 +41,8 @@ public class ClientHandler implements Runnable {
 				role = loginRequest.getArguments()[2];
 				isLoggedIn = pers.verifyLogin(username, password, role);						//Contacting PersistenceHandler to verify login					
 				
-				
 				if(isLoggedIn) {
-					Utils.SendResponse(dos, Utils.Responses.LOGIN_VALID, "valid"); 				//Send login status to client
+					Utils.SendResponse(dos, "0", "login valid"); 				//Send login status to client
 					StudentHandler studentHandler = new StudentHandler(s, dis, dos, pers); 		//Initializing Student Handler
 					EmployeeHandler employeeHandler = new EmployeeHandler(s, dis, dos, pers);	//Initializing Employee Handler
 					
@@ -61,7 +60,7 @@ public class ClientHandler implements Runnable {
 						this.s.close(); 	//MAY NEED TO REMOVE THIS
 					}
 				} else {
-					Utils.SendResponse(dos, Utils.Responses.LOGIN_INVALID, "login invalid"); 			//Send login status to client
+					Utils.SendResponse(dos, "1", "login invalid"); 			//Send login status to client
 				}
 			} catch(Exception e) {
 				e.printStackTrace();

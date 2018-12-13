@@ -1,5 +1,6 @@
 package com.bl.utils;
 
+
 public class Response {
 	private String responseCode;
 	private String[] arguments;

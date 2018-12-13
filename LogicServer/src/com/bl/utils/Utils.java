@@ -1,6 +1,7 @@
 package com.bl.utils;
 
 
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.nio.charset.StandardCharsets;
@@ -12,8 +13,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.bl.utils.Request;
-import com.bl.utils.Response;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -33,20 +32,6 @@ public class Utils {
 		REGISTER, EDIT_INFO, TAKE_SHIFT,
 		REPORT_SICKNESS, CHECK_WORKED_HOURS,
 		CREATE_SCHEDULE
-	}
-	
-	public enum Responses{
-		LOGIN_VALID, LOGIN_INVALID,
-		OBJECT_RETRIEVED, OBJECT_ADDED, OBJECT_EDITED, OBJECT_DELETED,
-		OBJECT_NOT_RETRIEVED, OBJECT_NOT_ADDED, OBJECT_NOT_EDITED, OBJECT_NOT_DELETED,
-		SHIFT_ASSIGNED, SHIFT_UNASSIGNED, SHIFT_RELEASED, SHIFT_UNRELEASED,
-		REGISTER_VALID, REGISTER_INVALID, 
-		INFO_EDITED, INFO_NOT_EDITED,
-		SHIFT_TAKEN, SHIFT_NOT_TAKEN,
-		SICKNESS_REPORTED, SICKNESS_NOT_REPORTED, 
-		HOURS_CHECKED, HOURS_NOT_CHECKED,
-		SCHEDULE_CREATED, SCHEDULE_NOT_CREATED
-		
 	}
 	
 	private static Utils utilsInstance = null;
@@ -133,10 +118,10 @@ public class Utils {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static void SendResponse(DataOutputStream dos, Responses responseCode, String ... arguments) {
+	public static void SendResponse(DataOutputStream dos, String responseCode, String ... arguments) {
 		try {
 			JSONObject obj = new JSONObject();
-			obj.put("request-code", responseCode.toString());
+			obj.put("request-code", responseCode);
 			JSONArray list = new JSONArray();
 			for(String arg : arguments) {
 				list.add(arg);

@@ -28,30 +28,29 @@ public class EmployeeHandler extends IHandler {
 				if(request.getRequestCode().equals(Utils.Requests.FIND_ALL_EMPLOYEES.toString())) {
 					String json = pers.getAllEmployees();
 					if(json.equals("-1")) {
-						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_RETRIEVED, "no employees");
+						Utils.SendResponse(dos, "1", "no employees");
 					} else {
-						Utils.SendResponse(dos, Utils.Responses.OBJECT_RETRIEVED, json);
+						Utils.SendResponse(dos, "0", json);
 					}
 				}
 				//GET INDIVIDUAL EMPLOYEE
 				if(request.getRequestCode().equals(Utils.Requests.FIND_EMPLOYEE.toString())) {
 					String json = pers.getEmployeeById(request.getArguments()[0]);
 					if(json.equals("-1")) {
-						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_RETRIEVED, "no employee");
+						Utils.SendResponse(dos, "1", "no employee");
 					} else {
-						Utils.SendResponse(dos, Utils.Responses.OBJECT_RETRIEVED, json);
+						Utils.SendResponse(dos, "0", json);
 					}
 				}
 				//ADD EMPLOYEE
 				if(request.getRequestCode().equals(Utils.Requests.ADD_EMPLOYEE.toString())) {
 					int status = pers.addEmployee(request.getArguments()[0]);
 					if(status == 200) {
-						Utils.SendResponse(dos, Utils.Responses.OBJECT_ADDED, "" + status);
+						Utils.SendResponse(dos, "0", "" + status);
 					} else {
-						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_ADDED, "" + status);
+						Utils.SendResponse(dos, "1", "Employee duplicated. Status code: " + status);
 					}
 				}
-				
 			}
 				
 		}
