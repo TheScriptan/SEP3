@@ -105,14 +105,6 @@ public class LogInPanel extends JPanel{
 		login.setBounds(308, 201, 89, 23);
 		add(login);
 		
-		JCheckBox chckbxAdmin = new JCheckBox("Admin ");
-		chckbxAdmin.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent arg0) {
-				
-				
-			}
-		});
-		
 		
 		/**
 		 * Login button Event listener.
@@ -122,9 +114,15 @@ public class LogInPanel extends JPanel{
 			
 			public void actionPerformed(ActionEvent arg0) {
 				
+				 String check = username.getText();
+				if(check.equalsIgnoreCase("admin"))
+				{
 					getPanel().setVisible(false);
 					baseController.getFrame().setContentPane(new EmployeePanel(null));
-					
+				} else {
+					getPanel().setVisible(false);
+					baseController.getFrame().setContentPane(new StudentPanel(null));
+				}
 			}
 		});
 		

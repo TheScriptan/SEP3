@@ -110,6 +110,14 @@ public class EmployeePanel extends JPanel
        */
       
       JButton btnEditShift = new JButton("Edit Shift");
+      btnEditShift.addMouseListener(new MouseAdapter() {
+      	@Override
+      	public void mouseClicked(MouseEvent e) {
+      		
+      		new AddShift(employeeController);
+      		
+      	}
+      });
       btnEditShift.setBounds(547, 36, 126, 23);
       ShiftPanel.add(btnEditShift);
       
@@ -136,6 +144,7 @@ public class EmployeePanel extends JPanel
       		ShiftInformationPane.setVisible(true);
       	}
       });
+      ShiftTable.getSelectedRow();
       ShiftTable.setModel(new DefaultTableModel(
       	new Object[][] {
       		{null, null, null, null, null, null},
@@ -163,7 +172,7 @@ public class EmployeePanel extends JPanel
       		{null, null, null, null, null, null},
       	},
       	new String[] {
-      		"Location", "Company", "Time", "Date", "Status", "Released"
+      		"Comapny ID", "Location", "Shift Date", "Time", "Status", "Released"
       	}
       ) {
     	  
@@ -242,54 +251,40 @@ public class EmployeePanel extends JPanel
        */
       StudentTable.setModel(new DefaultTableModel(
       	new Object[][] {
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
-      		{null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
+      		{null, null, null, null, null, null, null},
       	},
       	new String[] {
-      		"Name", "CPR", "Phone", "Address"
+      		"Student CPR", "Student Password", "Name", "Address", "Phone Nr.", "E-mail", "Bank Account"
       	}
-      ) {
-      	/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		boolean[] columnEditables = new boolean[] {
-      		false, false, false, false
-      	};
-      	public boolean isCellEditable(int row, int column) {
-      		return columnEditables[column];
-      	}
-      });
-      StudentTable.getColumnModel().getColumn(0).setResizable(false);
-      StudentTable.getColumnModel().getColumn(0).setPreferredWidth(125);
-      StudentTable.getColumnModel().getColumn(1).setResizable(false);
+      ));
+      StudentTable.getColumnModel().getColumn(0).setPreferredWidth(79);
       StudentTable.getColumnModel().getColumn(1).setPreferredWidth(110);
-      StudentTable.getColumnModel().getColumn(2).setResizable(false);
-      StudentTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+      StudentTable.getColumnModel().getColumn(2).setPreferredWidth(96);
       StudentTable.getColumnModel().getColumn(2).setMinWidth(0);
-      StudentTable.getColumnModel().getColumn(3).setResizable(false);
-      StudentTable.getColumnModel().getColumn(3).setPreferredWidth(125);
+      StudentTable.getColumnModel().getColumn(3).setPreferredWidth(132);
       StudentTable.getColumnModel().getColumn(3).setMinWidth(0);
+      StudentTable.getColumnModel().getColumn(4).setPreferredWidth(84);
       StudentTableScrollPane.setViewportView(StudentTable);
       /**
        * Create a button Add Student.
@@ -313,6 +308,13 @@ public class EmployeePanel extends JPanel
        * Create a button Edit Student.
        */
       JButton btnEditStudent = new JButton("Edit Student");
+      btnEditStudent.addMouseListener(new MouseAdapter() {
+      	@Override
+      	public void mouseClicked(MouseEvent e) {
+      		
+      		new AddShift(employeeController);
+      	}
+      });
       btnEditStudent.setBounds(550, 45, 126, 23);
       StudentPanel.add(btnEditStudent);
       /**

@@ -18,6 +18,7 @@ public class AddShift extends JFrame {
 	private EmployeeController empCon;
 	private JTextField txtCompanyID;
 	private JTextField txtShiftTime;
+	private JTextField txtLocation;
 	public AddShift(EmployeeController empCon)
 	{
 		this.empCon = empCon;
@@ -35,7 +36,7 @@ public void GenerateView()
 	AddShiftPanel.setLayout(null);
 	
 	JLabel lblCompanyID = new JLabel("Company ID:");
-	lblCompanyID.setBounds(49, 55, 99, 26);
+	lblCompanyID.setBounds(49, 25, 99, 26);
 	AddShiftPanel.add(lblCompanyID);
 	
 	JLabel lblShiftDate = new JLabel("Shift Date:");
@@ -52,7 +53,7 @@ public void GenerateView()
 	
 	txtCompanyID = new JTextField();
 	txtCompanyID.setToolTipText("Please write the company ID.");
-	txtCompanyID.setBounds(144, 58, 196, 20);
+	txtCompanyID.setBounds(144, 28, 196, 20);
 	AddShiftPanel.add(txtCompanyID);
 	txtCompanyID.setColumns(10);
 	
@@ -84,6 +85,16 @@ public void GenerateView()
 	});
 	btnShiftConfirm.setBounds(183, 290, 89, 23);
 	AddShiftPanel.add(btnShiftConfirm);
+	
+	JLabel lblLocation = new JLabel("Location:");
+	lblLocation.setBounds(49, 62, 85, 14);
+	AddShiftPanel.add(lblLocation);
+	
+	txtLocation = new JTextField();
+	txtLocation.setToolTipText("Please write the companies location.");
+	txtLocation.setColumns(10);
+	txtLocation.setBounds(144, 62, 196, 20);
+	AddShiftPanel.add(txtLocation);
 	
 		setBounds(150, 50, 450, 380);
 		setVisible(true);
