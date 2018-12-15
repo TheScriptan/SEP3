@@ -6,6 +6,7 @@ import java.net.Socket;
 
 import com.bl.persistence.PersistenceHandler;
 import com.bl.utils.Request;
+import com.bl.utils.Response;
 import com.bl.utils.Utils;
 
 public class ClientHandler implements Runnable {
@@ -31,27 +32,29 @@ public class ClientHandler implements Runnable {
 		
 		String username;
 		String password;
-		Request loginRequest = Utils.AcceptRequest(dis);
-		if(loginRequest.getRequestCode().equals(Utils.Requests.LOGIN.toString())) {				//Checking if requestCode == LOGIN
+		Request initialRequest = Utils.AcceptRequest(dis);
+		if(initialRequest.getRequestCode().equals(Utils.Requests.LOGIN.toString())) {				//Checking if requestCode == LOGIN
 			//Login stage
 			try{
 				
-				username = loginRequest.getArguments()[0];										//Reading 3 inputs username, password and role to verify which DB to check for credentials
-				password = loginRequest.getArguments()[1];
-				role = loginRequest.getArguments()[2];
+				username = initialRequest.getArguments()[0];										//Reading 3 inputs username, password and role to verify which DB to check for credentials
+				password = initialRequest.getArguments()[1];
+				role = initialRequest.getArguments()[2];
 				isLoggedIn = pers.verifyLogin(username, password, role);						//Contacting PersistenceHandler to verify login					
 				
 				if(isLoggedIn) {
 					Utils.SendResponse(dos, "0", "login valid"); 								//Send login status to client
-					StudentHandler studentHandler = new StudentHandler(s, dis, dos, pers); 		//Initializing Student Handler
-					EmployeeHandler employeeHandler = new EmployeeHandler(s, dis, dos, pers);	//Initializing Employee Handler
+					
+					
 					
 					if(role.equals("student")) {
 						//Send response to client
+						StudentHandler studentHandler = new StudentHandler(s, dis, dos, pers); 		//Initializing Student Handler
 						studentHandler.Start();
 					}
 					else if(role.equals("employee")) {
 						//Send response to client
+						EmployeeHandler employeeHandler = new EmployeeHandler(s, dis, dos, pers);	//Initializing Employee Handler
 						employeeHandler.Start();
 					}
 					else {
@@ -66,7 +69,18 @@ public class ClientHandler implements Runnable {
 				e.printStackTrace();
 			}
 		}
-		//ELSE IF loginRequest.getRequestCode().equals(Utils.Requests.REGISTER)
+		else if (initialRequest.getRequestCode().equals(Utils.Requests.REGISTER.toString())) {
+			try {
+				int status = pers.addStudent(initialRequest.getArguments()[0]);
+				if(status == 200) {
+					Utils.SendResponse(dos, "0", "" + status);
+				} else {
+					Utils.SendResponse(dos, "1", "Student already exists. Status code: " + status);
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 	}

@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.bl.model.Employee;
+import com.bl.model.Student;
 import com.bl.utils.Utils;
 
 public class PersistenceHandler {
@@ -24,10 +25,16 @@ public class PersistenceHandler {
 	//WHEN PERSISTENCE WILL BE FINISHED UPDATE HERE TO RECOGNIZE ROLE
 	public boolean verifyLogin(String cpr, String password, String role) {
 		if(role.equals("student")) {
-			WebTarget target = client.target(baseAddress + "students/" + cpr);
 			
-			Response response = target.request(MediaType.APPLICATION_JSON).get();
 			String json = getEmployeeById(cpr);
+			if(json.equals("-1")) {
+				return false;
+			}
+			
+			Student student = (Student) Utils.deserializeObject(json, Student.class);
+			if(student.getPassword().equals(password)) {
+				return true;
+			}
 		}
 		else if(role.equals("employee")) {
 			
@@ -151,7 +158,7 @@ public class PersistenceHandler {
 		
 		Response response = target.request(MediaType.APPLICATION_JSON)
 							.accept(MediaType.TEXT_PLAIN_TYPE)
-							.put(Entity.json(json));
+							.post(Entity.json(json));
 		int status = response.getStatus();
 		return status;
 	}
