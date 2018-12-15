@@ -1,5 +1,7 @@
 package views;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -12,11 +14,14 @@ import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
 import controllers.EmployeeController;
+import views.popouts.AddShift;
+import views.popouts.AddStudent;
 
 public class EmployeePanel extends JPanel
 {
    private JTable ShiftTable;
    private EmployeeController employeeController;
+   private AddShift addShift;
    
    
    JScrollPane ShiftInformationPane = new JScrollPane();
@@ -77,6 +82,18 @@ public class EmployeePanel extends JPanel
        */
       
       JButton btnNewShift = new JButton("New Shift");
+      btnNewShift.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+      	}
+      });
+      btnNewShift.addMouseListener(new MouseAdapter() {
+      	
+      	public void mouseClicked(MouseEvent e) {
+      		
+      		new AddShift(employeeController);
+
+      	}
+      });
       btnNewShift.setBounds(547, 11, 126, 23);
       ShiftPanel.add(btnNewShift);
       
@@ -278,6 +295,18 @@ public class EmployeePanel extends JPanel
        * Create a button Add Student.
        */
       JButton btnAddStudent = new JButton("Add Student");
+      btnAddStudent.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+      		
+      		
+      	}
+      });
+      btnAddStudent.addMouseListener(new MouseAdapter() {
+      	public void mouseClicked(MouseEvent e) {
+      		
+      		new AddStudent(employeeController);
+      	}
+      });
       btnAddStudent.setBounds(550, 11, 126, 23);
       StudentPanel.add(btnAddStudent);
       /**
@@ -329,6 +358,11 @@ public class EmployeePanel extends JPanel
       
      
    }
+   
+   public JPanel getPanel()
+	{
+		return this;
+	}
 
 }
 

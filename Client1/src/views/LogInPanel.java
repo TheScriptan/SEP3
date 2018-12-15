@@ -112,8 +112,7 @@ public class LogInPanel extends JPanel{
 				
 			}
 		});
-		chckbxAdmin.setBounds(292, 242, 97, 23);
-		add(chckbxAdmin);
+		
 		
 		/**
 		 * Login button Event listener.
