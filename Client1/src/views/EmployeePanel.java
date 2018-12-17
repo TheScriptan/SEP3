@@ -81,7 +81,7 @@ public class EmployeePanel extends JPanel
        * Creating button New Shift in the shift tab.
        */
       
-      JButton btnNewShift = new JButton("New Shift");
+      JButton btnNewShift = new JButton("Add Shift");
       btnNewShift.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent e) {
       	}

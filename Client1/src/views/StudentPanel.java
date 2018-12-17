@@ -13,6 +13,8 @@ import javax.swing.table.DefaultTableModel;
 import com.toedter.calendar.JCalendar;
 
 import controllers.StudentController;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class StudentPanel extends JPanel
 {
@@ -75,13 +77,13 @@ public class StudentPanel extends JPanel
        * Creating a button for the available shifts
        */
       JButton btnAvalaibleShifts = new JButton("Avalaible Shifts");
-      btnAvalaibleShifts.setBounds(20, 155, 105, 23);
+      btnAvalaibleShifts.setBounds(20, 155, 148, 23);
       add(btnAvalaibleShifts);
       /**
        * Creating a button for My Shifts
        */
       JButton btnMyShifts = new JButton("My Shifts");
-      btnMyShifts.setBounds(178, 155, 89, 23);
+      btnMyShifts.setBounds(178, 155, 138, 23);
       add(btnMyShifts);
       /**
        * Creating a Student Schedule ScrollPane
@@ -105,25 +107,29 @@ public class StudentPanel extends JPanel
        * Creating a button for Requesting Shifts
        */
       JButton btnRequestshift = new JButton("Request Shift");
-      btnRequestshift.setBounds(468, 186, 105, 23);
+      btnRequestshift.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent arg0) {
+      	}
+      });
+      btnRequestshift.setBounds(468, 186, 139, 23);
       add(btnRequestshift);
       /**
        * Creating a button for Sickness report
        */
       JButton btnReportSickness = new JButton("Report Sickness");
-      btnReportSickness.setBounds(464, 218, 109, 23);
+      btnReportSickness.setBounds(469, 220, 138, 23);
       add(btnReportSickness);
       /**
        * Creating a checkbox that shows the School Calendar when checked
        */
       JCheckBox chckbxShowSchoolCalendar = new JCheckBox("Show school calendar");
-      chckbxShowSchoolCalendar.setBounds(452, 248, 138, 28);
+      chckbxShowSchoolCalendar.setBounds(452, 248, 175, 28);
       add(chckbxShowSchoolCalendar);
       /**
        * Creating a checkbox that shows the Calendar when checked
        */
       JCheckBox chckbxShowWorkCalendar = new JCheckBox("Show work calendar");
-      chckbxShowWorkCalendar.setBounds(452, 279, 121, 23);
+      chckbxShowWorkCalendar.setBounds(452, 279, 175, 23);
       add(chckbxShowWorkCalendar);
 
    }

@@ -116,8 +116,20 @@ public class AddStudent extends JFrame {
 			}
 		});
 		btnStudentConfirm.setToolTipText("Adds the student to the database.");
-		btnStudentConfirm.setBounds(166, 248, 89, 23);
+		btnStudentConfirm.setBounds(85, 249, 89, 23);
 		AddStudentPanel.add(btnStudentConfirm);
+		
+		JButton btnStudentCancel = new JButton("Cancel");
+		btnStudentCancel.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				
+				dispose();
+				
+			}
+		});
+		btnStudentCancel.setToolTipText("");
+		btnStudentCancel.setBounds(232, 249, 89, 23);
+		AddStudentPanel.add(btnStudentCancel);
 		
 		
 		setBounds(150, 50, 450, 380);

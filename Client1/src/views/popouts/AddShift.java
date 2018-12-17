@@ -83,7 +83,7 @@ public void GenerateView()
 			dispose();
 		}
 	});
-	btnShiftConfirm.setBounds(183, 290, 89, 23);
+	btnShiftConfirm.setBounds(117, 290, 89, 23);
 	AddShiftPanel.add(btnShiftConfirm);
 	
 	JLabel lblLocation = new JLabel("Location:");
@@ -95,6 +95,18 @@ public void GenerateView()
 	txtLocation.setColumns(10);
 	txtLocation.setBounds(144, 62, 196, 20);
 	AddShiftPanel.add(txtLocation);
+	
+	JButton btnShiftCancel = new JButton("Cancel");
+	btnShiftCancel.addMouseListener(new MouseAdapter() {
+		
+		public void mouseClicked(MouseEvent arg0) {
+			
+			dispose();
+		}
+	});
+	btnShiftCancel.setToolTipText("");
+	btnShiftCancel.setBounds(249, 290, 89, 23);
+	AddShiftPanel.add(btnShiftCancel);
 	
 		setBounds(150, 50, 450, 380);
 		setVisible(true);
