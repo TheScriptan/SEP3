@@ -12,6 +12,9 @@ import controllers.EmployeeController;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JCheckBox;
 
 public class AddShift extends JFrame {
 	
@@ -31,7 +34,7 @@ public class AddShift extends JFrame {
 public void GenerateView()
 	{
 	JPanel AddShiftPanel = new JPanel();
-	AddShiftPanel.setBounds(0, 0, 434, 355);
+	AddShiftPanel.setBounds(0, 0, 434, 441);
 	getContentPane().add(AddShiftPanel);
 	AddShiftPanel.setLayout(null);
 	
@@ -83,7 +86,7 @@ public void GenerateView()
 			dispose();
 		}
 	});
-	btnShiftConfirm.setBounds(117, 290, 89, 23);
+	btnShiftConfirm.setBounds(96, 344, 89, 23);
 	AddShiftPanel.add(btnShiftConfirm);
 	
 	JLabel lblLocation = new JLabel("Location:");
@@ -97,6 +100,10 @@ public void GenerateView()
 	AddShiftPanel.add(txtLocation);
 	
 	JButton btnShiftCancel = new JButton("Cancel");
+	btnShiftCancel.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		}
+	});
 	btnShiftCancel.addMouseListener(new MouseAdapter() {
 		
 		public void mouseClicked(MouseEvent arg0) {
@@ -105,10 +112,18 @@ public void GenerateView()
 		}
 	});
 	btnShiftCancel.setToolTipText("");
-	btnShiftCancel.setBounds(249, 290, 89, 23);
+	btnShiftCancel.setBounds(251, 344, 89, 23);
 	AddShiftPanel.add(btnShiftCancel);
 	
-		setBounds(150, 50, 450, 380);
+	JLabel lblReleaseShift = new JLabel("Release Shift:");
+	lblReleaseShift.setBounds(49, 306, 99, 14);
+	AddShiftPanel.add(lblReleaseShift);
+	
+	JCheckBox checkBox = new JCheckBox("");
+	checkBox.setBounds(144, 302, 97, 23);
+	AddShiftPanel.add(checkBox);
+	
+		setBounds(150, 50, 448, 480);
 		setVisible(true);
 		setLocationRelativeTo(null);
 	
