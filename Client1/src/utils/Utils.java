@@ -16,6 +16,7 @@ import utils.Request;
 import utils.Response;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 
 public class Utils {
 	
@@ -56,13 +57,16 @@ public class Utils {
 	
 	
 	private Utils() {
-		builder = new GsonBuilder();
-		builder.setPrettyPrinting();
+		builder = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		
 		gson = builder.create();
 	}
-	
+
 	public static String serializeObject(Object object) {
 		return getInstance().gson.toJson(object);
+	}
+	public static String serializeDate(JsonElement e) {
+		return getInstance().gson.toJson(e);
 	}
 	
 	public static Object deserializeObject(String json, Class<?> classType) {

@@ -1,7 +1,5 @@
 package views;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -10,11 +8,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
 import controllers.AdminController;
-import javax.swing.JTextArea;
+import serverConnection.Connection;
 
 public class AdminPanel extends JPanel
 {
@@ -25,12 +23,14 @@ public class AdminPanel extends JPanel
    JScrollPane ShiftInformationPane = new JScrollPane();
    JScrollPane StudentInformationPane = new JScrollPane();
    private JTable StudentTable;
+   Connection c;
    /**
     * Create the panel.
     */
-   public AdminPanel(AdminController adminController)
+   public AdminPanel(AdminController adminController, Connection c)
    {
       this.adminController = adminController;
+      this.c = c;
       setLayout(null);
       GenerateView();
    }

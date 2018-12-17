@@ -13,18 +13,21 @@ import javax.swing.table.DefaultTableModel;
 import com.toedter.calendar.JCalendar;
 
 import controllers.StudentController;
+import serverConnection.Connection;
 
 public class StudentPanel extends JPanel
 {
-   private JTable StudentSchoolTable;
+   private JTable studentSchoolTable;
    private StudentController userController;
+   Connection c;
 
    /**
     * Create the panel.
     */
-   public StudentPanel(StudentController userController)
+   public StudentPanel(StudentController userController, Connection c)
    {
 	   this.userController = userController;
+	   this.c = c;
 	      setLayout(null);
       GenerateView();
 
@@ -41,8 +44,8 @@ public class StudentPanel extends JPanel
       /**
        * Creating StudentSchoolTable
        */
-      StudentSchoolTable = new JTable();
-      StudentSchoolTable.setModel(new DefaultTableModel(
+      studentSchoolTable = new JTable();
+      studentSchoolTable.setModel(new DefaultTableModel(
          new Object[][] {
             {null, null, null},
             {null, null, null},
@@ -64,7 +67,7 @@ public class StudentPanel extends JPanel
             "Date", "City", "Time"
          }
       ));
-      scrollPane.setViewportView(StudentSchoolTable);
+      scrollPane.setViewportView(studentSchoolTable);
       /**
        * Creating the calendar
        */
@@ -131,5 +134,9 @@ public class StudentPanel extends JPanel
    public JPanel getPanel()
    {
       return this;
+   }
+
+   
+   public void fillStudentTable(JTable table) {
    }
 }

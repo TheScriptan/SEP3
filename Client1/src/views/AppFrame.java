@@ -1,10 +1,13 @@
 package views;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.JFrame;
 
-import controllers.AdminController;
-import controllers.EmployeeController;
 import controllers.BaseController;
+import controllers.EmployeeController;
+import serverConnection.Connection;
 
 
 /**
@@ -19,8 +22,7 @@ public class AppFrame extends JFrame {
 	 */
 	
 	private LogInPanel basePanel;
-	private AdminPanel shiftPanel;
-	private EmployeePanel shiftPanel;
+	public Connection connection;
 	
 	/**
 	 * Create a frame object passing a reference the UserController for use by the AppFrame object.
@@ -28,15 +30,14 @@ public class AppFrame extends JFrame {
 	
 	public AppFrame(BaseController LogInController)
 	{
-		basePanel = new LogInPanel(LogInController);
+
+		connection = new Connection("localhost", 1234);
+		
+		basePanel = new LogInPanel(LogInController, connection);
 		setupFrame();
 	}
 	
-	public AppFrame(EmployeeController adminController)
-   {
-      shiftPanel = new EmployeePanel(adminController);
-            setupFrame();
-   }
+
 
    /**
 	 * Sets up the content pane, size and visibility.
@@ -47,7 +48,52 @@ public class AppFrame extends JFrame {
 		this.setContentPane(basePanel);
 		this.setBounds(150, 50, 720, 480);
 		this.setVisible(true);
-      this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.addWindowListener(new WindowListener() {
+			
+			
+			
+			@Override
+			public void windowClosing(WindowEvent e) {
+				connection.closeConnection();
+				System.exit(0);
+			}
+
+			@Override
+			public void windowActivated(WindowEvent e) {
+				
+			}
+
+			@Override
+			public void windowClosed(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowDeiconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowIconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowOpened(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 	}
 
 }

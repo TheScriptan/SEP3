@@ -51,6 +51,25 @@ public class EmployeeHandler extends IHandler {
 						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_ADDED, "" + status);
 					}
 				}
+				//ADD STUDENT
+				if(request.getRequestCode().equals(Utils.Requests.ADD_STUDENT.toString())) {
+					int status = pers.addStudent(request.getArguments()[0]);
+					if(status == 200) {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_ADDED, "" + status);
+					} else {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_ADDED, "" + status);
+					}
+				}
+				//ADD SHIFT
+				if(request.getRequestCode().equals(Utils.Requests.ADD_SHIFT.toString())) {
+					int status = pers.addShift(request.getArguments()[0]);
+					if(status == 200) {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_ADDED, "" + status);
+					} else {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_ADDED, "" + status);
+					}
+				}
+				
 				
 			}
 				

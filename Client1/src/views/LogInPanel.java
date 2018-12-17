@@ -3,11 +3,8 @@ package views;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,10 +12,13 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import controllers.BaseController;
 import controllers.StudentController;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
+import serverConnection.Connection;
+import utils.Utils;
 
 /**
  * AppPanel object that extends JPanel for use with a MVC GUI.
@@ -36,14 +36,15 @@ public class LogInPanel extends JPanel{
 	private JTextField username;
 	private JPasswordField password;
 	private StudentController userController;
-	
+	public Connection c;
 	/**
 	 * Create a panel object passing a reference the UserController for use by the AppPanel object.
 	 */
 	
-	public LogInPanel(BaseController baseController)
+	public LogInPanel(BaseController baseController, Connection c)
 	{
 		this.baseController = baseController;
+		this.c = c;
 		setLayout(null);
 		GenerateView();
 		
@@ -97,6 +98,13 @@ public class LogInPanel extends JPanel{
 		dtrpnViaVikar.setBounds(260, 44, 289, 49);
 		add(dtrpnViaVikar);
 		
+		
+		
+		//------------------
+		JLabel errorLabel = new JLabel("");
+		errorLabel.setBounds(10, 400, 400, 20);
+		add(errorLabel);
+		
 		/**
 		 * Create login button.
 		 */
@@ -105,15 +113,6 @@ public class LogInPanel extends JPanel{
 		login.setBounds(308, 201, 89, 23);
 		add(login);
 		
-		JCheckBox chckbxAdmin = new JCheckBox("Admin ");
-		chckbxAdmin.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent arg0) {
-				
-				
-			}
-		});
-		chckbxAdmin.setBounds(292, 242, 97, 23);
-		add(chckbxAdmin);
 		
 		/**
 		 * Login button Event listener.
@@ -123,9 +122,31 @@ public class LogInPanel extends JPanel{
 			
 			public void actionPerformed(ActionEvent arg0) {
 				
-					getPanel().setVisible(false);
-					baseController.getFrame().setContentPane(new EmployeePanel(null));
-					
+				 String check = username.getText().split("-")[0];
+				 //System.out.println(String.valueOf(password.getPassword()));
+				if(check.equals("A"))
+				{
+					Utils.SendRequest(c.getOutput(), Utils.Requests.LOGIN, username.getText().split("-")[1], String.valueOf(password.getPassword()), "employee");
+					if(Utils.AcceptResponse(c.getInput()).getResponseCode().equals(Utils.Responses.LOGIN_VALID.toString())){
+						getPanel().setVisible(false);
+						baseController.getFrame().setContentPane(new EmployeePanel(null,c));
+						}
+					else {
+						errorLabel.setText("Invalid login -> wrong CPR or Password");
+					}
+				} else if(check.equals("S")){
+					Utils.SendRequest(c.getOutput(), Utils.Requests.LOGIN, username.getText().split("-")[1], String.valueOf(password.getPassword()), "student");
+					if(Utils.AcceptResponse(c.getInput()).getResponseCode().equals(Utils.Responses.LOGIN_VALID.toString())) {
+						getPanel().setVisible(false);
+						baseController.getFrame().setContentPane(new StudentPanel(null,c));
+					}
+					else {
+						errorLabel.setText("Invalid login -> wrong CPR or Password");
+					}
+				}
+				else {
+					errorLabel.setText("Invalid login -> Use A-[cpr] to login as admin S-[cpr] as student.");
+				}
 			}
 		});
 		

@@ -17,7 +17,7 @@ public class StudentHandler extends IHandler {
 	public void Start() {
 		while(!s.isClosed()) {
 			try {
-				String message = dis.readUTF();
+				String message = "wtf" /*dis.readUTF()*/;
 				if(message.equals("employees"))
 					dos.writeUTF(pers.getAllEmployees());
 			} catch (IOException e) {
