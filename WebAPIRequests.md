@@ -5,7 +5,7 @@ PUT - create
 POST - modify
 
 
-|Auth: Admin   |GET|POST|PUT|DELETE|
+|Auth: Employee   |GET|POST|PUT|DELETE|
 |--------------|:-:|:--:|:-:|:----:|
 |employee      | x | x  | x |  x   |
 |student       | x | x  | x |  x   |
