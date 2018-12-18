@@ -6,7 +6,6 @@ import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 
 import controllers.BaseController;
-import controllers.EmployeeController;
 import serverConnection.Connection;
 
 
@@ -17,40 +16,36 @@ import serverConnection.Connection;
  */
 public class AppFrame extends JFrame {
 	
-	/**
-	 * Reference to the AppPanel class.
-	 */
+	private static final long serialVersionUID = 5725736106705278789L;
+
+	// ! Should be read from args/file ?? !
+	private static final int PORT = 1234;
+	private static final String IP = "localhost";
 	
+	// Base panel => login panel, system always starts with login screen
 	private LogInPanel basePanel;
 	public Connection connection;
-	
-	/**
-	 * Create a frame object passing a reference the UserController for use by the AppFrame object.
-	 */
-	
-	public AppFrame(BaseController LogInController)
-	{
 
-		connection = new Connection("localhost", 1234);
+	//Create a frame object passing a reference the UserController for use by the AppFrame object.
+	public AppFrame(BaseController baseController)
+	{
+		//Eshablish connection between client and server
+		connection = new Connection(IP, PORT);
 		
-		basePanel = new LogInPanel(LogInController, connection);
+		basePanel = new LogInPanel(baseController, connection);
 		setupFrame();
 	}
 	
 
 
-   /**
-	 * Sets up the content pane, size and visibility.
-	 */
-	
+
+	//Sets up the content pane, size and visibility.
 	private void setupFrame()
 	{
 		this.setContentPane(basePanel);
 		this.setBounds(150, 50, 720, 480);
 		this.setVisible(true);
 		this.addWindowListener(new WindowListener() {
-			
-			
 			
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -59,40 +54,33 @@ public class AppFrame extends JFrame {
 			}
 
 			@Override
-			public void windowActivated(WindowEvent e) {
-				
+			public void windowActivated(WindowEvent e) {			
 			}
-
 			@Override
 			public void windowClosed(WindowEvent e) {
 				// TODO Auto-generated method stub
 				
 			}
-
 			@Override
 			public void windowDeactivated(WindowEvent e) {
 				// TODO Auto-generated method stub
 				
 			}
-
 			@Override
 			public void windowDeiconified(WindowEvent e) {
 				// TODO Auto-generated method stub
 				
 			}
-
 			@Override
 			public void windowIconified(WindowEvent e) {
 				// TODO Auto-generated method stub
 				
 			}
-
 			@Override
 			public void windowOpened(WindowEvent e) {
 				// TODO Auto-generated method stub
 				
 			}
-			
 		});
 	}
 

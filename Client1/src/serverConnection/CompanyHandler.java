@@ -31,5 +31,10 @@ public class CompanyHandler implements ICompanyHandler{
 		Utils.SendRequest(c.getOutput(), Utils.Requests.FIND_ALL_COMPANIES, "");
 		return Utils.AcceptResponse(c.getInput());
 	}
+	
+	public Response getCompanyById(Connection c, Long id) {
+		Utils.SendRequest(c.getOutput(), Utils.Requests.FIND_COMPANY, id+"");
+		return Utils.AcceptResponse(c.getInput());
+	}
 
 }

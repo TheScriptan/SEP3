@@ -242,24 +242,24 @@ public class PersistenceHandler {
 		return json;
 	}
 	
-	//PUT
+	//POST
 	public int addShift(String json) {
 		WebTarget target = client.target(baseAddress + "shifts");
 		
 		Response response = target.request(MediaType.APPLICATION_JSON)
 							.accept(MediaType.TEXT_PLAIN_TYPE)
-							.put(Entity.json(json));
+							.post(Entity.json(json));
 		int status = response.getStatus();
 		return status;
 	}
 	
-	//POST
+	//PUT
 	public int updateShift(String json) {
 		WebTarget target = client.target(baseAddress + "shifts");
 		
 		Response response = target.request(MediaType.APPLICATION_JSON)
 							.accept(MediaType.TEXT_PLAIN_TYPE)
-							.post(Entity.json(json));
+							.put(Entity.json(json));
 		int status = response.getStatus();
 		return status;
 	}

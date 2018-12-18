@@ -1,26 +1,23 @@
 package views.popouts;
 
-import javax.swing.JFrame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import controllers.EmployeeController;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import controllers.EmployeeStudentsController;
 import models.Student;
 import serverConnection.Connection;
 import serverConnection.StudentHandler;
 import utils.Utils;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 public class AddStudent extends JFrame {
 
-	private EmployeeController empCon;
+	private EmployeeStudentsController empCon;
 	private JTextField txtStudentCPR;
 	private JTextField txtStudentPassword;
 	private JTextField txtStudentName;
@@ -28,9 +25,11 @@ public class AddStudent extends JFrame {
 	private JTextField txtStudentPhone;
 	private JTextField txtStudentEmail;
 	private JTextField txtStudentBankAccount;
+	public Connection connection;
 	
-	public AddStudent(EmployeeController empCon)
+	public AddStudent(EmployeeStudentsController empCon, Connection c)
 	{
+		this.connection = c;
 		this.empCon = empCon;
 		getContentPane().setLayout(null);
 		GenerateView();
@@ -129,14 +128,9 @@ public class AddStudent extends JFrame {
 												txtStudentEmail.getText(),
 												txtStudentBankAccount.getText(),
 												0.0);
-				Connection c = new Connection("localhost", 1234);
-				StudentHandler sh = new StudentHandler();
 
-				Utils.SendRequest(c.getOutput(), Utils.Requests.LOGIN, "");
-				System.out.println(Utils.AcceptResponse(c.getInput()).getResponseCode());
-				
-				System.out.println("response =" + sh.addStudent(c, student).getResponseCode());
-				c.closeConnection();
+				StudentHandler sh = new StudentHandler();
+				System.out.println("response =" + sh.addStudent(connection, student).getResponseCode());
 				dispose();
 			}
 		});

@@ -8,6 +8,7 @@ namespace DBServer.Models {
             modelBuilder.Entity<Shift>()
                 .Property(s => s.ShiftId)
                 .ValueGeneratedOnAdd();
+                
         }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Shift> Shifts { get; set; }

@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -13,179 +14,117 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
-import controllers.EmployeeController;
+import controllers.BaseController;
+import controllers.EmployeeShiftsController;
+import controllers.EmployeeStudentsController;
+import models.Shift;
+import models.Student;
 import serverConnection.Connection;
 import views.popouts.AddShift;
 import views.popouts.AddStudent;
 
 public class EmployeePanel extends JPanel
 {
-   private JTable ShiftTable;
-   private EmployeeController employeeController;
-   private AddShift addShift;
+	private static final long serialVersionUID = 3300283553589562880L;
+	
+	private JTable shiftTable;
+   private EmployeeShiftsController employeeShiftsController;
+   private EmployeeStudentsController employeeStudentsController;
+   @SuppressWarnings("unused")
+private BaseController baseController;
+   private DefaultTableModel studentTableModel;
    
    
-   JScrollPane ShiftInformationPane = new JScrollPane();
-   JScrollPane StudentInformationScrollPanel = new JScrollPane();
-   private JTable StudentTable;
-   Connection c;
+   private JScrollPane shiftInformationPane = new JScrollPane();
+   private JScrollPane studentInformationScrollPanel = new JScrollPane();
+   private JTable studentTable;
+   public Connection connection;
    /**
     * Create the panel.
     */
-   public EmployeePanel(EmployeeController employeeController, Connection c)
+   public EmployeePanel(BaseController baseController, Connection connection)
    {
-	  this.employeeController = employeeController;
-	  this.c = c;
+	  this.baseController = baseController;
+	  this.connection = connection;
+	  
+	  employeeStudentsController = new EmployeeStudentsController();
+	  employeeShiftsController = new EmployeeShiftsController();
+	  
       setLayout(null);
       GenerateView();
    }
    
-   /**
-    * Creating the view in the Shift Panel.
-    */
+   
    public void GenerateView()
    {
 	   
-	   /**
-	    * Creating tabs for the employee to access.
-	    */
+	  // Admin tabs for changing views between shifts and students
+      JTabbedPane adminTabs = new JTabbedPane(JTabbedPane.TOP);
+      adminTabs.setBounds(10, 11, 705, 440);
+      add(adminTabs);
       
-      JTabbedPane AdminTabs = new JTabbedPane(JTabbedPane.TOP);
-      AdminTabs.setBounds(10, 11, 705, 440);
-      add(AdminTabs);
-      
-      /**
-       * Creating the shift tab panel.
-       */
-      
-      JPanel ShiftPanel = new JPanel();
-      AdminTabs.addTab("Shift", null, ShiftPanel, null);
-      AdminTabs.setEnabledAt(0, true);
-      ShiftPanel.setLayout(null);
-      
-      /**
-       * Creating button Remove Shift in the shift tab.
-       */
-      
-      
+      // SHIFTS view ===========================================
+      JPanel shiftPanel = new JPanel();
+      adminTabs.addTab("Shift", null, shiftPanel, null);
+      adminTabs.setEnabledAt(0, true);
+      shiftPanel.setLayout(null);
+   
       JButton btnRemoveShift = new JButton("Remove Shift");
       btnRemoveShift.setBounds(547, 86, 126, 23);
-      ShiftPanel.add(btnRemoveShift);
-      
-      /**
-       * Creating button Release Shift in the shift tab.
-       */
-      
+      shiftPanel.add(btnRemoveShift);
+     
       JButton btnReleaseShift = new JButton("Release Shift");
       btnReleaseShift.setBounds(547, 109, 126, 23);
-      ShiftPanel.add(btnReleaseShift);
-      
-      /**
-       * Creating button New Shift in the shift tab.
-       */
-      
+      shiftPanel.add(btnReleaseShift);
+    
       JButton btnNewShift = new JButton("New Shift");
       btnNewShift.addActionListener(new ActionListener() {
-      	public void actionPerformed(ActionEvent e) {
-      	}
-      });
-      btnNewShift.addMouseListener(new MouseAdapter() {
-      	
-      	public void mouseClicked(MouseEvent e) {
-      		
-      		new AddShift(employeeController);
-
+      	public void actionPerformed(ActionEvent e) 
+      	{
+      		new AddShift(employeeShiftsController, connection);
       	}
       });
       btnNewShift.setBounds(547, 11, 126, 23);
-      ShiftPanel.add(btnNewShift);
-      
-      /**
-       * Creating button Assign Shift in the shift tab.
-       */
-      
+      shiftPanel.add(btnNewShift);
+   
       JButton btnAssignShift = new JButton("Assign Shift");
       btnAssignShift.setBounds(547, 59, 126, 23);
-      ShiftPanel.add(btnAssignShift);
-      
-      /**
-       * Creating button Edit Shift in the shift tab.
-       */
-      
+      shiftPanel.add(btnAssignShift);
+         
       JButton btnEditShift = new JButton("Edit Shift");
       btnEditShift.addMouseListener(new MouseAdapter() {
       	@Override
-      	public void mouseClicked(MouseEvent e) {
-      		
-      		new AddShift(employeeController);
-      		
+      	public void mouseClicked(MouseEvent e) 
+      	{
+      		new AddShift(employeeShiftsController, connection);
       	}
       });
       btnEditShift.setBounds(547, 36, 126, 23);
-      ShiftPanel.add(btnEditShift);
+      shiftPanel.add(btnEditShift);
+
+      JScrollPane shiftTableScrollPane = new JScrollPane();
+      shiftTableScrollPane.setBounds(0, 0, 490, 391);
+      shiftPanel.add(shiftTableScrollPane);
       
-      /**
-       * Creating the a scrollable view for the table in shifts tab.
-       */
-      
-      JScrollPane ShiftTableScrollPane = new JScrollPane();
-      ShiftTableScrollPane.setBounds(0, 0, 490, 391);
-      ShiftPanel.add(ShiftTableScrollPane);
-      
-      /**
-       * Creating a table in Shifts Tab for the employee to view.
-       */
-      
-      
-      ShiftTable = new JTable();
-      ShiftTable.addMouseListener(new MouseAdapter() {
-    	  
-    	  /**
-    	   * Event handler for Shift Table when clicked on.
-    	   */
-      	public void mouseClicked(MouseEvent arg0) {
-      		ShiftInformationPane.setVisible(true);
+
+      shiftTable = new JTable();
+      shiftTable.addMouseListener(new MouseAdapter() {
+      	public void mouseClicked(MouseEvent e) 
+      	{
+      		shiftInformationPane.setVisible(true);
       	}
       });
-      ShiftTable.getSelectedRow();
-      ShiftTable.setModel(new DefaultTableModel(
-      	new Object[][] {
-      		{null, null, null, null, null, null},
-      		{"", null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, ""},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      	},
+      
+      shiftTable.getSelectedRow();
+      shiftTable.setModel(new DefaultTableModel(
+      	populateShiftTable(),
       	new String[] {
       		"Comapny ID", "Location", "Shift Date", "Time", "Status", "Released"
       	}
       ) {
-    	  
-    	  /**
-		 * 
-		 */
+ 
 		private static final long serialVersionUID = 1L;
-		/**
-    	   * Condition for setting the shift table to be editable or not.
-    	   */
+
       	boolean[] columnEditables = new boolean[] {
       		false, false, false, false, false, false
       	};
@@ -193,181 +132,173 @@ public class EmployeePanel extends JPanel
       		return columnEditables[column];
       	}
       });
-      ShiftTable.getColumnModel().getColumn(0).setResizable(false);
-      ShiftTable.getColumnModel().getColumn(1).setResizable(false);
-      ShiftTable.getColumnModel().getColumn(2).setResizable(false);
-      ShiftTable.getColumnModel().getColumn(3).setResizable(false);
-      ShiftTable.getColumnModel().getColumn(4).setResizable(false);
-      ShiftTable.getColumnModel().getColumn(5).setResizable(false);
-      ShiftTable.getColumnModel().getColumn(5).setPreferredWidth(78);
-      ShiftTableScrollPane.setViewportView(ShiftTable);
+      shiftTable.getColumnModel().getColumn(0).setResizable(false);
+      shiftTable.getColumnModel().getColumn(1).setResizable(false);
+      shiftTable.getColumnModel().getColumn(2).setResizable(false);
+      shiftTable.getColumnModel().getColumn(3).setResizable(false);
+      shiftTable.getColumnModel().getColumn(4).setResizable(false);
+      shiftTable.getColumnModel().getColumn(5).setResizable(false);
+      shiftTable.getColumnModel().getColumn(5).setPreferredWidth(78);
+      shiftTableScrollPane.setViewportView(shiftTable);
       
-      /**
-       * Creating a scrollable information tab below the buttons. Will only be visible when the table is clicked.
-       */
+      shiftInformationPane.setVisible(false);
+      shiftInformationPane.setBounds(510, 143, 180, 248);
+      shiftPanel.add(shiftInformationPane);
+      
+      JPanel shiftInformationPanel = new JPanel();
+      shiftInformationPane.setViewportView(shiftInformationPanel);
+      shiftInformationPanel.setLayout(null);
+      
+      JTextArea shiftInformationShiftTxt = new JTextArea();
+      shiftInformationShiftTxt.setBounds(0, 0, 178, 246);
+      shiftInformationPanel.add(shiftInformationShiftTxt);
+      
+
+      // STUDENTS view ===========================================
+      JPanel studentPanel = new JPanel();
+      adminTabs.addTab("Students", null, studentPanel, null);
+      studentPanel.setLayout(null);
+   
+      JScrollPane studentTableScrollPane = new JScrollPane();
+      studentTableScrollPane.setBounds(0, 0, 490, 391);
+      studentPanel.add(studentTableScrollPane);
+ 
+      String[] columnNames = {"Student CPR", "Student Password", "Name", "Address", "Phone Nr.", "E-mail", "Bank Account"};
+      studentTableModel = new DefaultTableModel(columnNames, 0);
+      studentTable = new JTable(studentTableModel){
+    	  
+  		private static final long serialVersionUID = 1L;
+
+        	boolean[] columnEditables = new boolean[] {
+        		false, false, false, false, false, false
+        	};
+        	public boolean isCellEditable(int row, int column) {
+        		return columnEditables[column];
+        	}
+        };
+      studentTable.getColumnModel().getColumn(0).setPreferredWidth(79);
+      studentTable.getColumnModel().getColumn(1).setPreferredWidth(110);
+      studentTable.getColumnModel().getColumn(2).setPreferredWidth(96);
+      studentTable.getColumnModel().getColumn(2).setMinWidth(0);
+      studentTable.getColumnModel().getColumn(3).setPreferredWidth(132);
+      studentTable.getColumnModel().getColumn(3).setMinWidth(0);
+      studentTable.getColumnModel().getColumn(4).setPreferredWidth(84);
+      studentTableScrollPane.setViewportView(studentTable);
+      refreshStudentTable();
       
       
-      ShiftInformationPane.setVisible(false);
-      ShiftInformationPane.setBounds(510, 143, 180, 248);
-      ShiftPanel.add(ShiftInformationPane);
-      
-      /**
-       * Creating a panel in the scrollable information tab.
-       */
-      
-      JPanel ShiftInformationPanel = new JPanel();
-      ShiftInformationPane.setViewportView(ShiftInformationPanel);
-      ShiftInformationPanel.setLayout(null);
-      
-      /**
-       * Creating a text area for the shift information. References the shift table.
-       */
-      
-      JTextArea ShiftInformationShiftTxt = new JTextArea();
-      ShiftInformationShiftTxt.setBounds(0, 0, 178, 246);
-      ShiftInformationPanel.add(ShiftInformationShiftTxt);
-      
-      /**
-       * Creating a panel for the Students tab for the employee to view.
-       */
-      JPanel StudentPanel = new JPanel();
-      AdminTabs.addTab("Students", null, StudentPanel, null);
-      StudentPanel.setLayout(null);
-      /**
-       * Creating a ScrollPane in the created table.
-       */
-      JScrollPane StudentTableScrollPane = new JScrollPane();
-      StudentTableScrollPane.setBounds(0, 0, 490, 391);
-      StudentPanel.add(StudentTableScrollPane);
-      /**
-       * Creating a table in the students tab for the employee to view.
-       */
-      StudentTable = new JTable();
-      StudentTable.addMouseListener(new MouseAdapter() {
-      	@Override
-      	public void mouseClicked(MouseEvent e) {
-      		StudentInformationScrollPanel.setVisible(true); //////////////////////////////////////////////////////
-      	}
-      });
-      /**
-       * Populating StudentTable with null objects.
-       */
-      StudentTable.setModel(new DefaultTableModel(
-      	new Object[][] {
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      		{null, null, null, null, null, null, null},
-      	},
-      	new String[] {
-      		"Student CPR", "Student Password", "Name", "Address", "Phone Nr.", "E-mail", "Bank Account"
-      	}
-      ));
-      StudentTable.getColumnModel().getColumn(0).setPreferredWidth(79);
-      StudentTable.getColumnModel().getColumn(1).setPreferredWidth(110);
-      StudentTable.getColumnModel().getColumn(2).setPreferredWidth(96);
-      StudentTable.getColumnModel().getColumn(2).setMinWidth(0);
-      StudentTable.getColumnModel().getColumn(3).setPreferredWidth(132);
-      StudentTable.getColumnModel().getColumn(3).setMinWidth(0);
-      StudentTable.getColumnModel().getColumn(4).setPreferredWidth(84);
-      StudentTableScrollPane.setViewportView(StudentTable);
-      /**
-       * Create a button Add Student.
-       */
       JButton btnAddStudent = new JButton("Add Student");
       btnAddStudent.addActionListener(new ActionListener() {
-      	public void actionPerformed(ActionEvent e) {
+      	public void actionPerformed(ActionEvent e) 
+      	{
+      		AddStudent addingPanel = new AddStudent(employeeStudentsController, connection);
       		
-      		
-      	}
-      });
-      btnAddStudent.addMouseListener(new MouseAdapter() {
-      	public void mouseClicked(MouseEvent e) {
-      		
-      		new AddStudent(employeeController);
       	}
       });
       btnAddStudent.setBounds(550, 11, 126, 23);
-      StudentPanel.add(btnAddStudent);
-      /**
-       * Create a button Edit Student.
-       */
+      studentPanel.add(btnAddStudent);
+
       JButton btnEditStudent = new JButton("Edit Student");
-      btnEditStudent.addMouseListener(new MouseAdapter() {
-      	@Override
-      	public void mouseClicked(MouseEvent e) {
-      		
-      		new AddShift(employeeController);
-      	}
-      });
+      btnEditStudent.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) 
+          	{
+          		new AddStudent(employeeStudentsController, connection);
+          		
+          	}
+          });
       btnEditStudent.setBounds(550, 45, 126, 23);
-      StudentPanel.add(btnEditStudent);
-      /**
-       * Create a button Delete Student.
-       */
+      studentPanel.add(btnEditStudent);
+
       JButton btnDeleteStudent = new JButton("Delete Student");
       btnDeleteStudent.setBounds(550, 79, 126, 23);
-      StudentPanel.add(btnDeleteStudent);
-      /**
-       * Create a button Find Student.
-       */
+      btnDeleteStudent.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) 
+      	{
+      		employeeStudentsController.deleteStudent(connection,(String)studentTable.getValueAt(studentTable.getSelectedRow(), 0));
+      	}
+      });
+      studentPanel.add(btnDeleteStudent);
+
       JButton btnFindStudent = new JButton("Find Student");
       btnFindStudent.setBounds(550, 113, 126, 23);
-      StudentPanel.add(btnFindStudent);
+      btnFindStudent.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println((String)studentTable.getValueAt(studentTable.getSelectedRow(), 0));
+			refreshStudentTable();
+	      	
+		}
+	});
+      studentPanel.add(btnFindStudent);
+
+      studentInformationScrollPanel.setBounds(500, 152, 190, 239);
+      studentPanel.add(studentInformationScrollPanel);
       
-      /**
-       * Creating a scroll panel for the student information below the buttons. Panel not visible.
-       */
       
-      StudentInformationScrollPanel.setBounds(500, 152, 190, 239);
-      StudentPanel.add(StudentInformationScrollPanel);
+       // Making the panel not visible until an interaction with the table occurs.
+      studentInformationScrollPanel.setVisible(false); ///////////////////////////////////////
       
-      /**
-       * Making the panel not visible until an interaction with the table occurs.
-       */
-      StudentInformationScrollPanel.setVisible(false); ///////////////////////////////////////
+ 
+      //Creating a panel inside the scroll panel in student information.
+      JPanel studentInformationPanel = new JPanel();
+      studentInformationScrollPanel.setViewportView(studentInformationPanel);
+      studentInformationPanel.setLayout(null);
       
-      /**
-       * Creating a panel inside the scroll panel in student information.
-       */
       
-      JPanel StudentInformationPanel = new JPanel();
-      StudentInformationScrollPanel.setViewportView(StudentInformationPanel);
-      StudentInformationPanel.setLayout(null);
+      //Creating a text area inside the student information panel which will reference the student table content.
+      JTextArea studentInformationTxt = new JTextArea();
+      studentInformationTxt.setBounds(0, 0, 188, 237);
+      studentInformationPanel.add(studentInformationTxt);
       
-      /**
-       * Creating a text area inside the student information panel which will reference the student table content.
-       */
-      
-      JTextArea StudentInformationTxt = new JTextArea();
-      StudentInformationTxt.setBounds(0, 0, 188, 237);
-      StudentInformationPanel.add(StudentInformationTxt);
-      
-     
    }
    
-   public JPanel getPanel()
+   private void refreshStudentTable() {
+//"Student CPR", "Student Password", "Name", "Address", "Phone Nr.", "E-mail", "Bank Account"
+	   List<Student> studentList = employeeStudentsController.getAllStudents(connection);
+	   String[][] toTable = new String[studentList.size()][7];
+	   // Clear table
+	   if(studentTable != null) {
+		   	studentTableModel.setRowCount(0);
+	   }
+	   // Refill
+	   for(int i = 0; i < studentList.size(); i++) {
+		   toTable[i][0] = studentList.get(i).getStudentId();
+		   toTable[i][1] = studentList.get(i).getPassword();
+		   toTable[i][2] = studentList.get(i).getStudentName();
+		   toTable[i][3] = studentList.get(i).getStudentAdress();
+		   toTable[i][4] = studentList.get(i).getStudentPhoneNo();
+		   toTable[i][5] = studentList.get(i).getStudentEmail();
+		   toTable[i][6] = studentList.get(i).getStudentBankAcc();
+		   studentTableModel.addRow(toTable[i]);
+	   }
+	   
+}
+
+
+public JPanel getPanel()
 	{
 		return this;
 	}
+   
+   public String[][] populateShiftTable(){
+
+	     List<Shift> shifts = employeeShiftsController.getAllShifts(connection);
+	     String[][] toTable = new String[shifts.size()][6]; 
+	     //Location", "Company", "Time", "Date", "Status", "Released
+	    
+	     
+	    for(int i = 0; i < shifts.size(); i++) {
+	    	toTable[i][0] = "a";
+	    	toTable[i][1] = "b";
+	    	toTable[i][2] = shifts.get(i).getShiftDate()+"";
+	    	toTable[i][3] = shifts.get(i).getShiftTime()+"";
+	    	toTable[i][4] = "e";
+	    	toTable[i][5] = shifts.get(i).released+"";
+	    }
+	     
+	   return toTable;
+}
 
 }
 
