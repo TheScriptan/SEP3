@@ -27,17 +27,19 @@ public class EmployeePanel extends JPanel
 {
 	private static final long serialVersionUID = 3300283553589562880L;
 	
-	private JTable shiftTable;
    private EmployeeShiftsController employeeShiftsController;
    private EmployeeStudentsController employeeStudentsController;
    @SuppressWarnings("unused")
-private BaseController baseController;
-   private DefaultTableModel studentTableModel;
+   private BaseController baseController;
    
    
    private JScrollPane shiftInformationPane = new JScrollPane();
    private JScrollPane studentInformationScrollPanel = new JScrollPane();
+   private JTable shiftTable;
    private JTable studentTable;
+   private DefaultTableModel studentTableModel;
+   private DefaultTableModel shiftTableModel;
+   
    public Connection connection;
    /**
     * Create the panel.
@@ -71,6 +73,13 @@ private BaseController baseController;
    
       JButton btnRemoveShift = new JButton("Remove Shift");
       btnRemoveShift.setBounds(547, 86, 126, 23);
+      btnRemoveShift.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+      		employeeShiftsController.deleteShift(connection,Long.parseLong(shiftTable.getValueAt(shiftTable.getSelectedRow(), 0)+""));
+		}
+	});     
       shiftPanel.add(btnRemoveShift);
      
       JButton btnReleaseShift = new JButton("Release Shift");
@@ -87,9 +96,16 @@ private BaseController baseController;
       btnNewShift.setBounds(547, 11, 126, 23);
       shiftPanel.add(btnNewShift);
    
-      JButton btnAssignShift = new JButton("Assign Shift");
-      btnAssignShift.setBounds(547, 59, 126, 23);
-      shiftPanel.add(btnAssignShift);
+      JButton btnRefreshShiftTable = new JButton("Refresh Table");
+      btnRefreshShiftTable.setBounds(547, 59, 126, 23);
+      btnRefreshShiftTable.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			refreshShiftTable();
+		}
+	});
+      shiftPanel.add(btnRefreshShiftTable);
          
       JButton btnEditShift = new JButton("Edit Shift");
       btnEditShift.addMouseListener(new MouseAdapter() {
@@ -106,22 +122,12 @@ private BaseController baseController;
       shiftTableScrollPane.setBounds(0, 0, 490, 391);
       shiftPanel.add(shiftTableScrollPane);
       
-
-      shiftTable = new JTable();
-      shiftTable.addMouseListener(new MouseAdapter() {
-      	public void mouseClicked(MouseEvent e) 
-      	{
-      		shiftInformationPane.setVisible(true);
-      	}
-      });
+      String[] columnNamesShift = {
+        		"ShiftID" ,"Comapny ID", "Location", "Shift Date", "Time", "Status", "Released"
+        	};
+      shiftTableModel = new DefaultTableModel(columnNamesShift, 0);
       
-      shiftTable.getSelectedRow();
-      shiftTable.setModel(new DefaultTableModel(
-      	populateShiftTable(),
-      	new String[] {
-      		"Comapny ID", "Location", "Shift Date", "Time", "Status", "Released"
-      	}
-      ) {
+      shiftTable = new JTable(shiftTableModel){
  
 		private static final long serialVersionUID = 1L;
 
@@ -131,15 +137,17 @@ private BaseController baseController;
       	public boolean isCellEditable(int row, int column) {
       		return columnEditables[column];
       	}
-      });
+      };
       shiftTable.getColumnModel().getColumn(0).setResizable(false);
       shiftTable.getColumnModel().getColumn(1).setResizable(false);
       shiftTable.getColumnModel().getColumn(2).setResizable(false);
       shiftTable.getColumnModel().getColumn(3).setResizable(false);
       shiftTable.getColumnModel().getColumn(4).setResizable(false);
       shiftTable.getColumnModel().getColumn(5).setResizable(false);
-      shiftTable.getColumnModel().getColumn(5).setPreferredWidth(78);
+      shiftTable.getColumnModel().getColumn(6).setResizable(false);
+      shiftTable.getColumnModel().getColumn(6).setPreferredWidth(78);
       shiftTableScrollPane.setViewportView(shiftTable);
+      refreshShiftTable();
       
       shiftInformationPane.setVisible(false);
       shiftInformationPane.setBounds(510, 143, 180, 248);
@@ -191,7 +199,7 @@ private BaseController baseController;
       btnAddStudent.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent e) 
       	{
-      		AddStudent addingPanel = new AddStudent(employeeStudentsController, connection);
+      		new AddStudent(employeeStudentsController, connection);
       		
       	}
       });
@@ -219,18 +227,16 @@ private BaseController baseController;
       });
       studentPanel.add(btnDeleteStudent);
 
-      JButton btnFindStudent = new JButton("Find Student");
-      btnFindStudent.setBounds(550, 113, 126, 23);
-      btnFindStudent.addActionListener(new ActionListener() {
+      JButton btnRefreshTable = new JButton("Refresh Table");
+      btnRefreshTable.setBounds(550, 113, 126, 23);
+      btnRefreshTable.addActionListener(new ActionListener() {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println((String)studentTable.getValueAt(studentTable.getSelectedRow(), 0));
 			refreshStudentTable();
-	      	
 		}
 	});
-      studentPanel.add(btnFindStudent);
+      studentPanel.add(btnRefreshTable);
 
       studentInformationScrollPanel.setBounds(500, 152, 190, 239);
       studentPanel.add(studentInformationScrollPanel);
@@ -275,30 +281,33 @@ private BaseController baseController;
 	   
 }
 
+   
+   public void refreshShiftTable(){
 
-public JPanel getPanel()
+	     List<Shift> shifts = employeeShiftsController.getAllShifts(connection);
+	     String[][] toTable = new String[shifts.size()][7]; 
+	     //Location", "Company", "Time", "Date", "Status", "Released
+	     if(shiftTable != null) {
+			   	shiftTableModel.setRowCount(0);
+		   }
+	     
+	    for(int i = 0; i < shifts.size(); i++) {
+	    	toTable[i][0] = shifts.get(i).getshiftId()+"";
+	    	toTable[i][1] = "not implemented";
+	    	toTable[i][2] = "not implemented";
+	    	toTable[i][3] = shifts.get(i).getShiftDate()+"";
+	    	toTable[i][4] = shifts.get(i).getShiftTime()+"";
+	    	toTable[i][5] = "not implemented";
+	    	toTable[i][6] = shifts.get(i).released+"";
+			shiftTableModel.addRow(toTable[i]);
+	    }
+	     
+}
+
+
+   public JPanel getPanel()
 	{
 		return this;
 	}
-   
-   public String[][] populateShiftTable(){
-
-	     List<Shift> shifts = employeeShiftsController.getAllShifts(connection);
-	     String[][] toTable = new String[shifts.size()][6]; 
-	     //Location", "Company", "Time", "Date", "Status", "Released
-	    
-	     
-	    for(int i = 0; i < shifts.size(); i++) {
-	    	toTable[i][0] = "a";
-	    	toTable[i][1] = "b";
-	    	toTable[i][2] = shifts.get(i).getShiftDate()+"";
-	    	toTable[i][3] = shifts.get(i).getShiftTime()+"";
-	    	toTable[i][4] = "e";
-	    	toTable[i][5] = shifts.get(i).released+"";
-	    }
-	     
-	   return toTable;
-}
-
 }
 

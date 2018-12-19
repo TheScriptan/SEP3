@@ -22,7 +22,6 @@ public class StudentHandler extends IHandler {
 		while(!s.isClosed()) {
 			request = Utils.AcceptRequest(dis);
 			
-			
 			if(request != null) {
 				//ADD STUDENT
 				if(request.getRequestCode().equals(Utils.Requests.ADD_STUDENT.toString())) {
@@ -32,8 +31,10 @@ public class StudentHandler extends IHandler {
 					} else {
 						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_ADDED, "" + status);
 					}
+				}
 					//GET ALL SHIFTS
-					if(request.getRequestCode().equals(Utils.Requests.FIND_ALL_SHIFTS.toString())) {
+				if(request.getRequestCode().equals(Utils.Requests.FIND_ALL_SHIFTS.toString())) {
+
 						String json = pers.getAllShifts();
 						if(json.equals("-1")) {
 							Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_RETRIEVED, "no shifts");
@@ -74,4 +75,4 @@ public class StudentHandler extends IHandler {
 	}
 	
 	//Many methods that do actions for message sent by Client and further actions are sent to PersistenceHandler
-}
+

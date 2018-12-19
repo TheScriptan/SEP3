@@ -25,7 +25,7 @@ public class StudentHandler implements IStudentHandler{
 
 	@Override
 	public Response removeStudent(Connection c, String studentId) {
-		Utils.SendRequest(c.getOutput(), Utils.Requests.EDIT_STUDENT, studentId);	
+		Utils.SendRequest(c.getOutput(), Utils.Requests.REMOVE_STUDENT, studentId);	
 		return Utils.AcceptResponse(c.getInput());
 	}
 

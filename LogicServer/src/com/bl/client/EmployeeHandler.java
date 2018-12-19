@@ -87,10 +87,19 @@ public class EmployeeHandler extends IHandler {
 						Utils.SendResponse(dos, Utils.Responses.OBJECT_RETRIEVED, json);
 					}
 				}
-				
+
 				//REMOVE STUDENT
 				if(request.getRequestCode().equals(Utils.Requests.REMOVE_STUDENT.toString())) {
-					int status = pers.deleteStudent(Integer.parseInt(request.getArguments()[0]));
+					int status = pers.deleteStudent(request.getArguments()[0]);
+					if(status == 200) {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_DELETED, "" + status);
+					} else {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_DELETED, "" + status);
+					}
+				}
+				//REMOVE SHIFT
+				if(request.getRequestCode().equals(Utils.Requests.REMOVE_SHIFT.toString())) {
+					int status = pers.deleteStudent(request.getArguments()[0]);
 					if(status == 200) {
 						Utils.SendResponse(dos, Utils.Responses.OBJECT_DELETED, "" + status);
 					} else {

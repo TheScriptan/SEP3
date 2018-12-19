@@ -19,8 +19,13 @@ public class EmployeeShiftsController {
 	   return sh.addShift(c, shift).getResponseCode().equals(Utils.Responses.OBJECT_ADDED.toString());
    }
    
+   public boolean deleteShift(Connection c, Long shiftId) {
+	   return sh.removeShift(c, shiftId).getResponseCode().equals(Utils.Responses.OBJECT_DELETED.toString());
+   }
+   
    
    public List<Shift> getAllShifts(Connection c) {
+
 	   return Utils.deserializeList(sh.getAllShifts(c).getArguments()[0], Shift[].class);
    }
 }

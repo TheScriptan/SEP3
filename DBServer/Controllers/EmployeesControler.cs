@@ -41,6 +41,8 @@ namespace DBServer.Controllers
         [HttpPut]
         public void Put([FromBody]Employee employee)
         {
+            _context.Employees.Add(employee);
+            _context.SaveChanges();
         }
 
         // DELETE api/employees/5

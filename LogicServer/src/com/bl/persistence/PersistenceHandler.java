@@ -159,9 +159,8 @@ public class PersistenceHandler {
 	}
 	
 	//DELETE
-	public int deleteStudent(int id) {
+	public int deleteStudent(String id) {
 		WebTarget target = client.target(baseAddress + "students" + "/" + id);
-		
 		Response response = target.request(MediaType.APPLICATION_JSON)
 							.delete();
 		int status = response.getStatus();
@@ -265,7 +264,7 @@ public class PersistenceHandler {
 	}
 	
 	//DELETE
-	public int deleteShift(int id) {
+	public int deleteShift(long id) {
 		WebTarget target = client.target(baseAddress + "shifts" + "/" + id);
 		
 		Response response = target.request(MediaType.APPLICATION_JSON)

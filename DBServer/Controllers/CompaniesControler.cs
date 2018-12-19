@@ -39,8 +39,10 @@ namespace DBServer.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(long id, [FromBody] string value)
+        public void Put(long id, [FromBody] Company company)
         {
+            _context.Companies.Add(company);
+            _context.SaveChanges ();
         }
 
         // DELETE api/values/5

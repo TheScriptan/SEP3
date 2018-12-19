@@ -27,6 +27,7 @@ public class StudentPanel extends JPanel
 	private static final long serialVersionUID = -3339712839937225664L;
 
 	private JTable availableShiftsTable;
+	private DefaultTableModel dtm;
 	private StudentController studentController;
 	private EmployeeShiftsController employeeShiftsController;
    private BaseController  baseController;
@@ -45,22 +46,7 @@ public class StudentPanel extends JPanel
 
    }
    
-  public String[][] fillAvailableShiftTable() {
-	   
-	   List<Shift> shiftList = employeeShiftsController.getAllShifts(connection);
-	   System.out.println(shiftList.size());
-	   String[][] toTable = new String[shiftList.size()][4];
-	   
-	   //"Date", "Company", "City", "Time"
-	   for(int i = 0; i < shiftList.size(); i++) {
-		   toTable[i][0] = shiftList.get(i).getShiftDate().toString();
-		   toTable[i][1] = shiftList.get(i).getcompanyId()+"";
-		   toTable[i][2] = shiftList.get(i).getcompanyId()+"loc";
-		   toTable[i][3] = shiftList.get(i).getShiftTime()+"";
-	   }
-	   
-	   return toTable;
-   }
+  
    
    public void GenerateView()
    {
@@ -68,12 +54,10 @@ public class StudentPanel extends JPanel
       scrollPane.setBounds(10, 189, 300, 200);
       add(scrollPane);
 
-      availableShiftsTable = new JTable();
-      availableShiftsTable.setModel(new DefaultTableModel(
-    		  fillAvailableShiftTable(),
-         new String[] {
-            "Date", "Company", "City", "Time"
-         }){
+      Object[] columnNames = {"Date", "Company", "City", "Time"};
+      dtm = new DefaultTableModel(columnNames, 0);
+      availableShiftsTable = new JTable(dtm)
+         {
     			  
     				private static final long serialVersionUID = 1L;
 
@@ -83,9 +67,10 @@ public class StudentPanel extends JPanel
     		      	public boolean isCellEditable(int row, int column) {
     		      		return columnEditables[column];
     		      	}}
-      );
+      ;
       scrollPane.setViewportView(availableShiftsTable);
-
+      fillAvailableShiftTable();
+      
       JCalendar calendar = new JCalendar();
       calendar.setBounds(10, 25, 580, 122);
       add(calendar);
@@ -140,6 +125,19 @@ public class StudentPanel extends JPanel
       return this;
    }
 
-   
+   public void fillAvailableShiftTable() {
+	   
+	   List<Shift> shiftList = employeeShiftsController.getAllShifts(connection);
+	   String[][] toTable = new String[shiftList.size()][4];
+	   //"Date", "Company", "City", "Time"
+	   for(int i = 0; i < shiftList.size(); i++) {
+		   toTable[i][0] = shiftList.get(i).getShiftDate().toString();
+		   toTable[i][1] = shiftList.get(i).getcompanyId()+"";
+		   toTable[i][2] = shiftList.get(i).getcompanyId()+"loc";
+		   toTable[i][3] = shiftList.get(i).getShiftTime()+"";
+		   dtm.addRow(toTable[i]);
+	   }
+	   
+   }
  
 }

@@ -95,7 +95,7 @@ public class LogInPanel extends JPanel{
 				
 				String prefix = username.getText().split("-")[0];
 				 
-				if(prefix.equals("A"))
+				if(prefix.equalsIgnoreCase("E"))
 				{
 					if(loginController.validateLogin(connection,
 													username.getText().split("-")[1],
@@ -109,13 +109,14 @@ public class LogInPanel extends JPanel{
 						errorLabel.setText("Invalid login -> wrong CPR or Password");
 					}
 				} 
-				else if(prefix.equals("S"))
+				else if(prefix.equalsIgnoreCase("S"))
 				{
 					if(loginController.validateLogin(connection, 
 													username.getText().split("-")[1],
 													String.valueOf(password.getPassword()),
 													"student")) 
 					{	
+						
 						baseController.changePanel(new StudentPanel(baseController,connection));
 					}
 					else 

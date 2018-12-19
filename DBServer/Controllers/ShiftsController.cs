@@ -32,10 +32,10 @@ namespace DBServer.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(long id, [FromBody] string value)
+        public void Put(long id, [FromBody]  Shift shift)
         {
-            var shift =_context.Shifts.Single();
-            //TODO
+            _context.Shifts.Add(shift);
+            _context.SaveChanges();
         }
 
         // DELETE api/values/5

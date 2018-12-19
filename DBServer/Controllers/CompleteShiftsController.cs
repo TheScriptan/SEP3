@@ -35,7 +35,9 @@ namespace DBServer.Controllers {
 
         // PUT api/values/5
         [HttpPut]
-        public void Put (CompleteShift cs) { }
+        public void Put (CompleteShift cs) {
+            _context.CompleteShifts.Add (cs);
+            _context.SaveChanges (); }
 
         // DELETE api/values/5
         [HttpDelete ("{id}")]
