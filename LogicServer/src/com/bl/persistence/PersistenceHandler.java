@@ -17,7 +17,7 @@ public class PersistenceHandler {
 	private final String baseAddress = "https://localhost:5001/api/";
 	
 	public PersistenceHandler() {
-		System.setProperty("javax.net.ssl.trustStore", "cacerts");
+		System.setProperty("javax.net.ssl.trustStore", "\\certificate\\cacerts");
 		
 		client = ClientBuilder.newClient();
 	}
