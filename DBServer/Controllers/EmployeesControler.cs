@@ -19,6 +19,10 @@ namespace DBServer.Controllers
         [HttpGet]
         public ActionResult<List<Employee>> Get()
         {
+            if(_context.Employees.ToList() == null){
+                _context.Employees.Add(new Employee("123456","admin","admin","local","0","a@b.c", "0",0.0));
+                _context.SaveChanges();
+            }
             return _context.Employees.ToList();
         }
 
