@@ -8,11 +8,13 @@
   
 2.Start DBServer (dotnet required)
   - open command prompt in /DBServer folder and run these commands
-  1.Restore project
+  
+3.Restore project
   ```powershell
   dotnet restore
   ```
-  2.Migrate tables to database (AKA create db tables inside database) 
+  
+4.Migrate tables to database (AKA create db tables inside database) 
   ```powershell
   dotnet ef migrations add StudentMigrInit --context StudentContext
   
@@ -22,13 +24,14 @@
   
   dotnet ef database update --context CompanyContext
   ```
-  3.Start web server
+  
+5.Start web server
   ```powershell
   dotnet run
   ```
   
-3.Start Logic Server
+6.Start Logic Server
   - double click on LogicServer.bat
   
-4.Start Client
+7.Start Client
   - double click on Client.bat
