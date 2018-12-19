@@ -35,3 +35,4 @@
   
 7.Start Client
   - double click on Client.bat
+  - if you login for the first time use "A-123456" as username and "admin" as password
