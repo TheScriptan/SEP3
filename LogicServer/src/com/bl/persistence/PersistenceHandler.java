@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.bl.model.Employee;
+import com.bl.model.Student;
 import com.bl.utils.Utils;
 
 public class PersistenceHandler {
@@ -16,7 +17,7 @@ public class PersistenceHandler {
 	private final String baseAddress = "https://localhost:5001/api/";
 	
 	public PersistenceHandler() {
-		System.setProperty("javax.net.ssl.trustStore", "C:/Program Files/Java/jdk1.8.0_191/jre/lib/security/cacerts");
+		System.setProperty("javax.net.ssl.trustStore", "cacerts");
 		
 		client = ClientBuilder.newClient();
 	}
@@ -24,10 +25,14 @@ public class PersistenceHandler {
 	//WHEN PERSISTENCE WILL BE FINISHED UPDATE HERE TO RECOGNIZE ROLE
 	public boolean verifyLogin(String cpr, String password, String role) {
 		if(role.equals("student")) {
-			WebTarget target = client.target(baseAddress + "students/" + cpr);
-			
-			Response response = target.request(MediaType.APPLICATION_JSON).get();
-			String json = getEmployeeById(cpr);
+			String json = getStudentById(cpr);
+			if(json.equals("-1")) {															//Checking if json send -1 as an error code
+				return false;
+			}	
+			Student std = (Student) Utils.deserializeObject(json, Student.class);
+			if(std.getPassword().equals(password)) {
+				return true;
+			}
 		}
 		else if(role.equals("employee")) {
 			
@@ -124,31 +129,31 @@ public class PersistenceHandler {
 	
 	//GET ONE EMPLOYEE
 	
-	public String getStudentById(int id) {
+	public String getStudentById(String id) {
 		WebTarget target = client.target(baseAddress + "students/" + id);
 		
 		String json = target.request(MediaType.APPLICATION_JSON).get(String.class);
 		return json;
 	}
 	
-	//PUT
+	//POST
 	public int addStudent(String json) {
 		WebTarget target = client.target(baseAddress + "students");
 		
 		Response response = target.request(MediaType.APPLICATION_JSON)
 							.accept(MediaType.TEXT_PLAIN_TYPE)
-							.put(Entity.json(json));
+							.post(Entity.json(json));
 		int status = response.getStatus();
 		return status;
 	}
 	
-	//POST
+	//PUT
 	public int updateStudent(String json) {
 		WebTarget target = client.target(baseAddress + "students");
 		
 		Response response = target.request(MediaType.APPLICATION_JSON)
 							.accept(MediaType.TEXT_PLAIN_TYPE)
-							.post(Entity.json(json));
+							.put(Entity.json(json));
 		int status = response.getStatus();
 		return status;
 	}
@@ -237,24 +242,24 @@ public class PersistenceHandler {
 		return json;
 	}
 	
-	//PUT
+	//POST
 	public int addShift(String json) {
 		WebTarget target = client.target(baseAddress + "shifts");
 		
 		Response response = target.request(MediaType.APPLICATION_JSON)
 							.accept(MediaType.TEXT_PLAIN_TYPE)
-							.put(Entity.json(json));
+							.post(Entity.json(json));
 		int status = response.getStatus();
 		return status;
 	}
 	
-	//POST
+	//PUT
 	public int updateShift(String json) {
 		WebTarget target = client.target(baseAddress + "shifts");
 		
 		Response response = target.request(MediaType.APPLICATION_JSON)
 							.accept(MediaType.TEXT_PLAIN_TYPE)
-							.post(Entity.json(json));
+							.put(Entity.json(json));
 		int status = response.getStatus();
 		return status;
 	}

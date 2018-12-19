@@ -16,6 +16,7 @@ import utils.Request;
 import utils.Response;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 
 public class Utils {
 	
@@ -28,6 +29,7 @@ public class Utils {
 		ADD_STUDENT, EDIT_STUDENT, REMOVE_STUDENT, FIND_STUDENT, FIND_ALL_STUDENTS,
 		ADD_COMPANY, EDIT_COMPANY, REMOVE_COMPANY, FIND_COMPANY, FIND_ALL_COMPANIES, 
 		ADD_EMPLOYEE, EDIT_EMPLOYEE, REMOVE_EMPLOYEE, FIND_EMPLOYEE, FIND_ALL_EMPLOYEES,
+		ADD_COMPLETE_SHIFT,
 		
 		//Student requests
 		REGISTER, EDIT_INFO, TAKE_SHIFT,
@@ -56,13 +58,16 @@ public class Utils {
 	
 	
 	private Utils() {
-		builder = new GsonBuilder();
-		builder.setPrettyPrinting();
+		builder = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		
 		gson = builder.create();
 	}
-	
+
 	public static String serializeObject(Object object) {
 		return getInstance().gson.toJson(object);
+	}
+	public static String serializeDate(JsonElement e) {
+		return getInstance().gson.toJson(e);
 	}
 	
 	public static Object deserializeObject(String json, Class<?> classType) {

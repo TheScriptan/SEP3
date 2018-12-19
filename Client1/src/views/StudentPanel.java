@@ -1,6 +1,9 @@
 package views;
 
 import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -12,116 +15,120 @@ import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JCalendar;
 
+import controllers.BaseController;
+import controllers.EmployeeShiftsController;
 import controllers.StudentController;
+import models.Shift;
+import serverConnection.Connection;
 
 public class StudentPanel extends JPanel
 {
-   private JTable StudentSchoolTable;
-   private StudentController userController;
+	
+	private static final long serialVersionUID = -3339712839937225664L;
 
-   /**
-    * Create the panel.
-    */
-   public StudentPanel(StudentController userController)
+	private JTable availableShiftsTable;
+	private StudentController studentController;
+	private EmployeeShiftsController employeeShiftsController;
+   private BaseController  baseController;
+   public Connection connection;
+
+ 
+   public StudentPanel(BaseController baseController, Connection c)
    {
-	   this.userController = userController;
-	      setLayout(null);
-      GenerateView();
+	   this.baseController = baseController;
+	   this.connection = c;
+	  
+	   employeeShiftsController = new EmployeeShiftsController();
+	   studentController = new StudentController();
+	   setLayout(null);
+	  GenerateView();
 
    }
+   
+  public String[][] fillAvailableShiftTable() {
+	   
+	   List<Shift> shiftList = employeeShiftsController.getAllShifts(connection);
+	   System.out.println(shiftList.size());
+	   String[][] toTable = new String[shiftList.size()][4];
+	   
+	   //"Date", "Company", "City", "Time"
+	   for(int i = 0; i < shiftList.size(); i++) {
+		   toTable[i][0] = shiftList.get(i).getShiftDate().toString();
+		   toTable[i][1] = shiftList.get(i).getcompanyId()+"";
+		   toTable[i][2] = shiftList.get(i).getcompanyId()+"loc";
+		   toTable[i][3] = shiftList.get(i).getShiftTime()+"";
+	   }
+	   
+	   return toTable;
+   }
+   
    public void GenerateView()
    {
-      setLayout(null);
-      /**
-       * Creating the ScrollPane for the Table
-       */
       JScrollPane scrollPane = new JScrollPane();
       scrollPane.setBounds(10, 189, 300, 200);
       add(scrollPane);
-      /**
-       * Creating StudentSchoolTable
-       */
-      StudentSchoolTable = new JTable();
-      StudentSchoolTable.setModel(new DefaultTableModel(
-         new Object[][] {
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-         },
+
+      availableShiftsTable = new JTable();
+      availableShiftsTable.setModel(new DefaultTableModel(
+    		  fillAvailableShiftTable(),
          new String[] {
-            "Date", "City", "Time"
-         }
-      ));
-      scrollPane.setViewportView(StudentSchoolTable);
-      /**
-       * Creating the calendar
-       */
+            "Date", "Company", "City", "Time"
+         }){
+    			  
+    				private static final long serialVersionUID = 1L;
+
+    		      	boolean[] columnEditables = new boolean[] {
+    		      		false, false, false, false
+    		      	};
+    		      	public boolean isCellEditable(int row, int column) {
+    		      		return columnEditables[column];
+    		      	}}
+      );
+      scrollPane.setViewportView(availableShiftsTable);
+
       JCalendar calendar = new JCalendar();
       calendar.setBounds(10, 25, 580, 122);
       add(calendar);
-      /**
-       * Creating a button for the available shifts
-       */
+ 
       JButton btnAvalaibleShifts = new JButton("Avalaible Shifts");
       btnAvalaibleShifts.setBounds(20, 155, 105, 23);
+      btnAvalaibleShifts.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+		}
+	});
       add(btnAvalaibleShifts);
-      /**
-       * Creating a button for My Shifts
-       */
+
       JButton btnMyShifts = new JButton("My Shifts");
       btnMyShifts.setBounds(178, 155, 89, 23);
       add(btnMyShifts);
-      /**
-       * Creating a Student Schedule ScrollPane
-       */
+
       JScrollPane StudentScheduleScrollPane = new JScrollPane();
       StudentScheduleScrollPane.setBounds(316, 189, 133, 200);
       add(StudentScheduleScrollPane);
-      /**
-       * Creating a Panel for the Student Schedule
-       */
+
       Panel StudentScheduleTablePanel = new Panel();
       StudentScheduleScrollPane.setViewportView(StudentScheduleTablePanel);
       StudentScheduleTablePanel.setLayout(null);
-      /**
-       * Creating a Text Area for the Panel
-       */
+
       JTextArea StudentScheduleTableTextArea = new JTextArea();
       StudentScheduleTableTextArea.setBounds(0, 0, 159, 198);
       StudentScheduleTablePanel.add(StudentScheduleTableTextArea);
-      /**
-       * Creating a button for Requesting Shifts
-       */
+
       JButton btnRequestshift = new JButton("Request Shift");
       btnRequestshift.setBounds(468, 186, 105, 23);
       add(btnRequestshift);
-      /**
-       * Creating a button for Sickness report
-       */
+
       JButton btnReportSickness = new JButton("Report Sickness");
       btnReportSickness.setBounds(464, 218, 109, 23);
       add(btnReportSickness);
-      /**
-       * Creating a checkbox that shows the School Calendar when checked
-       */
+
       JCheckBox chckbxShowSchoolCalendar = new JCheckBox("Show school calendar");
       chckbxShowSchoolCalendar.setBounds(452, 248, 138, 28);
       add(chckbxShowSchoolCalendar);
-      /**
-       * Creating a checkbox that shows the Calendar when checked
-       */
+  
       JCheckBox chckbxShowWorkCalendar = new JCheckBox("Show work calendar");
       chckbxShowWorkCalendar.setBounds(452, 279, 121, 23);
       add(chckbxShowWorkCalendar);
@@ -132,4 +139,7 @@ public class StudentPanel extends JPanel
    {
       return this;
    }
+
+   
+ 
 }

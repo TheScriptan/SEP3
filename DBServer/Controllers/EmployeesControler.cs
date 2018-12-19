@@ -31,16 +31,16 @@ namespace DBServer.Controllers
 
         // POST api/employees
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody]Employee employee)
         {
+            _context.Employees.Add(employee);
+            _context.SaveChanges();
         }
 
         // PUT api/employees/5
         [HttpPut]
         public void Put([FromBody]Employee employee)
         {
-            _context.Employees.Add(employee);
-            _context.SaveChanges();
         }
 
         // DELETE api/employees/5

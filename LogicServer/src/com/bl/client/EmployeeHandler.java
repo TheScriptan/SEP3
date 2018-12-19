@@ -51,7 +51,52 @@ public class EmployeeHandler extends IHandler {
 						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_ADDED, "" + status);
 					}
 				}
+				//ADD STUDENT
+				if(request.getRequestCode().equals(Utils.Requests.ADD_STUDENT.toString())) {
+					int status = pers.addStudent(request.getArguments()[0]);
+					if(status == 200) {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_ADDED, "" + status);
+					} else {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_ADDED, "" + status);
+					}
+				}
+				//ADD SHIFT
+				if(request.getRequestCode().equals(Utils.Requests.ADD_SHIFT.toString())) {
+					int status = pers.addShift(request.getArguments()[0]);
+					if(status == 200) {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_ADDED, "" + status);
+					} else {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_ADDED, "" + status);
+					}
+				}
+				//gET ALL SHIFTS
+				if(request.getRequestCode().equals(Utils.Requests.FIND_ALL_SHIFTS.toString())) {
+					String json = pers.getAllShifts();
+					if(json.equals("-1")) {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_RETRIEVED, "no shifts");
+					} else {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_RETRIEVED, json);
+					}
+				}
+				//GET ALL STUDENTS
+				if(request.getRequestCode().equals(Utils.Requests.FIND_ALL_STUDENTS.toString())) {
+					String json = pers.getAllStudents();
+					if(json.equals("-1")) {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_RETRIEVED, "no students");
+					} else {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_RETRIEVED, json);
+					}
+				}
 				
+				//REMOVE STUDENT
+				if(request.getRequestCode().equals(Utils.Requests.REMOVE_STUDENT.toString())) {
+					int status = pers.deleteStudent(Integer.parseInt(request.getArguments()[0]));
+					if(status == 200) {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_DELETED, "" + status);
+					} else {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_DELETED, "" + status);
+					}
+				}
 			}
 				
 		}

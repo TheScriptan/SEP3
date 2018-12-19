@@ -1,10 +1,12 @@
 package views;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.JFrame;
 
-import controllers.AdminController;
-import controllers.EmployeeController;
 import controllers.BaseController;
+import serverConnection.Connection;
 
 
 /**
@@ -14,40 +16,72 @@ import controllers.BaseController;
  */
 public class AppFrame extends JFrame {
 	
-	/**
-	 * Reference to the AppPanel class.
-	 */
+	private static final long serialVersionUID = 5725736106705278789L;
+
+	// ! Should be read from args/file ?? !
+	private static final int PORT = 1234;
+	private static final String IP = "localhost";
 	
+	// Base panel => login panel, system always starts with login screen
 	private LogInPanel basePanel;
-	private AdminPanel shiftPanel;
-	private EmployeePanel shiftPanel;
-	
-	/**
-	 * Create a frame object passing a reference the UserController for use by the AppFrame object.
-	 */
-	
-	public AppFrame(BaseController LogInController)
+	public Connection connection;
+
+	//Create a frame object passing a reference the UserController for use by the AppFrame object.
+	public AppFrame(BaseController baseController)
 	{
-		basePanel = new LogInPanel(LogInController);
+		//Eshablish connection between client and server
+		connection = new Connection(IP, PORT);
+		
+		basePanel = new LogInPanel(baseController, connection);
 		setupFrame();
 	}
 	
-	public AppFrame(EmployeeController adminController)
-   {
-      shiftPanel = new EmployeePanel(adminController);
-            setupFrame();
-   }
 
-   /**
-	 * Sets up the content pane, size and visibility.
-	 */
-	
+
+
+	//Sets up the content pane, size and visibility.
 	private void setupFrame()
 	{
 		this.setContentPane(basePanel);
 		this.setBounds(150, 50, 720, 480);
 		this.setVisible(true);
-      this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.addWindowListener(new WindowListener() {
+			
+			@Override
+			public void windowClosing(WindowEvent e) {
+				connection.closeConnection();
+				System.exit(0);
+			}
+
+			@Override
+			public void windowActivated(WindowEvent e) {			
+			}
+			@Override
+			public void windowClosed(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			@Override
+			public void windowDeiconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			@Override
+			public void windowIconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			@Override
+			public void windowOpened(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 }

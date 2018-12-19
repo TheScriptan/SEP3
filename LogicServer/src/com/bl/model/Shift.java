@@ -8,12 +8,15 @@ public class Shift {
 	private Date shiftDate;
 	private int shiftTime;
 	private String shiftRequirements;
+	public boolean released;
+	
 	public Shift(long shiftId, long companyId, Date shiftDate, int shiftTime, String shiftRequirements) {
 		this.shiftId = shiftId;
 		this.companyId = companyId;
 		this.shiftDate = shiftDate;
 		this.shiftTime = shiftTime;
 		this.shiftRequirements = shiftRequirements;
+		released = false;
 	}
 	public long getshiftId() {
 		return shiftId;

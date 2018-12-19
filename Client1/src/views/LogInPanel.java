@@ -3,11 +3,8 @@ package views;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,10 +12,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
+
 import controllers.BaseController;
-import controllers.StudentController;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
+import controllers.LogInController;
+import serverConnection.Connection;
 
 /**
  * AppPanel object that extends JPanel for use with a MVC GUI.
@@ -27,108 +24,112 @@ import javax.swing.event.ChangeEvent;
  */
 
 public class LogInPanel extends JPanel{
+
+	private static final long serialVersionUID = -1558137183789380872L;
 	
-	/**
-	 * Reference to the UserController class.
-	 */
-	
-	private BaseController baseController;
+	// Variables declaration
+	// Swing----------------
 	private JTextField username;
 	private JPasswordField password;
-	private StudentController userController;
+	private JLabel lblUsername;
+	private JLabel lblPassword;
+	private JEditorPane dtrpnViaVikar;
+	private JLabel errorLabel;
+	private JButton login;
+	//-----------------------
+	// Others
+	private LogInController loginController;
+	private BaseController baseController;
+	public Connection connection;
+
 	
-	/**
-	 * Create a panel object passing a reference the UserController for use by the AppPanel object.
-	 */
-	
-	public LogInPanel(BaseController baseController)
+	public LogInPanel(BaseController baseController, Connection c)
 	{
 		this.baseController = baseController;
-		setLayout(null);
-		GenerateView();
+		this.connection = c;
 		
+		loginController = new LogInController();
+		
+		setLayout(null);
+		GenerateView();	
 	}
 	
 	public void GenerateView()
 	{
-		/**
-		 * Create a Username object.
-		 */
-		JLabel lblUsername = new JLabel("Username");
+		lblUsername = new JLabel("Username");
 		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblUsername.setBounds(197, 96, 63, 33);
 		add(lblUsername);
 		
-		/**
-		 * Create a Password object.
-		 */
-		
-		JLabel lblPassword = new JLabel("Password");
+		lblPassword = new JLabel("Password");
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblPassword.setBounds(197, 140, 63, 27);
 		add(lblPassword);
-		
-		/**
-		 * Create a text field username for user input.
-		 */
-		
+	
 		username = new JTextField();
 		username.setBounds(292, 104, 118, 20);
 		add(username);
 		username.setColumns(10);
-		
-		/**
-		 * Create a password field for user input.
-		 */
-		
+	
 		password = new JPasswordField();
 		password.setBounds(292, 145, 118, 20);
 		add(password);
-		
-		/**
-		 *  Create company name in the login screen.
-		 */
-		
-		JEditorPane dtrpnViaVikar = new JEditorPane();
+	
+		dtrpnViaVikar = new JEditorPane();
 		dtrpnViaVikar.setEditable(false);
 		dtrpnViaVikar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		dtrpnViaVikar.setText("VIA VIKAR");
 		dtrpnViaVikar.setBackground(UIManager.getColor("Button.background"));
 		dtrpnViaVikar.setBounds(260, 44, 289, 49);
 		add(dtrpnViaVikar);
-		
-		/**
-		 * Create login button.
-		 */
-		
-		JButton login = new JButton("Login");
+
+		errorLabel = new JLabel("STATUS = OK");
+		errorLabel.setBounds(10, 400, 400, 20);
+		add(errorLabel);
+
+		login = new JButton("Login");
 		login.setBounds(308, 201, 89, 23);
-		add(login);
-		
-		JCheckBox chckbxAdmin = new JCheckBox("Admin ");
-		chckbxAdmin.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent arg0) {
-				
-				
-			}
-		});
-		chckbxAdmin.setBounds(292, 242, 97, 23);
-		add(chckbxAdmin);
-		
-		/**
-		 * Login button Event listener.
-		 */
-		
 		login.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				
-					getPanel().setVisible(false);
-					baseController.getFrame().setContentPane(new EmployeePanel(null));
-					
+				String prefix = username.getText().split("-")[0];
+				 
+				if(prefix.equals("A"))
+				{
+					if(loginController.validateLogin(connection,
+													username.getText().split("-")[1],
+													String.valueOf(password.getPassword()),
+													"employee")) 
+					{
+						baseController.changePanel(new EmployeePanel(baseController, connection));;
+					}
+					else 
+					{
+						errorLabel.setText("Invalid login -> wrong CPR or Password");
+					}
+				} 
+				else if(prefix.equals("S"))
+				{
+					if(loginController.validateLogin(connection, 
+													username.getText().split("-")[1],
+													String.valueOf(password.getPassword()),
+													"student")) 
+					{	
+						baseController.changePanel(new StudentPanel(baseController,connection));
+					}
+					else 
+					{
+						errorLabel.setText("Invalid login -> wrong CPR or Password");
+					}
+				}
+				else 
+				{
+					errorLabel.setText("Invalid login -> Use A-[cpr] to login as admin S-[cpr] as student.");
+				}
 			}
 		});
-		
+		add(login);
 	}
 	
 	public JPanel getPanel()

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.net.Socket;
 
 import com.bl.persistence.PersistenceHandler;
+import com.bl.utils.Request;
+import com.bl.utils.Utils;
 
 public class StudentHandler extends IHandler {
 
@@ -15,15 +17,59 @@ public class StudentHandler extends IHandler {
 	}
 	
 	public void Start() {
+		Request request = null;
+		
 		while(!s.isClosed()) {
-			try {
-				String message = dis.readUTF();
-				if(message.equals("employees"))
-					dos.writeUTF(pers.getAllEmployees());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			request = Utils.AcceptRequest(dis);
+			
+			
+			if(request != null) {
+				//ADD STUDENT
+				if(request.getRequestCode().equals(Utils.Requests.ADD_STUDENT.toString())) {
+					int status = pers.addStudent(request.getArguments()[0]);
+					if(status == 200) {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_ADDED, "" + status);
+					} else {
+						Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_ADDED, "" + status);
+					}
+					//GET ALL SHIFTS
+					if(request.getRequestCode().equals(Utils.Requests.FIND_ALL_SHIFTS.toString())) {
+						String json = pers.getAllShifts();
+						if(json.equals("-1")) {
+							Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_RETRIEVED, "no shifts");
+						} else {
+							Utils.SendResponse(dos, Utils.Responses.OBJECT_RETRIEVED, json);
+						}
+					}
+					//GET ALL COMPANIES
+					if(request.getRequestCode().equals(Utils.Requests.FIND_ALL_COMPANIES.toString())) {
+						String json = pers.getAllCompanies();
+						if(json.equals("-1")) {
+							Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_RETRIEVED, "no shifts");
+						} else {
+							Utils.SendResponse(dos, Utils.Responses.OBJECT_RETRIEVED, json);
+						}	
+					}
+					//GET ALL STUDENTS
+					if(request.getRequestCode().equals(Utils.Requests.FIND_ALL_STUDENTS.toString())) {
+						String json = pers.getAllStudents();
+						if(json.equals("-1")) {
+							Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_RETRIEVED, "no students");
+						} else {
+							Utils.SendResponse(dos, Utils.Responses.OBJECT_RETRIEVED, json);
+						}	
+					}
+					//ADD COMPLETE SHIFT
+					if(request.getRequestCode().equals(Utils.Requests.ADD_COMPLETE_SHIFT.toString())) {
+						int statusx = pers.updateCompleteShift(request.getArguments()[0]);
+						if(statusx == 200) {
+							Utils.SendResponse(dos, Utils.Responses.OBJECT_ADDED, "" + statusx);
+						} else {
+							Utils.SendResponse(dos, Utils.Responses.OBJECT_NOT_ADDED, "" + statusx);
+						}
+					}
+				}
+			}	
 		}
 	}
 	

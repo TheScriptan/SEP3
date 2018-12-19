@@ -1,6 +1,9 @@
 package serverConnection;
 
 
+import java.util.List;
+
+import models.Shift;
 import models.Student;
 import serverConnection.interfaces.IStudentHandler;
 import utils.Response;
@@ -22,7 +25,7 @@ public class StudentHandler implements IStudentHandler{
 
 	@Override
 	public Response removeStudent(Connection c, String studentId) {
-		Utils.SendRequest(c.getOutput(), Utils.Requests.EDIT_STUDENT, studentId.toString());	
+		Utils.SendRequest(c.getOutput(), Utils.Requests.EDIT_STUDENT, studentId);	
 		return Utils.AcceptResponse(c.getInput());
 	}
 

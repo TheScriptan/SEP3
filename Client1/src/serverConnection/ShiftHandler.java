@@ -1,6 +1,8 @@
 package serverConnection;
 
 
+import java.util.List;
+
 import models.Shift;
 import serverConnection.interfaces.IShiftHandler;
 import utils.Response;

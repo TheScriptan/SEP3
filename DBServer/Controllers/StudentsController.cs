@@ -24,7 +24,7 @@ namespace DBServer.Controllers
 
         // GET api/students/5
         [HttpGet("{id}")]
-        public ActionResult<Student> GetById(long id)
+        public ActionResult<Student> GetById(String id)
         {
             return _context.Students.Single(s => s.StudentId.Equals(id));
         }

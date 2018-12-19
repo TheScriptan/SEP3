@@ -1,36 +1,44 @@
 package views;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
 import controllers.AdminController;
-import javax.swing.JTextArea;
+import controllers.EmployeeShiftsController;
+import models.Shift;
+import serverConnection.Connection;
 
 public class AdminPanel extends JPanel
 {
-   private AdminController adminController;
+	
+	private static final long serialVersionUID = 1235725270692792593L;
+	private AdminController adminController;
+	EmployeeShiftsController empShiftController;
    private JTable ShiftTable;
    
    
    JScrollPane ShiftInformationPane = new JScrollPane();
    JScrollPane StudentInformationPane = new JScrollPane();
    private JTable StudentTable;
+   Connection connection;
    /**
     * Create the panel.
     */
-   public AdminPanel(AdminController adminController)
+   public AdminPanel(AdminController adminController, Connection c)
    {
       this.adminController = adminController;
+      this.connection = c;
+      
+      empShiftController = new EmployeeShiftsController(); 
       setLayout(null);
       GenerateView();
    }
@@ -123,36 +131,16 @@ public class AdminPanel extends JPanel
       	}
       });
       ShiftTable.setModel(new DefaultTableModel(
-      	new Object[][] {
-      		{null, null, null, null, null, null},
-      		{"", null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, ""},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      		{null, null, null, null, null, null},
-      	},
+      	populateShiftTable(),
       	new String[] {
       		"Location", "Company", "Time", "Date", "Status", "Released"
       	}
       ) {
-      	boolean[] columnEditables = new boolean[] {
+      	/**
+		 * 
+		 */
+		private static final long serialVersionUID = 3835326094011969126L;
+		boolean[] columnEditables = new boolean[] {
       		false, false, false, false, false, false
       	};
       	public boolean isCellEditable(int row, int column) {
@@ -298,5 +286,22 @@ public class AdminPanel extends JPanel
        */
    }
 
+   
+   public String[][] populateShiftTable(){
+
+	     List<Shift> shifts = empShiftController.getAllShifts(connection);
+	     String[][] toTable = new String[shifts.size()][6]; 
+	     //Location", "Company", "Time", "Date", "Status", "Released
+	    for(int i = 0; i < shifts.size(); i++) {
+	    	toTable[i][0] = "a";
+	    	toTable[i][1] = "b";
+	    	toTable[i][2] = "c";
+	    	toTable[i][3] = "d";
+	    	toTable[i][4] = "e";
+	    	toTable[i][5] = "f";
+	    }
+	     
+	   return toTable;
+ }
 }
 

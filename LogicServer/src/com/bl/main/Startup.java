@@ -35,7 +35,7 @@ public class Startup {
 				PersistenceHandler pers = new PersistenceHandler();
 				
 				
-				System.out.println("Creating a new handler for this client..." );
+				//System.out.println("Creating a new handler for this client..." );
 				
 				//Create a new handler for this client
 				ClientHandler clientHandler = new ClientHandler(s, dis, dos, pers);
@@ -43,7 +43,7 @@ public class Startup {
 				//Create a new thread for this client
 				Thread t = new Thread(clientHandler);
 				
-				System.out.println("Adding this client to active client list");
+				//System.out.println("Adding this client to active client list");
 				
 				//Start the thread
 				t.start();
